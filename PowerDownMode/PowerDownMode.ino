@@ -20,6 +20,7 @@ void setup() {
   /*
    *  SETUP WATCHDOG TIMER
    *  ------
+   *  WDF | WDIE | WDP3 | WDCE | WDE | WDP2 | WDP1 | 
    *  WDTCSR = (24);     : change enable and WDE - also resets
    *  WDTCSR = (33);     : prescalers only - get rid of the WDE and WDCE bit
    *      WDP3 - WDP2 - WPD1 - WDP0 - time
