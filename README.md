@@ -1,5 +1,4 @@
-# WinAPI_Templates
-I posted this templates for reference.
+# WinAPI_Custom
 * OS: Windows 10
 * IDE: Visual Studio 2015
 
