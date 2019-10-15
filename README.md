@@ -34,7 +34,7 @@ git clone https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha
 | openssl-1.0.2d | OpenSSL |
 
 2. 환경변수를 아래와 같이 추가한다.<br>
-```text
+```Bash
 * <MinGW3.4.5>\bin
 * <MinGW3.4.5>\MinGW\mingw32\bin
 * <Strawberry Perl>\perl\bin
