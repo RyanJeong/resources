@@ -34,7 +34,7 @@ git clone https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha
 | openssl-1.0.2d | OpenSSL |
 
 2. 환경변수를 아래와 같이 추가한다.<br>
-```Bash
+```Text
 * <MinGW3.4.5>\bin
 * <MinGW3.4.5>\MinGW\mingw32\bin
 * <Strawberry Perl>\perl\bin
@@ -45,21 +45,21 @@ git clone https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha
 4. Bitcoin-v0.1.3-Alpha\Bitcoin\src 디렉토리 내에 obj 디렉토리를 생성한다.<br>
 
 5. MSYS를 사용하여 Berkeley DB를 compile 한다.<br>
-```Bash
+```Text
 $ cd /DB/build_unix
 $ ../dist/configure --enable-mingw --enable-cxx
 $ make
 ```
 
 6. MSYS를 사용하여 wxWidgets을 compile 한다.<br>
-```Bash
+```Text
 $ cd /wxWidgets
 $ ./configure --with-msw --enable-debug --enable-debug_gdb --disable-shared
 $ make
 ```
 
 7. VS2013 x86 Native Tools Command Prompt를 사용하여 OpenSSL을 compile 한다.<br>
-```Bash
+```Text
 $ cd c:\msys\1.0\OpenSSL
 $ perl Configure VC-WIN32 no-asm --prefix=C:\src\OpenSSL\Build-VC-32-release
 $ ms\do_ms.bat
@@ -72,7 +72,7 @@ $ nmake -f ms\nt.mak clean
 8. C:\src\OpenSSL\Build-VC-32-release 폴더 내에 있는 include 폴더를 <MSYS>\1.0\OpenSSL 폴더 내에 존재하는 include 폴더와 교체한다.<br>
  
 9. MSYS를 사용하여 Bitcoin을 compile 한다.<br>
-```Bash
+```Text
 $ cd <Bitcoin-v0.1.3-Alpha>/Bitcoin/src
 $ make
 ```
