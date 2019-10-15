@@ -3,7 +3,7 @@
 ![about](https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha/blob/master/img/about.PNG)
 ## 설치 방법
 ### 설치 환경
-* Windows 7 Professional K Version 6.1(Build 7601: Service Pack 1)
+* Windows 7 Professional K x86 Version 6.1(Build 7601: Service Pack 1)
 
 ### 필요 프로그램<br>
 #### 아래 프로그램들을 모두 설치 혹은 압축을 해제하여야 함<br>
