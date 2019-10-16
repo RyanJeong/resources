@@ -44,21 +44,7 @@ git clone https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha
  
 4. Bitcoin-v0.1.3-Alpha\Bitcoin\src 디렉토리 내에 obj 디렉토리를 생성한다.<br>
 
-5. MSYS를 사용하여 Berkeley DB를 compile 한다.<br>
-```Text
-$ cd /DB/build_unix
-$ ../dist/configure --enable-mingw --enable-cxx
-$ make
-```
-
-6. MSYS를 사용하여 wxWidgets을 compile 한다.<br>
-```Text
-$ cd /wxWidgets
-$ ./configure --with-msw --enable-debug --enable-debug_gdb --disable-shared
-$ make
-```
-
-7. VS2013 x86 Native Tools Command Prompt를 사용하여 OpenSSL을 compile 한다.<br>
+5. VS2013 x86 Native Tools Command Prompt를 사용하여 OpenSSL을 compile 한다.<br>
 ```Text
 $ cd c:\msys\1.0\OpenSSL
 $ perl Configure VC-WIN32 no-asm --prefix=C:\src\OpenSSL\Build-VC-32-release
@@ -69,9 +55,31 @@ $ nmake -f ms\nt.mak install
 $ nmake -f ms\nt.mak clean
 ```
 
-8. C:\src\OpenSSL\Build-VC-32-release 폴더 내에 있는 include 폴더를 <MSYS>\1.0\OpenSSL 폴더 내에 존재하는 include 폴더와 교체한다.<br>
+6. MSYS를 사용하여 OpenSSL libcrypto.a를 생성한다.<br>
+make 과정에서 도중에 오류가 발생할 수 있으나, libcrypto.a 파일이 생성되기만 하면 무관<br>
+```Text
+$ cd /OpenSSL
+$ ./config
+$ make
+```
+
+7. MSYS를 사용하여 Berkeley DB를 compile 한다.<br>
+```Text
+$ cd /DB/build_unix
+$ ../dist/configure --enable-mingw --enable-cxx
+$ make
+```
+
+8. MSYS를 사용하여 wxWidgets을 compile 한다.<br>
+```Text
+$ cd /wxWidgets
+$ ./configure --with-msw --enable-debug --enable-debug_gdb --disable-shared
+$ make
+```
+
+9. C:\src\OpenSSL\Build-VC-32-release 폴더 내에 있는 include 폴더를 <MSYS>\1.0\OpenSSL 폴더 내에 존재하는 include 폴더와 교체한다.<br>
  
-9. MSYS를 사용하여 Bitcoin을 compile 한다.<br>
+10. MSYS를 사용하여 Bitcoin을 compile 한다.<br>
 ```Text
 $ cd <Bitcoin-v0.1.3-Alpha>/Bitcoin/src
 $ make
