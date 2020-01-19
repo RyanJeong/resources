@@ -76,6 +76,7 @@ int main()
             while (check[(num = (rand() % CHECK_SIZE))]) {
                 ;
             }
+            /*  0 ~ 44 -> 1 ~ 45    */
             check[num++]++;
             if (j == LOTTO_SIZE) {
                 putchar('|');
@@ -148,6 +149,7 @@ void genLotto(int cnt)
             while (check[(num = (rand() % CHECK_SIZE))]) {
                 ;
             }
+            /*  0 ~ 44 -> 1 ~ 45    */
             check[num++]++;
             if (j == LOTTO_SIZE) {
                 putchar('|');
