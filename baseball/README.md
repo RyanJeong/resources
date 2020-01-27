@@ -16,16 +16,16 @@
 void prepare(void);
 
 /*
- * void genNumber(int []);
+ * void genNumbers(int []);
  *      3개의 랜덤 번호를 생성하는 함수
  */
-void genNumber(int []);
+void genNumbers(int []);
 
 /*
- * void getNumber(int []);
+ * void getNumbers(int []);
  *      플레이어로부터 3개의 번호를 입력받는 함수
  */
-void getNumber(int []);
+void getNumbers(int []);
 
 int main()
 {
@@ -41,11 +41,11 @@ int main()
     int computer[ATTEMPS], player[ATTEMPS];
 
     prepare();
-    genNumber(computer);
+    genNumbers(computer);
     for (i = 0; i < INNINGS; ++i) {
         strike = ball = 0;
         puts("Input 3 numbers without duplicates.");
-        getNumber(player);
+        getNumbers(player);
         for (j = 0; j < ATTEMPS; ++j) {
             if (computer[j] == player[j]) {
                 ++strike;
@@ -82,7 +82,7 @@ void prepare(void)
     return;
 }
 
-void genNumber(int c[])
+void genNumbers(int c[])
 {
     /*
      *  i       : 반복문 제어 변수
@@ -106,7 +106,7 @@ void genNumber(int c[])
     return;
 }
 
-void getNumber(int p[])
+void getNumbers(int p[])
 {
     /*
      *  i       : 반복문 제어 변수
