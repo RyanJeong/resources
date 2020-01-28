@@ -79,10 +79,11 @@ int main()
     
         return 1;
     }
+
     printf(
-        "%s%s\n%s\n",
-        "Answer: ", 
-        word,
+        "Answer: %s\n"
+        "%s\n", 
+        word, 
         (playGame(&word, &form, len) < ATTEMPTS) ? "You win!" : "You lose!");
     finishGame(&word, &form);
 
@@ -170,9 +171,7 @@ int playGame(char **word, char **form, int len)
                     }
                     printf("%s", (misses == 1) ? "Miss: " : "Misses: ");
                     for (i = 0; i < misses; ++i) {
-                        printf("%c%c", 
-                            listOfChar[i],
-                            (i == (misses - 1)) ? '\n' : ' ');
+                        printf("%c%c", listOfChar[i], (i == (misses - 1)) ? '\n' : ' ');
                     }
                     drawHangman(misses);
                     break;
