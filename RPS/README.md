@@ -10,7 +10,6 @@
 #define PAPER       1
 #define SCISSORS    2
 #define SHAPES      3
-#define HELP_MSG    "r: Rock, p: Paper, s: Scissors, h: Help, e: Exit"
 
 int main()
 {
