@@ -8,10 +8,16 @@
 #define ATTEMPS     3
 
 /*
- *  void prepare(void);
+ *  void initGame(void);
  *      프로그램 최초 동작 시 초기화 또는 준비 동작을 수행하는 함수
  */
-void prepare(void);
+void initGame(void);
+
+/*
+ *  void playGame(void);
+ *      숫자 야구 게임의 동작이 구현되어 있는 함수
+ */
+void playGame(void);
 
 /*
  * void genNumbers(int []);
@@ -27,6 +33,24 @@ void getNumbers(int []);
 
 int main()
 {
+    initGame();
+    playGame();
+
+    return 0;
+}
+
+void initGame(void)
+{
+    /*  Initialize the seed.    */
+    srand(time(NULL));
+    puts("*** Number Baseball Game ***");
+    puts("You have 9 chances to find out the right answer with 10 numbers(0 - 9).");
+
+    return;
+}
+
+void playGame(void)
+{
     /*
      *  strike      : strike 갯수
      *  ball        : ball 갯수
@@ -38,7 +62,6 @@ int main()
     int strike, ball, i, j, k, temp;
     int computer[ATTEMPS], player[ATTEMPS];
 
-    prepare();
     genNumbers(computer);
     for (i = 0; i < INNINGS; ++i) {
         strike = ball = 0;
@@ -64,18 +87,6 @@ int main()
     }
     printf("Computer's random numbers are %d, %d, and %d\n", computer[0], computer[1], computer[2]);
     puts((i == INNINGS) ? "You lose!" : "You win!");
-
-    return 0;
-}
-
-void prepare(void)
-{
-    int i;
-
-    /*  Initialize the seed.    */
-    srand(time(NULL));
-    puts("*** Number Baseball Game ***");
-    puts("You have 9 chances to find out the right answer with 10 numbers(0 - 9).");
 
     return;
 }
