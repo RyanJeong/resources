@@ -13,11 +13,16 @@ import (
 )
 
 var nNodes, nByzantines int
-var nodes, urls []string
+var nodes, urls         []string
+var nodesToUrls         map[string]string
 
+//  Args[1] : node 수
+//  Args[2] : byzantine node 수
+//  Args[3] : localhost offset 지정
 func Init() {
     var offset int
 
+    nodesToUrls = make(map[string]string)
     if len(os.Args) > 1 {
         nNodes, _ = strconv.Atoi(os.Args[1])
     } else {
@@ -36,25 +41,17 @@ func Init() {
     for i := 0; i < nNodes; i++ {
         nodes   = append(nodes, "Node-" + strconv.Itoa(i))
         urls    = append(urls, "localhost:" + strconv.Itoa(i + offset))
+        nodesToUrls[nodes[i]] = urls[i]
     }
 }
 
-/*
-	nodeID := os.Args[1]
-	server := network.NewServer(nodeID, 0)
-
-	server.Start()
-*/
 func Start() {
-    /*
-    network.Init(nodes, hosts, nByzantines)
-    network.Start()
-    */
+    //TODO  : Need to be implemented
 }
 
 func PrintArgs() {
     for i := 0; i < nNodes; i++ {
-        fmt.Printf("[%d] Node name: %s, URL: %s\n", i, nodes[i], urls[i])
+        fmt.Printf("[%d] Node name: %s, URL: %s, nodesToUrls: %s\n", i, nodes[i], urls[i], nodesToUrls[nodes[i]])
     }
     fmt.Printf("Number of byzantines: %d\n", nByzantines)
 }
