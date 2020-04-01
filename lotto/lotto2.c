@@ -1,7 +1,10 @@
-#include <ctype.h>  /*  isdigit(), isspace()    */
+#include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>     /*  srand(), rand() */
+#include <time.h>       /*  time(NULL)  */
 
-/*  1 2 3 4 | 123 | -1 | 1a2s | a1s2 | 0.123 | 1.23 |   123 | ... */
+#define LOTTO_SIZE  7
+
 int main()
 {
     /*
@@ -27,8 +30,19 @@ int main()
         }
     }
     if (cnt) {
-        /*  Do something    */
-        printf("%d\n", cnt);
+        for (i = 1; i <= cnt; ++i) {
+            /*  Initialize the seed.(Exited before 1 second ends)   */
+            srand(time(NULL) + i);  
+            printf("Index [%4d]:", i);
+            for (j = 1; j <= LOTTO_SIZE; ++j) {
+                num = (rand() % 45) + 1;
+                if (j == LOTTO_SIZE) {
+                    putchar('|');
+                }
+                printf("\t%2d", num);
+            }
+            putchar('\n');
+        }
     } else {
         printf("Please input a positive number.\n");
     }
