@@ -9,6 +9,15 @@
 #define SCISSORS    2
 #define SHAPES      3
 
+/*
+enum {
+    ROCK,
+    PAPER,
+    SCISSORS,
+    SHAPES
+};
+*/
+
 int main()
 {
     /*
@@ -71,7 +80,7 @@ int main()
             case 'e':
                 puts("Exit the game");
                 if (cnt) {
-                    printf("Played: %3d, Win rate: %.2lf%% \n", (int) cnt, (win / cnt) * 100.0);
+                    printf("Played: %3d, Win rate: %.2f%% \n", (int) cnt, (win / cnt) * 100.0);
                 }
                 break;
             default:

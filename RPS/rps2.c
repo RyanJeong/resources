@@ -44,7 +44,7 @@ int main()
             default:
                 puts((c == 'h') ? HELP_MSG : ((c == 'e') ? "Exit the game" : "Not a choise"));
                 if (c == 'e') {
-                    printf("Played: %3d, Win rate: %.2lf%% \n", (int) cnt, (win / cnt) * 100.0);
+                    printf("Played: %3d, Win rate: %.2f%% \n", (int) cnt, (win / cnt) * 100.0);
                 }
                 break;
             }

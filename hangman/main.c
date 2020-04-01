@@ -24,6 +24,7 @@
 #define UPPER       "   /|\\  "
 #define BODY        "    |   "
 #define LOWER       "   / \\  "
+#define INIT        0
 
 /*
  *  int prepareGame(char **, char **);
@@ -107,7 +108,7 @@ int prepareGame(char **word, char **form)
         "unsigned", "void", "volatile", "while"
     };
 
-    puts("*** Hangman ***");
+    drawHangman(INIT);
     srand(time(NULL));
     /*  0   ~   31  */
     index   = (rand() % WORDS);
@@ -185,6 +186,8 @@ int playGame(char **word, char **form, int len)
 
 void drawHangman(int misses)
 {
+    system("clear");
+    puts("*** Hangman ***");
     printf(
         "%s%c\n"
         "%s%c\n"
