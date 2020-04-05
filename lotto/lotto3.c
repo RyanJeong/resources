@@ -9,13 +9,13 @@
 int main()
 {
     /*
-     *  cnt     :   ¿¿ ¿¿¿ ¿ ¿ ¿ ¿¿¿ ¿¿¿ ¿¿ ¿¿¿¿ ¿¿
-     *  c       :   getchar() ¿¿¿ ¿¿ ¿¿ ¿¿ ¿¿¿ ¿¿¿¿ ¿¿
-     *  num     :   rand() ¿¿¿ ¿¿¿¿ ¿¿¿¿ ¿¿
-     *  i, j, k :   ¿¿¿¿¿ ¿¿¿¿ ¿¿¿¿
-     *  check[] :   ¿¿ ¿¿ ¿¿ ¿ ¿ ¿¿¿ ¿¿¿¿ ¿¿ ¿¿¿¿ ¿¿
+     *  cnt     :   ·Î¶Ç ¹øÈ£¸¦ ÃÑ ¸î ¹ø »ý¼ºÇÒ °ÍÀÎÁö °ªÀ» º¸°üÇÏ´Â º¯¼ö
+     *  c       :   getchar() ÇÔ¼öÀÇ ¼öÇà °á°ú °ªÀ» ÀÓ½Ã·Î º¸°üÇÏ´Â º¯¼ö
+     *  num     :   rand() ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀ» º¸°üÇÏ´Â º¯¼ö
+     *  i, j, k :   ¹Ýº¹¹®¿¡¼­ »ç¿ëÇÏ´Â Á¦¾îº¯¼ö
+     *  check[] :   ·Î¶Ç ¹øÈ£ »ý¼º ½Ã °ª Áßº¹À» °Ë»çÇÏ±â À§ÇØ »ç¿ëÇÏ´Â º¯¼ö
      */
-    int cnt, c, num, i, j, k, check[LOTTO_SIZE];
+    int cnt, c, num, i, j, k, check[MAX_NUM];
 
     printf("*** LOTTO NUMBER GENERATOR ***\n"
             "How many lines do you want to generate?\n");
@@ -31,22 +31,17 @@ int main()
         for (i = 1; i <= cnt; ++i) {
             /*  Initialize the seed.    */
             /*  Exited before 1 second ends */
+            for (j = 0; j < MAX_NUM; ++j) {
+                check[j] = 0;
+            }
             srand(time(NULL) + i);
             printf("Index: [%4d]:", i);
             for (j = 0; j < LOTTO_SIZE; ++j) {
-                while (1) {
-                    /*  0 ~ 44 -> 1 ~ 45    */
-                    num = (rand() % MAX_NUM) + 1;
-                    for (k = 0; k < j; ++k) {
-                        if (check[k] == num) {
-                            break;
-                        }
-                    }
-                    if (k == j) {
-                        break;
-                    }
+                while (check[num = (rand() % MAX_NUM)]) {
+                    ;
                 }
-                check[k] = num;
+                /*  0 ~ 44 -> 1 ~ 45    */
+                check[num++] = 1;
                 if (j == (LOTTO_SIZE - 1)) {
                     putchar('|');
                 }
