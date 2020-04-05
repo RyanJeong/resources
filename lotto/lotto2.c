@@ -9,11 +9,11 @@
 int main()
 {
     /*
-     *  cnt     :   ·Î¶Ç ¹øÈ£¸¦ ÃÑ ¸î ¹ø »ý¼ºÇÒ °ÍÀÎÁö °ªÀ» º¸°üÇÏ´Â º¯¼ö
-     *  c       :   getchar() ÇÔ¼öÀÇ ¼öÇà °á°ú °ªÀ» ÀÓ½Ã·Î º¸°üÇÏ´Â º¯¼ö
-     *  num     :   rand() ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀ» º¸°üÇÏ´Â º¯¼ö
-     *  i, j, k :   ¹Ýº¹¹®¿¡¼­ »ç¿ëÇÏ´Â Á¦¾îº¯¼ö
-     *  check[] :   ·Î¶Ç ¹øÈ£ »ý¼º ½Ã °ª Áßº¹À» °Ë»çÇÏ±â À§ÇØ »ç¿ëÇÏ´Â º¯¼ö
+     *  cnt     :   ë¡œë˜ ë²ˆí˜¸ë¥¼ ì´ ëª‡ ë²ˆ ìƒì„±í•  ê²ƒì¸ì§€ ê°’ì„ ë³´ê´€í•˜ëŠ” ë³€ìˆ˜
+     *  c       :   getchar() í•¨ìˆ˜ì˜ ìˆ˜í–‰ ê²°ê³¼ ê°’ì„ ìž„ì‹œë¡œ ë³´ê´€í•˜ëŠ” ë³€ìˆ˜
+     *  num     :   rand() í•¨ìˆ˜ì˜ ë°˜í™˜ê°’ì„ ë³´ê´€í•˜ëŠ” ë³€ìˆ˜
+     *  i, j, k :   ë°˜ë³µë¬¸ì—ì„œ ì‚¬ìš©í•˜ëŠ” ì œì–´ë³€ìˆ˜
+     *  check[] :   ë¡œë˜ ë²ˆí˜¸ ìƒì„± ì‹œ ê°’ ì¤‘ë³µì„ ê²€ì‚¬í•˜ê¸° ìœ„í•´ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜
      */
     int cnt, c, num, i, j, k, check[LOTTO_SIZE];
 
