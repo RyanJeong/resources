@@ -3,9 +3,17 @@
 #include <time.h>
 #include <ctype.h>
 
+/*
 #define CHECK_SIZE  10
 #define INNINGS     9
-#define ATTEMPS     3
+#define NUM_SIZE    3
+*/
+
+enum {
+    CHECK_SIZE  = 10,   /*  중복 검사에 사용하는 배열의 갯수    */
+    INNINGS     = 9,    /*  야구 이닝(inning) 수                */
+    NUM_SIZE    = 3     /*  맞추어야 할 숫자의 갯수             */
+}; 
 
 /*
  *  void initGame(void);
@@ -43,8 +51,8 @@ void initGame(void)
 {
     /*  Initialize the seed.    */
     srand(time(NULL));
-    puts("*** Number Baseball Game ***");
-    puts("You have 9 chances to find out the right answer with 10 numbers(0 - 9).");
+    printf("*** Number Baseball Game ***\n"
+           "You have 9 chances to find out the right answer with 10 numbers(0 - 9).\n");
 
     return;
 }
@@ -60,33 +68,41 @@ void playGame(void)
      *  player[]    : 플레이어가 생성한 정수
      */
     int strike, ball, i, j, k, temp;
-    int computer[ATTEMPS], player[ATTEMPS];
+    int computer[NUM_SIZE], player[NUM_SIZE];
 
     genNumbers(computer);
-    for (i = 0; i < INNINGS; ++i) {
+    for (i = 1; i <= INNINGS; ++i) {
         strike = ball = 0;
-        puts("Input 3 numbers without duplicates.");
+        printf("Input 3 numbers without duplicates.\n");
         getNumbers(player);
-        for (j = 0; j < ATTEMPS; ++j) {
+        for (j = 0; j < NUM_SIZE; ++j) {
+            /*
+             *  Computer    : 1 4 7
+             *  Player      : 2 3 4
+             */
             if (computer[j] == player[j]) {
                 ++strike;
-            } else if ((computer[j] == player[(j + 1)%ATTEMPS]) || (computer[j] == player[(j + 2)%ATTEMPS])) {
+            } else if ((computer[j] == player[(j + 1)%NUM_SIZE]) || (computer[j] == player[(j + 2)%NUM_SIZE])) {
                 ++ball;
             }
         }
         printf("[%d%s attempt] Strike%s: %d, Ball%s: %d\n", 
-            (i + 1),
-            (i == 0) ? "st" : ((i == 1) ? "nd" : ((i == 2) ? "rd" : "th")), 
-            (strike == 1) ? "" : "s",
-            strike, 
-            (ball == 1) ? "" : "s",
-            ball);
-        if (strike == ATTEMPS) {
+               i, 
+               (i == 1) ? "st" : ((i == 2) ? "nd" : ((i == 3) ? "rd" : "th")), 
+               (strike == 1) ? "" : "s", 
+               strike, 
+               (ball == 1) ? "" : "s", 
+               ball);
+        if (strike == NUM_SIZE) {
             break;
         }
     }
-    printf("Computer's random numbers are %d, %d, and %d\n", computer[0], computer[1], computer[2]);
-    puts((i == INNINGS) ? "You lose!" : "You win!");
+    printf("Computer's random numbers are %d, %d, and %d\n"
+           "%s\n",
+           computer[0], 
+           computer[1], 
+           computer[2], 
+           (i > INNINGS) ? "You lose!" : "You win!");
 
     return;
 }
@@ -105,11 +121,12 @@ void genNumbers(int c[])
     for (i = 0; i < CHECK_SIZE; ++i) {
         check[i] = 0;
     }
-    for (i = 0; i < ATTEMPS; ++i) {
-        while (check[num = (rand() % CHECK_SIZE)]++) {
+    for (i = 0; i < NUM_SIZE; ++i) {
+        while (check[num = (rand() % CHECK_SIZE)]) {
             ;
         }
-        c[i] = num;
+        check[num]  = 1;
+        c[i]        = num;
     }
 
     return;
@@ -129,18 +146,17 @@ void getNumbers(int p[])
     for (i = 0; i < CHECK_SIZE; ++i) {
         check[i] = 0;
     }
-    i = 0;
-    /*  i < ATTEMPS 조건이 우선임    */
-    while ((i < ATTEMPS) && ((c = getchar()) != EOF)) {
+    /*  i < NUM_SIZE 조건이 우선임    */
+    for (i = 0; (i < NUM_SIZE) && ((c = getchar()) != EOF); ) {
         if (!isspace(c)) {
             if (isdigit(c)) {
                 c -= '0';
-                (check[c]++) ? printf("Number %d has already been entered. Please enter a different number\n", c) : (p[i++] = c);
+                check[c] ? printf("Number %d has already been entered. Please enter a different number\n", c) : (check[c] = 1, p[i++] = c);
             } else {
                 puts("Please enter only numbers(0 - 9).");
             }            
         }
-    }
+    } 
 
     return;
 }
