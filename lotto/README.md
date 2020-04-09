@@ -1,37 +1,63 @@
 * Lotto Number Generator, 1st Version
 ```C
+#include <ctype.h>  /*  isdigit(), isspace()    */
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdlib.h> /*  srand(), rand() */
+#include <time.h>   /*  time(NULL)  */
 
-#define LOTTO_SIZE  7
+#define LOTTO_SIZE  7   /*  6 + '1' */
+#define MAX_NUM     45  /*  1 ~ 45  */
 
 int main()
 {
     /*
-     *  cnt     : count, 로또 번호를 총 몇 번 생성할 것인지 보관하는 변수
-     *  num     : rand() 함수를 거쳐 생성된 임의의 값
-     *  i, j    : 반복문에서 사용하는 제어 변수
+     *  cnt     :   로또 번호를 총 몇 번 생성할 것인지 값을 보관하는 변수
+     *  c       :   getchar() 함수의 수행 결과 값을 임시로 보관하는 변수
+     *  num     :   rand() 함수의 반환값을 보관하는 변수
+     *  i, j, k :   반복문에서 사용하는 제어변수
+     *  check[] :   로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 변수
      */
-    int cnt, num, i, j;
+    int cnt, c, num, i, j, k, check[LOTTO_SIZE];
 
-    puts("*** LOTTO NUMBER GENERATOR ***");
-    puts("How many lines do you want to generate?");
-    scanf("%d", &cnt);
-    /*  flush buffer    */
-    getchar();
-    for (i = 0; i < cnt; ++i) {
-        /*  Initialize the seed.(Exited before 1 second ends)   */
-        srand(time(NULL) + i);  
-        printf("Index [%3d]:", i);
-        for (j = 0; j < LOTTO_SIZE; ++j) {
-            num = (rand() % 45) + 1;
-            if (j == (LOTTO_SIZE - 1)) {
-                putchar('|');
-            }
-            printf("\t%2d", num);
+    printf("*** LOTTO NUMBER GENERATOR ***\n"
+            "How many lines do you want to generate?\n");
+    cnt = 0;
+    while ((c = getchar()) != EOF) {
+        if (isdigit(c)) {
+            cnt = (cnt * 10) + (c - '0');
+        } else {
+            break;
         }
-        putchar('\n');
+    }
+    if (cnt) {  /*  cnt != 0    */
+        for (i = 1; i <= cnt; ++i) {
+            /*  Initialize the seed.    */
+            /*  Exited before 1 second ends */
+            srand(time(NULL) + i);
+            printf("Index: [%4d]:", i);
+            for (j = 0; j < LOTTO_SIZE; ++j) {
+                while (1) {
+                    /*  0 ~ 44 -> 1 ~ 45    */
+                    num = (rand() % MAX_NUM) + 1;
+                    for (k = 0; k < j; ++k) {
+                        if (check[k] == num) {
+                            break;
+                        }
+                    }
+                    if (k == j) {
+                        break;
+                    }
+                }
+                check[k] = num;
+                if (j == (LOTTO_SIZE - 1)) {
+                    putchar('|');
+                }
+                printf("\t%2d", num);
+            }
+            putchar('\n');
+        }
+    } else {
+        printf("Please input a positive number.\n");
     }
 
     return 0;
@@ -40,50 +66,60 @@ int main()
 
 * Lotto Number Generator, 2nd Version
 ```C
+#include <ctype.h>  /*  isdigit(), isspace()    */
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdlib.h> /*  srand(), rand() */
+#include <time.h>   /*  time(NULL)  */
 
-#define CHECK_SIZE  45
-#define LOTTO_SIZE  7
+#define LOTTO_SIZE  7   /*  6 + '1' */
+#define MAX_NUM     45  /*  1 ~ 45  */
 
 int main()
 {
     /*
-     *  check[] : 로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 배열
-     *  cnt     : count, 로또 번호를 총 몇 번 생성할 것인지 보관하는 변수
-     *  num     : rand() 함수를 거쳐 생성된 임의의 값
-     *  i, j    : 반복문에서 사용하는 제어 변수
+     *  cnt     :   로또 번호를 총 몇 번 생성할 것인지 값을 보관하는 변수
+     *  c       :   getchar() 함수의 수행 결과 값을 임시로 보관하는 변수
+     *  num     :   rand() 함수의 반환값을 보관하는 변수
+     *  i, j, k :   반복문에서 사용하는 제어변수
+     *  check[] :   로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 변수
      */
-    int check[CHECK_SIZE];
-    int cnt, num, i, j;
+    int cnt, c, num, i, j, k, check[LOTTO_SIZE];
 
-    puts("*** LOTTO NUMBER GENERATOR ***");
-    puts("How many lines do you want to generate?");
-    scanf("%d", &cnt);
-    /*  flush buffer    */
-    getchar();
-    for (i = 1; i <= cnt; ++i) {
-        /*  Initialize the array.  */
-        for (j = 0; j < CHECK_SIZE; ++j) {
-            check[j] = 0;
+    printf("*** LOTTO NUMBER GENERATOR ***\n"
+            "How many lines do you want to generate?\n");
+    cnt = 0;
+    while ((c = getchar()) != EOF) {
+        if (isdigit(c)) {
+            cnt = (cnt * 10) + (c - '0');
+        } else {
+            break;
         }
-        /*  Initialize the seed.(Exited before 1 second ends)   */
-        srand(time(NULL) + i);  
-        printf("Index [%4d]:", i);
-        for (j = 1; j <= LOTTO_SIZE; ++j) {
-            /*  Escape duplicate number    */
-            while (check[(num = (rand() % CHECK_SIZE))]) {
-                ;
+    }
+    if (cnt) {  /*  cnt != 0    */
+        for (i = 1; i <= cnt; ++i) {
+            /*  Initialize the seed.    */
+            /*  Exited before 1 second ends */
+            srand(time(NULL) + i);
+            printf("Index: [%4d]:", i);
+            for (j = 0; j < LOTTO_SIZE; ++j) {
+regen:
+                /*  0 ~ 44 -> 1 ~ 45    */
+                num = (rand() % MAX_NUM) + 1;
+                for (k = 0; k < j; ++k) {
+                    if (check[k] == num) {
+                        goto regen;
+                    }
+                }
+                check[k] = num;
+                if (j == (LOTTO_SIZE - 1)) {
+                    putchar('|');
+                }
+                printf("\t%2d", num);
             }
-            /*  0 ~ 44 -> 1 ~ 45    */
-            check[num++]++;
-            if (j == LOTTO_SIZE) {
-                putchar('|');
-            }
-            printf("\t%2d", num);
+            putchar('\n');
         }
-        putchar('\n');
+    } else {
+        printf("Please input a positive number.\n");
     }
 
     return 0;
@@ -92,89 +128,61 @@ int main()
 
 * Lotto Number Generator, 3rd Version
 ```C
+#include <ctype.h>  /*  isdigit(), isspace()    */
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdlib.h> /*  srand(), rand() */
+#include <time.h>   /*  time(NULL)  */
 
-#define CHECK_SIZE  45
-#define LOTTO_SIZE  7
-
-void getCount(int *);
-void genLotto(int);
+#define LOTTO_SIZE  7   /*  6 + '1' */
+#define MAX_NUM     45  /*  1 ~ 45  */
 
 int main()
 {
     /*
-     *  cnt     : count, 로또 번호를 총 몇 번 생성할 것인지 보관하는 변수
+     *  cnt     :   로또 번호를 총 몇 번 생성할 것인지 값을 보관하는 변수
+     *  c       :   getchar() 함수의 수행 결과 값을 임시로 보관하는 변수
+     *  num     :   rand() 함수의 반환값을 보관하는 변수
+     *  i, j, k :   반복문에서 사용하는 제어변수
+     *  check[] :   로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 변수
      */
-    int cnt;
+    int cnt, c, num, i, j, k, check[MAX_NUM];
 
-    getCount(&cnt);
-    genLotto(cnt);
+    printf("*** LOTTO NUMBER GENERATOR ***\n"
+            "How many lines do you want to generate?\n");
+    cnt = 0;
+    while ((c = getchar()) != EOF) {
+        if (isdigit(c)) {
+            cnt = (cnt * 10) + (c - '0');
+        } else {
+            break;
+        }
+    }
+    if (cnt) {  /*  cnt != 0    */
+        for (i = 1; i <= cnt; ++i) {
+            /*  Initialize the seed.    */
+            /*  Exited before 1 second ends */
+            for (j = 0; j < MAX_NUM; ++j) {
+                check[j] = 0;
+            }
+            srand(time(NULL) + i);
+            printf("Index: [%4d]:", i);
+            for (j = 0; j < LOTTO_SIZE; ++j) {
+                while (check[num = (rand() % MAX_NUM)]) {
+                    ;
+                }
+                /*  0 ~ 44 -> 1 ~ 45    */
+                check[num++] = 1;
+                if (j == (LOTTO_SIZE - 1)) {
+                    putchar('|');
+                }
+                printf("\t%2d", num);
+            }
+            putchar('\n');
+        }
+    } else {
+        printf("Please input a positive number.\n");
+    }
 
     return 0;
 }
-
-void getCount(int *cnt)
-{
-    puts("*** LOTTO NUMBER GENERATOR ***");
-    puts("How many lines do you want to generate?");
-    scanf("%d", cnt);
-    /*  flush buffer    */
-    getchar();
-
-    return;
-}
-
-void genLotto(int cnt)
-{
-    /*
-     *  check[] : 로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 배열
-     *  num     : rand() 함수를 거쳐 생성된 임의의 값
-     *  i, j    : 반복문에서 사용하는 제어 변수
-     */
-    int check[CHECK_SIZE];
-    int num, i, j;
-
-    for (i = 1; i <= cnt; ++i) {
-        /*  Initialize the array.  */
-        for (j = 0; j < CHECK_SIZE; ++j) {
-            check[j] = 0;
-        }
-        /*  Initialize the seed.(Exited before 1 second ends)   */
-        srand(time(NULL) + i);  
-        printf("Index [%4d]:", i);
-        for (j = 1; j <= LOTTO_SIZE; ++j) {
-            /*  Escape duplicate number    */
-            while (check[(num = (rand() % CHECK_SIZE))]) {
-                ;
-            }
-            /*  0 ~ 44 -> 1 ~ 45    */
-            check[num++]++;
-            if (j == LOTTO_SIZE) {
-                putchar('|');
-            }
-            printf("\t%2d", num);
-        }
-        putchar('\n');
-    }
-
-    return;
-}
-```
-
-```Text
-*** LOTTO NUMBER GENERATOR ***
-How many lines do you want to generate?
-10
-Index [   1]:   43   4   3  36  25  11| 39
-Index [   2]:   29   5  26  34  24   6| 10
-Index [   3]:   41  24   4  26  36  28|  1
-Index [   4]:   38  23   9  30  36  33| 21
-Index [   5]:   38  25   2  45  11   7| 16
-Index [   6]:   43  42   1  33  41  26|  9
-Index [   7]:    1  21  26  32   2  45| 14
-Index [   8]:   22  14   6   7  34  28| 21
-Index [   9]:    3  42  25  26  19   5| 36
-Index [  10]:   15  26   9  25   5  17| 41
 ```

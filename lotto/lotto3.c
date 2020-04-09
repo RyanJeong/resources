@@ -15,7 +15,7 @@ int main()
      *  i, j, k :   반복문에서 사용하는 제어변수
      *  check[] :   로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 변수
      */
-    int cnt, c, num, i, j, k, check[LOTTO_SIZE];
+    int cnt, c, num, i, j, k, check[MAX_NUM];
 
     printf("*** LOTTO NUMBER GENERATOR ***\n"
             "How many lines do you want to generate?\n");
@@ -31,22 +31,17 @@ int main()
         for (i = 1; i <= cnt; ++i) {
             /*  Initialize the seed.    */
             /*  Exited before 1 second ends */
+            for (j = 0; j < MAX_NUM; ++j) {
+                check[j] = 0;
+            }
             srand(time(NULL) + i);
             printf("Index: [%4d]:", i);
             for (j = 0; j < LOTTO_SIZE; ++j) {
-                while (1) {
-                    /*  0 ~ 44 -> 1 ~ 45    */
-                    num = (rand() % MAX_NUM) + 1;
-                    for (k = 0; k < j; ++k) {
-                        if (check[k] == num) {
-                            break;
-                        }
-                    }
-                    if (k == j) {
-                        break;
-                    }
+                while (check[num = (rand() % MAX_NUM)]) {
+                    ;
                 }
-                check[k] = num;
+                /*  0 ~ 44 -> 1 ~ 45    */
+                check[num++] = 1;
                 if (j == (LOTTO_SIZE - 1)) {
                     putchar('|');
                 }
