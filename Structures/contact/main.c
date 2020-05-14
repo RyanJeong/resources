@@ -14,52 +14,15 @@ int     findcontact(void);
 int     prompt(void);
 int     findnum(int);
 
-enum {
-    QUIT,
-    ADD,
-    MODIFY,
-    FIND,
-    SHOW,
-    DELETE,
-    SIZE = 20
-};
-
-typedef struct contact {
-    int             id;             /* unique account number */
-    char            name[SIZE];     /* contains name */
-    char            phone[SIZE];    /* contains phone number */
-    char            email[SIZE];    /* contains email address */
-    int             count;          /* count is used to input comments into array */
-    struct contact  *next;          /* next is used to navigate through structures. */
-} Contact;
 
 Contact *firstc, *currentc, *newc; 
 int     id = 0;
 
 int main()
 {
-    int     c;
-    FILE    *contacts;
+    int c;
 
-    firstc      = NULL;
-    contacts    = fopen(DB, "r");   /* open a file for load contacts */
-
-    if (contacts != NULL) {
-        firstc = (Contact *) malloc(sizeof(Contact));   /* use of malloc to set aside memory relative to size of structure contact */
-	    currentc = firstc;                              /* make first record current */
-        while(1) {                                      /* endless while loop. a NULL pointer in final node ends loop */
-		    newc = (Contact *) malloc(sizeof(Contact));
-		    fread(currentc, sizeof(Contact), 1, contacts);
-		    if (currentc->next == NULL) {               /* NULL indicates end of node list */
-			    break;
-            }
-		    currentc->next  = newc; /* pointer referencing next node*/
-            currentc->count =0;     /* initiates count for comments*/
-		    currentc        = newc; /* make current record new*/
-	    }
-	    fclose(contacts);           /* close file - good practice to cloe files after use*/
-	    id = currentc->id;
-    }
+    loadContact();
     do {
         printMenu();
         while ((c = getchar()) != EOF) {
@@ -97,61 +60,8 @@ int main()
             break;
         }
     } while (c != QUIT);
-        
+    saveContact();
 
-
-    /*
-        switch(ch)     
-        {
-            case '1':
-                puts("Add a new contact\n");
-                addNewcontact();
-                break;
-	    case '2':
-		puts("Delete a contact\n");
-		deletecontact();
-		break;
-	    case '3':
-		puts("List all contacts\n");
-		listAll();
-		break;
-	    case '4':
-		puts("Modify a contact\n");
-		modifycontact();
-		break;
-	    case '5':
-		puts("Find a contact by name\n");
-		findcontact();
-		break;
-            case 'Q':
-                puts("Save and quit\n");
-                default:
-                break;
-        }
-    } while(ch != 'Q');
-    */
-/*
- * Save the records to disk
- */
-    currentc = firstc;
-
-    if(currentc == NULL)
-	    return(0);		/*no data to write*/
-
-    contacts = fopen(DB,"w");   /*open file to write*/
-
-    if(contacts == NULL)
-    {
-	    printf("Error writing to %s\n",DB);
-	    return(1);
-    }
-    				/* Write each record to disk*/
-    while(currentc != NULL)
-    {
-	    fwrite(currentc,sizeof(struct contact),1,contacts);
-	    currentc = currentc->next;
-    }
-    fclose(contacts);             /*closes data file*/
     return(0);
 }
 
