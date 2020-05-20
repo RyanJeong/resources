@@ -12,10 +12,10 @@ int main()
      *  cnt     :   로또 번호를 총 몇 번 생성할 것인지 값을 보관하는 변수
      *  c       :   getchar() 함수의 수행 결과 값을 임시로 보관하는 변수
      *  num     :   rand() 함수의 반환값을 보관하는 변수
-     *  i, j, k :   반복문에서 사용하는 제어변수
+     *  i, j    :   반복문에서 사용하는 제어변수
      *  check[] :   로또 번호 생성 시 값 중복을 검사하기 위해 사용하는 변수
      */
-    int cnt, c, num, i, j, k, check[MAX_NUM];
+    int cnt, c, num, i, j, check[MAX_NUM];
 
     printf("*** LOTTO NUMBER GENERATOR ***\n"
             "How many lines do you want to generate?\n");

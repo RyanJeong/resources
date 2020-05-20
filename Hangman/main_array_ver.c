@@ -133,7 +133,10 @@ int playGame(char word[], char form[], int len)
         while ((c = getchar()) != EOF) {
             if (!isspace(c)) {
                 if (isalpha(c)) {
-                    c = (isupper(c)) ? (c += ('a' - 'A')) : c;
+                    if (isupper(c)) {
+                        /*  Handle offset   */
+                        c += ('a' - 'A');
+                    }
                     for (check = i = 0; i < len; ++i) {
                         if (word[i] == c && form[i] == '*') {
                             form[i] = c;
@@ -159,7 +162,11 @@ int playGame(char word[], char form[], int len)
 
 void drawHangman(int misses)
 {
+#ifndef _WIN32
     system("clear");
+#else
+    system("cls");
+#endif
     printf("%s\n"
            "%s%c\n"
            "%s%c\n"

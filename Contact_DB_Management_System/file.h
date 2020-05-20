@@ -1,5 +1,5 @@
-#ifndef __DB_H__
-#define __DB_H__
+#ifndef __FILE_H__
+#define __FILE_H__
 
 enum {
     QUIT,

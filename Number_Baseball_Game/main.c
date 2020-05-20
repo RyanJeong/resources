@@ -52,7 +52,7 @@ void playGame(void)
     i, j        : 반복문 제어 변수
     computer[]  : 컴퓨터가 생성한 정수
     player[]    : 플레이어가 생성한 정수 */
-    int strike, ball, i, j, k, temp;
+    int strike, ball, i, j;
     int computer[NUM_SIZE], player[NUM_SIZE];
 
     generateNumbers(computer);

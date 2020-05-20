@@ -186,7 +186,11 @@ int playGame(char **word, char **form, int len)
 
 void drawHangman(int misses)
 {
+#ifndef _WIN32
     system("clear");
+#else
+    system("cls");
+#endif
     puts("*** Hangman ***");
     printf(
         "%s%c\n"
