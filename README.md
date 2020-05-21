@@ -9,5 +9,7 @@
 * [Number_Baseball_Game](./Number_Baseball_Game)<br>
 * [Random_Number_Generator](./Random_Number_Generator)<br>
 * [Rock_Paper_Scissors](./Rock_Paper_Scissors)<br>
+* [War_A_Card_Game](./War_A_Card_Game)<br>
+    * **It's not finished yet.**<br>
 * [Word_Frequency_Histogram](./Word_Frequency_Histogram)<br>
 * [Sort](./Sort)<br>
