@@ -25,8 +25,9 @@
 ##  Specifying ADTs<br>
 ### Array list is slower than linked list because a lot of shifting needs to occur if any node is added or removed from the array list.
 *   0-based index<br>
+
 | Operation              | Description                                                  | Input                         | Output                                 |
-|------------------------|:------------------------------------------------------------:|:-----------------------------:|:--------------------------------------:|
+|:-----------------------|:-------------------------------------------------------------|:------------------------------|:---------------------------------------|
 | createArrayList()      | Create an empty array list                                   | Maximum number of nodes n     | List l                                 |
 | deleteArrayList()      | Delete the array list                                        | List l                        | N/A                                    |
 | isArrayListFull()      | Determine whether an array list is full                      | List l                        | True or False                          |
