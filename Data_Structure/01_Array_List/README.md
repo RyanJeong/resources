@@ -33,8 +33,8 @@
 | isArrayListFull()      | Determine whether an array list is full                      | List l                        | True or False                          |
 | isArrayListEmpty()     | Determine whether an array list is empty                     | List l                        | True or False                          |
 | addNode()              | Add an item at a given position in the array list            | List l, Position p, Node n    | Returns whether it succeeded or failed |
-| addNodeFirst()         | Add an item at at first position in the array list           | List l, Node n                | Returns whether it succeeded or failed |
-| addNodeLast()          | Add an item at at last position in the array list            | List l, Node n                | Returns whether it succeeded or failed |
+| addNodeFirst()         | Add an item at first position in the array list           | List l, Node n                | Returns whether it succeeded or failed |
+| addNodeLast()          | Add an item at last position in the array list            | List l, Node n                | Returns whether it succeeded or failed |
 | removeNode()           | Remove the item at a given position in the array list        | List l, Position p            | Returns whether it succeeded or failed |
 | removeAll()            | Remove all the items from the array list                     | List l                        | N/A                                    |
 | getArrayListLength()   | Determine the number of items in an array list               | List l                        | Number of nodes in the list n          |
