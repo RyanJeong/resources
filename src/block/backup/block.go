@@ -5,10 +5,9 @@ import (
 	"crypto/sha256"
 	"strconv"
 	"time"
-)
 
-type I_consensus interface {
-}
+	"github.com/ryanjeong/go_blockchain/src/consensus"
+)
 
 type Block struct {
 	Timestamp     int64

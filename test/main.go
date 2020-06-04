@@ -8,20 +8,17 @@ import (
 	"math/big"
 	"strconv"
 	"time"
-
-	"github.com/ryanjeong/go_blockchain/src/block"
-	"github.com/ryanjeong/go_blockchain/src/util"
 )
 
 const targetBits = 24
 
 type ProofOfWork struct {
-	block  *block.Block
+	block  *Block
 	target *big.Int
 }
 
 // Proof-of-Work algorithms must meet a requirement: doing the work is hard, but verifying the proof is easy.
-func NewProofOfWork(b *block.Block) *ProofOfWork {
+func NewProofOfWork(b *Block) *ProofOfWork {
 	target := big.NewInt(1)
 	target.Lsh(target, uint(256-targetBits))
 
@@ -35,14 +32,18 @@ func (pow *ProofOfWork) prepareData(nonce int) []byte {
 		[][]byte{
 			pow.block.PrevBlockHash,
 			pow.block.Data,
-			util.IntToHex(pow.block.Timestamp),
-			util.IntToHex(int64(targetBits)),
-			util.IntToHex(int64(nonce)),
+			IntToHex(pow.block.Timestamp),
+			IntToHex(int64(targetBits)),
+			IntToHex(int64(nonce)),
 		},
 		[]byte{},
 	)
 
 	return data
+}
+
+func IntToHex(n int64) []byte {
+	return []byte(strconv.FormatInt(n, 16))
 }
 
 func (pow *ProofOfWork) Run() (int, []byte) {
@@ -69,8 +70,16 @@ func (pow *ProofOfWork) Run() (int, []byte) {
 	return nonce, hash[:]
 }
 
+type Block struct {
+	Timestamp     int64
+	Data          []byte
+	PrevBlockHash []byte
+	Hash          []byte
+	Nonce         int
+}
+
 type Blockchain struct {
-	blocks []*block.Block
+	blocks []*Block
 }
 
 func main() {
@@ -105,8 +114,8 @@ func (pow *ProofOfWork) Validate() bool {
 	return isValid
 }
 
-func NewBlock(data string, prevBlockHash []byte) *block.Block {
-	block := &block.Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}, 0}
+func NewBlock(data string, prevBlockHash []byte) *Block {
+	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}, 0}
 	pow := NewProofOfWork(block)
 	nonce, hash := pow.Run()
 
@@ -124,17 +133,17 @@ func (blockchain *Blockchain) AddBlock(data string) {
 	return
 }
 
-func NewGenesisBlock() *block.Block {
+func NewGenesisBlock() *Block {
 
 	return NewBlock("Genesis Block", []byte{})
 }
 
 func NewBlockchain() *Blockchain {
 
-	return &Blockchain{[]*block.Block{NewGenesisBlock()}}
+	return &Blockchain{[]*Block{NewGenesisBlock()}}
 }
 
-func (b *block.Block) SetHash() {
+func (b *Block) SetHash() {
 	timestamp := []byte(strconv.FormatInt(b.Timestamp, 10))
 	headers := bytes.Join([][]byte{b.PrevBlockHash, b.Data, timestamp}, []byte{})
 	hash := sha256.Sum256(headers)
