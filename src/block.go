@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"crypto/sha256"
-	"fmt"
+	"encoding/gob"
 	"math/big"
 	"strconv"
 	"time"
@@ -17,29 +17,31 @@ type Block struct {
 	Nonce         int
 }
 
-type Blockchain struct {
-	Blocks []*Block
-}
-
 type ProofOfWork struct {
 	block  *Block
 	target *big.Int
 }
 
 func (bc *Blockchain) AddBlock(data string) {
-	prevBlock := bc.Blocks[len(bc.Blocks)-1]
-	newBlock := NewBlock(data, prevBlock.Hash)
-	bc.Blocks = append(bc.Blocks, newBlock)
+	var lastHash []byte
 
-	/* Display the new block's infomation */
-	fmt.Printf("Timestamp: %d\n", newBlock.Timestamp)
-	fmt.Printf("Data: %s\n", newBlock.Data)
-	fmt.Printf("Prev. hash: %x\n", newBlock.PrevBlockHash)
-	fmt.Printf("Hash: %x\n", newBlock.Hash)
-	fmt.Println()
-	pow := NewProofOfWork(newBlock)
-	fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
-	fmt.Println()
+	err := bc.db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(blocksBucket))
+		lastHash = b.Get([]byte("l"))
+
+		return nil
+	})
+
+	newBlock := NewBlock(data, lastHash)
+
+	err = bc.db.Update(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(blocksBucket))
+		err := b.Put(newBlock.Hash, newBlock.Serialize())
+		err = b.Put([]byte("l"), newBlock.Hash)
+		bc.tip = newBlock.Hash
+
+		return nil
+	})
 
 	return
 }
@@ -68,7 +70,20 @@ func NewGenesisBlock() *Block {
 	return NewBlock("Genesis Block", []byte{})
 }
 
-func NewBlockchain() *Blockchain {
+func (b *Block) Serialize() []byte {
+	var result bytes.Buffer
+	encoder := gob.NewEncoder(&result)
 
-	return &Blockchain{[]*Block{NewGenesisBlock()}}
+	err := encoder.Encode(b)
+
+	return result.Bytes()
+}
+
+func DeserializeBlock(d []byte) *Block {
+	var block Block
+
+	decoder := gob.NewDecoder(bytes.NewReader(d))
+	err := decoder.Decode(&block)
+
+	return &block
 }
