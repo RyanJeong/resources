@@ -62,6 +62,7 @@ int main(void)
             break;
         }
     } while (input != QUIT);
+    deleteArrayList(pArrayList);
 
     return 0;
 }
