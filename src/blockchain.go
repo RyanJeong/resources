@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+
+	"github.com/boltdb/bolt"
+)
+
 type Blockchain struct {
 	tip []byte
 	db  *bolt.DB
@@ -7,7 +13,12 @@ type Blockchain struct {
 
 func NewBlockchain() *Blockchain {
 	var tip []byte
-	db, err := bolt.Open(dbFile, 0600, nil)
+
+	/* This is a standard way of opening a BoltDB file.
+	   Notice that it won’t return an error if there’s no such file. */
+	if db, err := bolt.Open(dbFile, 0600, nil); err != nil {
+		return fmt.Errorf(err)
+	}
 
 	/*
 		- read-write
@@ -33,9 +44,15 @@ func NewBlockchain() *Blockchain {
 
 		if b == nil {
 			genesis := NewGenesisBlock()
-			b, err := tx.CreateBucket([]byte(blocksBucket))
-			err = b.Put(genesis.Hash, genesis.Serialize())
-			err = b.Put([]byte("l"), genesis.Hash)
+			if b, err := tx.CreateBucket([]byte(blocksBucket)); err != nil {
+				log.Fatal(err)
+			}
+			if err = b.Put(genesis.Hash, genesis.Serialize()); err != nil {
+				log.Fatal(err)
+			}
+			if err = b.Put([]byte("l"), genesis.Hash); err != nil {
+				log.Fatal(err)
+			}
 			tip = genesis.Hash
 		} else {
 			tip = b.Get([]byte("l"))
@@ -43,6 +60,9 @@ func NewBlockchain() *Blockchain {
 
 		return nil
 	})
+	if err != nil {
+		return fmt.Errorf(err)
+	}
 
 	bc := Blockchain{tip, db}
 

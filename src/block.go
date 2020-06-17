@@ -1,3 +1,5 @@
+/* TODO: error handling */
+/* refer to blockchain.go */
 package main
 
 import (
