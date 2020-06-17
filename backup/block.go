@@ -6,9 +6,12 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"encoding/gob"
+	"log"
 	"math/big"
 	"strconv"
 	"time"
+
+	"github.com/boltdb/bolt"
 )
 
 type Block struct {
@@ -24,6 +27,7 @@ type ProofOfWork struct {
 	target *big.Int
 }
 
+/* l: the hash of the last block ina chain	*/
 func (bc *Blockchain) AddBlock(data string) {
 	var lastHash []byte
 
@@ -33,17 +37,27 @@ func (bc *Blockchain) AddBlock(data string) {
 
 		return nil
 	})
+	if err != nil {
+		log.Panic(err)
+	}
 
 	newBlock := NewBlock(data, lastHash)
 
 	err = bc.db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte(blocksBucket))
-		err := b.Put(newBlock.Hash, newBlock.Serialize())
-		err = b.Put([]byte("l"), newBlock.Hash)
+		if err := b.Put(newBlock.Hash, newBlock.Serialize()); err != nil {
+			log.Panic(err)
+		}
+		if err := b.Put([]byte("l"), newBlock.Hash); err != nil {
+			log.Panic(err)
+		}
 		bc.tip = newBlock.Hash
 
 		return nil
 	})
+	if err != nil {
+		log.Panic(err)
+	}
 
 	return
 }
@@ -76,7 +90,9 @@ func (b *Block) Serialize() []byte {
 	var result bytes.Buffer
 	encoder := gob.NewEncoder(&result)
 
-	err := encoder.Encode(b)
+	if err := encoder.Encode(b); err != nil {
+		log.Panic(err)
+	}
 
 	return result.Bytes()
 }
@@ -85,7 +101,9 @@ func DeserializeBlock(d []byte) *Block {
 	var block Block
 
 	decoder := gob.NewDecoder(bytes.NewReader(d))
-	err := decoder.Decode(&block)
+	if err := decoder.Decode(&block); err != nil {
+		log.Panic(err)
+	}
 
 	return &block
 }

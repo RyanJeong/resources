@@ -1,14 +1,22 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/boltdb/bolt"
 )
 
+const blocksBucket = "blocks"
+const dbFile = "blockchain.db"
+
 type Blockchain struct {
 	tip []byte
 	db  *bolt.DB
+}
+
+type BlockchainIterator struct {
+	currentHash []byte
+	db          *bolt.DB
 }
 
 func NewBlockchain() *Blockchain {
@@ -16,8 +24,9 @@ func NewBlockchain() *Blockchain {
 
 	/* This is a standard way of opening a BoltDB file.
 	   Notice that it won’t return an error if there’s no such file. */
-	if db, err := bolt.Open(dbFile, 0600, nil); err != nil {
-		return fmt.Errorf(err)
+	db, err := bolt.Open(dbFile, 0600, nil)
+	if err != nil {
+		log.Panic(err)
 	}
 
 	/*
@@ -47,10 +56,10 @@ func NewBlockchain() *Blockchain {
 			if b, err := tx.CreateBucket([]byte(blocksBucket)); err != nil {
 				log.Fatal(err)
 			}
-			if err = b.Put(genesis.Hash, genesis.Serialize()); err != nil {
+			if err := b.Put(genesis.Hash, genesis.Serialize()); err != nil {
 				log.Fatal(err)
 			}
-			if err = b.Put([]byte("l"), genesis.Hash); err != nil {
+			if err := b.Put([]byte("l"), genesis.Hash); err != nil {
 				log.Fatal(err)
 			}
 			tip = genesis.Hash
@@ -61,10 +70,31 @@ func NewBlockchain() *Blockchain {
 		return nil
 	})
 	if err != nil {
-		return fmt.Errorf(err)
+		log.Panic(err)
 	}
 
 	bc := Blockchain{tip, db}
 
 	return &bc
+}
+
+func (bc *Blockchain) Iterator() *BlockchainIterator {
+	bci := &BlockchainIterator{bc.tip, bc.db}
+
+	return bci
+}
+
+func (i *BlockchainIterator) Next() *Block {
+	var block *Block
+
+	err := i.db.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(blocksBucket))
+		encodedBlock := b.Get(i.currentHash)
+		block = DeserializeBlock(encodedBlock)
+		return nil
+	})
+
+	i.currentHash = block.PrevBlockHash
+
+	return block
 }
