@@ -3,17 +3,17 @@
 
 ##  Macros<br>
 ### va_start<br>
-* enables access to variadic function arguments**(function macro)**<br>
+* enables access to variadic function arguments **(function macro)**<br>
 
 ### va_arg<br>
-* accesses the next variadic function argument**(function macro)**<br>
+* accesses the next variadic function argument **(function macro)**<br>
 
 ### va_end<br>
-* ends traversal of the variadic function arguments**(function macro)**<br>
+* ends traversal of the variadic function arguments **(function macro)**<br>
 
 ##  Type<br>
 ### va_list
-* holds the information needed by va_start, va_arg, and va_end**(typedef)**<br>
+* holds the information needed by va_start, va_arg, and va_end **(typedef)**<br>
 
 ##  Example:<br>
 ```C
