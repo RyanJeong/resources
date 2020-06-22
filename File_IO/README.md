@@ -5,7 +5,7 @@ FILE *fp;
 FILE *fopen(char *name, char *mode);
 ```
 
-## fopen Fundction<br>
+## fopen Function<br>
 ```C
 fp = fopen(name, mode);
 ```
