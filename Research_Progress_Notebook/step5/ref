@@ -2,7 +2,7 @@
 
 ##  files<br>
 ```Text
-step4
+step3
 ├── block.go
 ├── blockchain.go
 ├── cli.go

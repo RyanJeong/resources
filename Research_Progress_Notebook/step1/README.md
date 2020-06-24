@@ -14,48 +14,48 @@ step1
 package main
 
 import (
-	"bytes"
-	"crypto/sha256"
-	"strconv"
-	"time"
+    "bytes"
+    "crypto/sha256"
+    "strconv"
+    "time"
 )
 
 // Block keeps block headers
 type Block struct {
-	Timestamp     int64     // current timestamp (when the block is created)
-	Data          []byte    // actual valuable information containing in the block
-	PrevBlockHash []byte    // stores the hash of the previous block
-	Hash          []byte    // hash of the block
+    Timestamp     int64     // current timestamp (when the block is created)
+    Data          []byte    // actual valuable information containing in the block
+    PrevBlockHash []byte    // stores the hash of the previous block
+    Hash          []byte    // hash of the block
 }
 
 // SetHash calculates and sets block hash
 
 func (b *Block) SetHash() {
-	timestamp := []byte(strconv.FormatInt(b.Timestamp, 10))
+    timestamp := []byte(strconv.FormatInt(b.Timestamp, 10))
 
     // Concatenate datas(PrevBlockHash, Data, Timestamp converted to byte[]) to make a block header
-	headers := bytes.Join([][]byte{b.PrevBlockHash, b.Data, timestamp}, []byte{})
+    headers := bytes.Join([][]byte{b.PrevBlockHash, b.Data, timestamp}, []byte{})
 
     // calculate a SHA-256 hash on the concatenated combination
     // Sum256 returns the SHA256 checksum of the data.
-	hash := sha256.Sum256(headers)
-	b.Hash = hash[:]
+    hash := sha256.Sum256(headers)
+    b.Hash = hash[:]
 
     return
 }
 
 // NewBlock creates and returns Block
 func NewBlock(data string, prevBlockHash []byte) *Block {
-	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
-	block.SetHash()
+    block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
+    block.SetHash()
 
-	return block
+    return block
 }
 
 // NewGenesisBlock creates and returns genesis Block
 func NewGenesisBlock() *Block {
 
-	return NewBlock("Genesis Block", []byte{})
+    return NewBlock("Genesis Block", []byte{})
 }
 ```
 
@@ -65,14 +65,14 @@ package main
 
 // Blockchain keeps a sequence of Blocks
 type Blockchain struct {
-	blocks []*Block
+    blocks []*Block
 }
 
 // AddBlock saves provided data as a block in the blockchain
 func (bc *Blockchain) AddBlock(data string) {
-	prevBlock := bc.blocks[len(bc.blocks)-1]
-	newBlock := NewBlock(data, prevBlock.Hash)
-	bc.blocks = append(bc.blocks, newBlock)
+    prevBlock := bc.blocks[len(bc.blocks)-1]
+    newBlock := NewBlock(data, prevBlock.Hash)
+    bc.blocks = append(bc.blocks, newBlock)
 
     return
 }
@@ -80,7 +80,7 @@ func (bc *Blockchain) AddBlock(data string) {
 // NewBlockchain creates a new Blockchain with genesis Block
 func NewBlockchain() *Blockchain {
 
-	return &Blockchain{[]*Block{NewGenesisBlock()}}
+    return &Blockchain{[]*Block{NewGenesisBlock()}}
 }
 ```
 
@@ -89,22 +89,22 @@ func NewBlockchain() *Blockchain {
 package main
 
 import (
-	"fmt"
+    "fmt"
 )
 
 func main() {
     // must be at least one block
-	bc := NewBlockchain()
+    bc := NewBlockchain()
 
-	bc.AddBlock("Send 1 BTC to Ivan")
-	bc.AddBlock("Send 2 more BTC to Ivan")
+    bc.AddBlock("Send 1 BTC to Ivan")
+    bc.AddBlock("Send 2 more BTC to Ivan")
 
-	for _, block := range bc.blocks {
-		fmt.Printf("Prev. hash: %x\n", block.PrevBlockHash)
-		fmt.Printf("Data: %s\n", block.Data)
-		fmt.Printf("Hash: %x\n", block.Hash)
-		fmt.Println()
-	}
+    for _, block := range bc.blocks {
+        fmt.Printf("Prev. hash: %x\n", block.PrevBlockHash)
+        fmt.Printf("Data: %s\n", block.Data)
+        fmt.Printf("Hash: %x\n", block.Hash)
+        fmt.Println()
+    }
 
     return
 }
