@@ -42,6 +42,8 @@ void filecopy(FILE *ifp, FILE *ofp)
     }
     if (ferror(ifp)) {
         printf("Error in reading from file\n");
+        
+        exit(1);
     }
 
     return;
