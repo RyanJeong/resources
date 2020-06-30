@@ -3,13 +3,15 @@ package main
 import (
 	"fmt"
 	"log"
+
+	"github.com/ryanjeong/go_blockchain/wallet"
 )
 
 func (cli *CLI) send(from, to string, amount int, nodeID string, mineNow bool) {
-	if !ValidateAddress(from) {
+	if !wallet.ValidateAddress(from) {
 		log.Panic("ERROR: Sender address is not valid")
 	}
-	if !ValidateAddress(to) {
+	if !wallet.ValidateAddress(to) {
 		log.Panic("ERROR: Recipient address is not valid")
 	}
 
@@ -17,7 +19,7 @@ func (cli *CLI) send(from, to string, amount int, nodeID string, mineNow bool) {
 	UTXOSet := UTXOSet{bc}
 	defer bc.db.Close()
 
-	wallets, err := NewWallets(nodeID)
+	wallets, err := wallet.NewWallets(nodeID)
 	if err != nil {
 		log.Panic(err)
 	}

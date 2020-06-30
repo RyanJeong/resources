@@ -1,4 +1,4 @@
-package main
+package wallet
 
 import (
 	"bytes"
@@ -11,15 +11,6 @@ import (
 	"github.com/ryanjeong/go_blockchain/base58"
 	"golang.org/x/crypto/ripemd160"
 )
-
-const version = byte(0x00)
-const addressChecksumLen = 4
-
-// Wallet stores private and public keys
-type Wallet struct {
-	PrivateKey ecdsa.PrivateKey
-	PublicKey  []byte
-}
 
 // NewWallet creates and returns a Wallet
 func NewWallet() *Wallet {

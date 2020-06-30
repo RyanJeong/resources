@@ -5,10 +5,11 @@ import (
 	"log"
 
 	"github.com/ryanjeong/go_blockchain/base58"
+	"github.com/ryanjeong/go_blockchain/wallet"
 )
 
 func (cli *CLI) getBalance(address, nodeID string) {
-	if !ValidateAddress(address) {
+	if !wallet.ValidateAddress(address) {
 		log.Panic("ERROR: Address is not valid")
 	}
 	bc := NewBlockchain(nodeID)

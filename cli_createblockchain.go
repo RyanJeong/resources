@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
+
+	"github.com/ryanjeong/go_blockchain/wallet"
 )
 
 func (cli *CLI) createBlockchain(address, nodeID string) {
-	if !ValidateAddress(address) {
+	if !wallet.ValidateAddress(address) {
 		log.Panic("ERROR: Address is not valid")
 	}
 	bc := CreateBlockchain(address, nodeID)

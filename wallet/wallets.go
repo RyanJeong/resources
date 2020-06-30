@@ -1,4 +1,4 @@
-package main
+package wallet
 
 import (
 	"bytes"
@@ -9,13 +9,6 @@ import (
 	"log"
 	"os"
 )
-
-const walletFile = "wallet_%s.dat"
-
-// Wallets stores a collection of wallets
-type Wallets struct {
-	Wallets map[string]*Wallet
-}
 
 // NewWallets creates Wallets and fills it from a file if it exists
 func NewWallets(nodeID string) (*Wallets, error) {

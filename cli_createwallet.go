@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ryanjeong/go_blockchain/wallet"
+)
 
 func (cli *CLI) createWallet(nodeID string) {
-	wallets, _ := NewWallets(nodeID)
+	wallets, _ := wallet.NewWallets(nodeID)
 	address := wallets.CreateWallet()
 	wallets.SaveToFile(nodeID)
 
