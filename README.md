@@ -1,11 +1,11 @@
-# Blockchain written in Go<br>
+# Blockchain in Go
 
-## TO-DO list:
-* ~~Ensure that this blockchain program works well after deploying a virtual node with a port.~~**(DONE)**<br>
-* Change the structure of the block and modify the overall program so that any files can be included and operated within the block.**(Currently working ...)**<br>
-* Add file compression and decompression.<br>
-* Implement a function to extract the file when searching for the file name on the blockchain.<br>
-* Implement a function to access the blockchain network using an IP address.<br>
-* Implement a function to access the blockchain network using an IP address.<br>
-* Modify the blockchain network accessible only to authorized users.<br>
+A blockchain implementation in Go, as described in these articles:
 
+1. [Basic Prototype](https://jeiwan.cc/posts/building-blockchain-in-go-part-1/)
+2. [Proof-of-Work](https://jeiwan.cc/posts/building-blockchain-in-go-part-2/)
+3. [Persistence and CLI](https://jeiwan.cc/posts/building-blockchain-in-go-part-3/)
+4. [Transactions 1](https://jeiwan.cc/posts/building-blockchain-in-go-part-4/)
+5. [Addresses](https://jeiwan.cc/posts/building-blockchain-in-go-part-5/)
+6. [Transactions 2](https://jeiwan.cc/posts/building-blockchain-in-go-part-6/)
+7. [Network](https://jeiwan.cc/posts/building-blockchain-in-go-part-7/)
