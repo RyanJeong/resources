@@ -13,4 +13,5 @@
 
 ##  06-30, 2020
 ### [Most of the key features in the blockchain have been implemented.](./step6)<br>
+### [Port-based communication is added to the blockchain.](./step7)<br>
 
