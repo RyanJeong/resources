@@ -10,3 +10,7 @@
 
 ##  06-25, 2020
 ### [Implemented the concept of address and added it to the blockchain.](./step5)<br>
+
+##  06-30, 2020
+### [Most of the key features in the blockchain have been implemented.](./step6)<br>
+
