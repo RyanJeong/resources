@@ -5,6 +5,8 @@ import (
 	"encoding/gob"
 	"log"
 	"time"
+
+	"github.com/ryanjeong/go_blockchain/merkleTree"
 )
 
 // Block represents a block in the blockchain
@@ -41,7 +43,7 @@ func (b *Block) HashTransactions() []byte {
 	for _, tx := range b.Transactions {
 		transactions = append(transactions, tx.Serialize())
 	}
-	mTree := NewMerkleTree(transactions)
+	mTree := merkleTree.NewMerkleTree(transactions)
 
 	return mTree.RootNode.Data
 }

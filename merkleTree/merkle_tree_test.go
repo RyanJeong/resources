@@ -1,4 +1,4 @@
-package main
+package merkleTree
 
 import (
 	"encoding/hex"
@@ -16,7 +16,6 @@ func TestNewMerkleNode(t *testing.T) {
 	}
 
 	// Level 1
-
 	n1 := NewMerkleNode(nil, nil, data[0])
 	n2 := NewMerkleNode(nil, nil, data[1])
 	n3 := NewMerkleNode(nil, nil, data[2])
