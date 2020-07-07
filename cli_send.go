@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/ryanjeong/go_blockchain/block"
+	"github.com/ryanjeong/go_blockchain/server"
 	"github.com/ryanjeong/go_blockchain/wallet"
 )
 
@@ -35,7 +36,7 @@ func (cli *CLI) send(from, to string, amount int, nodeID string, mineNow bool) {
 		newBlock := bc.MineBlock(txs)
 		UTXOSet.Update(newBlock)
 	} else {
-		sendTx(knownNodes[0], tx)
+		server.SendTx(server.KnownNodes[0], tx)
 	}
 
 	fmt.Println("Success!")
