@@ -29,19 +29,17 @@ type Wallets struct {
 
 // NewWallet creates and returns a Wallet
 func NewWallet() *Wallet {
-	private, public := newKeyPair()
-	wallet := Wallet{private, public}
+	privKey, pubKey := newKeyPair()
+	wlt := Wallet{privKey, pubKey}
 
-	return &wallet
+	return &wlt
 }
 
 // GetAddress returns wallet address
-func (w Wallet) GetAddress() []byte {
-	pubKeyHash := HashPubKey(w.PublicKey)
-
+func (wlt Wallet) GetAddress() []byte {
+	pubKeyHash := HashPubKey(wlt.PublicKey)
 	versionedPayload := append([]byte{version}, pubKeyHash...)
 	checksum := checksum(versionedPayload)
-
 	fullPayload := append(versionedPayload, checksum...)
 	address := base58.Base58Encode(fullPayload)
 
@@ -51,7 +49,6 @@ func (w Wallet) GetAddress() []byte {
 // HashPubKey hashes public key
 func HashPubKey(pubKey []byte) []byte {
 	publicSHA256 := sha256.Sum256(pubKey)
-
 	RIPEMD160Hasher := ripemd160.New()
 	_, err := RIPEMD160Hasher.Write(publicSHA256[:])
 	if err != nil {
