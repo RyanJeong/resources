@@ -14,7 +14,7 @@ import (
 
 const version = byte(0x00)
 const addressChecksumLen = 4
-const walletFile = "wallet_%s.dat"
+const walletFile = "WLT/wallet_%s.dat"
 
 // Wallet stores private and public keys
 type Wallet struct {
