@@ -2610,6 +2610,7 @@ $ step7 createblockchain -address 15pQEfVhasDM51oea2C9meMZH7GmWqqduY
 Done!
 $ cp blockchain_3000.db blockchain_genesis.db
 
+# -----------------------------------------------------------------
 # open a new terminal, NODE_3001
 $ export NODE_ID=3001
 $ step7 createwallet
@@ -2621,6 +2622,7 @@ Your new address: 12Zr7aJpnzGzTJDu3ezh9s6gEgAK7HASAZ
 $ step7 createwallet
 Your new address: 13SJsfKCbRmpEdudG2JXekzHCrhrut5UAs
 
+# -----------------------------------------------------------------
 # NODE_3000
 $ step7 send -from 15pQEfVhasDM51oea2C9meMZH7GmWqqduY -to 1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS -amount 10 -mine
 00007b71d1a6f27097946bdfffcd25476f75238325a5f218a97678325d2251be
@@ -2633,8 +2635,9 @@ Success!
 # The node must be running until the end of the scenario.
 $ step7 startnode
 
+# -----------------------------------------------------------------
 # NODE_3001
-$ blockchain_genesis.db blockchain_3001.db
+$ cp blockchain_genesis.db blockchain_3001.db
 $ step7 startnode
 Starting node 3001
 Received version command
@@ -2652,12 +2655,13 @@ Added block 0000fbb29dedb57fe08a11c086016d99950df15808bd689eaabcb7bd00c8ddcd
 
 # stop the node and check the balances;
 ^C
+
 $ step7 getbalance -address 1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS
 Balance of '1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS': 10
 $ step7 getbalance -address 1PciGsVPT94ghSQX77co8aNyMbXSePpfJg
 Balance of '1PciGsVPT94ghSQX77co8aNyMbXSePpfJg': 10
-$ step7 getbalance -address 15pQEfVhasDM51oea2C9meMZH7GmWqqduY
 
+# -----------------------------------------------------------------
 # open a new terminal, NODE_3002
 $ export NODE_ID=3002
 $ cp blockchain_genesis.db blockchain_3002.db
@@ -2679,19 +2683,23 @@ Received block command
 Recevied a new block!
 Added block 0000fbb29dedb57fe08a11c086016d99950df15808bd689eaabcb7bd00c8ddcd
 
+# -----------------------------------------------------------------
 # NODE_3001
 $ step7 send -from 1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS -to 12Zr7aJpnzGzTJDu3ezh9s6gEgAK7HASAZ -amount 1
 Success!
 
+# -----------------------------------------------------------------
 # NODE_3002
 Received inv command
 Recevied inventory with 1 tx
 Received tx command
 
+# -----------------------------------------------------------------
 # NODE_3001
 $ step7 send -from 1PciGsVPT94ghSQX77co8aNyMbXSePpfJg -to 13SJsfKCbRmpEdudG2JXekzHCrhrut5UAs -amount 2
 Success!
 
+# -----------------------------------------------------------------
 # NODE_3002
 Received inv command
 Recevied inventory with 1 tx
@@ -2700,6 +2708,7 @@ Received tx command
 
 New block is mined!
 
+# -----------------------------------------------------------------
 # NODE_3001
 $ step7 startnode
 Starting node 3001
@@ -2718,8 +2727,10 @@ Added block 00007b71d1a6f27097946bdfffcd25476f75238325a5f218a97678325d2251be
 Received block command
 Recevied a new block!
 Added block 0000fbb29dedb57fe08a11c086016d99950df15808bd689eaabcb7bd00c8ddcd
+
 # stop the node and check the balances;
 ^C
+
 $ step7 getbalance -address 1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS
 Balance of '1MV5eqajrvpTWf4hjVaJZTq5e4vQipbviS': 9
 $ step7 getbalance -address 1PciGsVPT94ghSQX77co8aNyMbXSePpfJg

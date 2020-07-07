@@ -3,28 +3,30 @@ package main
 import (
 	"fmt"
 	"strconv"
+
+	"github.com/ryanjeong/go_blockchain/block"
 )
 
 func (cli *CLI) printChain(nodeID string) {
-	bc := NewBlockchain(nodeID)
-	defer bc.db.Close()
+	bc := block.NewBlockchain(nodeID)
+	defer bc.Db.Close()
 
 	bci := bc.Iterator()
 
 	for {
-		block := bci.Next()
+		blk := bci.Next()
 
-		fmt.Printf("============ Block %x ============\n", block.Hash)
-		fmt.Printf("Height: %d\n", block.Height)
-		fmt.Printf("Prev. block: %x\n", block.PrevBlockHash)
-		pow := NewProofOfWork(block)
+		fmt.Printf("============ Block %x ============\n", blk.Hash)
+		fmt.Printf("Height: %d\n", blk.Height)
+		fmt.Printf("Prev. block: %x\n", blk.PrevBlockHash)
+		pow := block.NewProofOfWork(blk)
 		fmt.Printf("PoW: %s\n\n", strconv.FormatBool(pow.Validate()))
-		for _, tx := range block.Transactions {
+		for _, tx := range blk.Transactions {
 			fmt.Println(tx)
 		}
 		fmt.Printf("\n\n")
 
-		if len(block.PrevBlockHash) == 0 {
+		if len(blk.PrevBlockHash) == 0 {
 			break
 		}
 	}
