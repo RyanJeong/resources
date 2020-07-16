@@ -7,8 +7,10 @@ import (
 	"github.com/ryanjeong/go_blockchain/block"
 )
 
-func (cli *CLI) printChain(nodeID string) {
-	bc := block.NewBlockchain(nodeID)
+//func (cli *CLI) printChain(nodeID string) {
+func (cli *CLI) printChain() {
+	//bc := block.NewBlockchain(nodeID)
+	bc := block.NewBlockchain()
 	defer bc.Db.Close()
 
 	bci := bc.Iterator()

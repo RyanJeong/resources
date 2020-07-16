@@ -6,8 +6,10 @@ import (
 	"github.com/ryanjeong/go_blockchain/block"
 )
 
-func (cli *CLI) reindexUTXO(nodeID string) {
-	bc := block.NewBlockchain(nodeID)
+//func (cli *CLI) reindexUTXO(nodeID string) {
+func (cli *CLI) reindexUTXO() {
+	// bc := block.NewBlockchain(nodeID)
+	bc := block.NewBlockchain()
 	UTXOSet := block.UTXOSet{bc}
 	UTXOSet.Reindex()
 

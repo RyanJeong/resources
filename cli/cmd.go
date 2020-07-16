@@ -111,7 +111,8 @@ func (cli *CLI) Run() {
 			getBalanceCmd.Usage()
 			os.Exit(1)
 		}
-		cli.getBalance(*getBalanceAddress, nodeID)
+		// cli.getBalance(*getBalanceAddress, nodeID)
+		cli.getBalance(*getBalanceAddress)
 	}
 
 	if createBlockchainCmd.Parsed() {
@@ -119,7 +120,8 @@ func (cli *CLI) Run() {
 			createBlockchainCmd.Usage()
 			os.Exit(1)
 		}
-		cli.createBlockchain(*createBlockchainAddress, nodeID)
+		// cli.createBlockchain(*createBlockchainAddress, nodeID)
+		cli.createBlockchain(*createBlockchainAddress)
 	}
 
 	if createWalletCmd.Parsed() {
@@ -131,11 +133,13 @@ func (cli *CLI) Run() {
 	}
 
 	if printChainCmd.Parsed() {
-		cli.printChain(nodeID)
+		// cli.printChain(nodeID)
+		cli.printChain()
 	}
 
 	if reindexUTXOCmd.Parsed() {
-		cli.reindexUTXO(nodeID)
+		// cli.reindexUTXO(nodeID)
+		cli.reindexUTXO()
 	}
 
 	if sendCmd.Parsed() {
@@ -148,11 +152,13 @@ func (cli *CLI) Run() {
 	}
 
 	if startNodeCmd.Parsed() {
-		nodeID := os.Getenv("NODE_ID")
-		if nodeID == "" {
-			startNodeCmd.Usage()
-			os.Exit(1)
-		}
+		/*
+			nodeID := os.Getenv("NODE_ID")
+			if nodeID == "" {
+				startNodeCmd.Usage()
+				os.Exit(1)
+			}
+		*/
 		cli.startNode(nodeID, *startNodeMiner)
 	}
 }

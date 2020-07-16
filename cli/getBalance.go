@@ -9,11 +9,13 @@ import (
 	"github.com/ryanjeong/go_blockchain/wallet"
 )
 
-func (cli *CLI) getBalance(address, nodeID string) {
+//func (cli *CLI) getBalance(address, nodeID string) {
+func (cli *CLI) getBalance(address string) {
 	if !wallet.ValidateAddress(address) {
 		log.Panic("ERROR: Address is not valid")
 	}
-	bc := block.NewBlockchain(nodeID)
+	// bc := block.NewBlockchain(nodeID)
+	bc := block.NewBlockchain()
 	UTXOSet := block.UTXOSet{bc}
 	defer bc.Db.Close()
 
