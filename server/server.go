@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net"
+	"os"
 
 	"github.com/ryanjeong/go_blockchain/block"
 )
@@ -17,9 +18,14 @@ const protocol = "tcp"
 const nodeVersion = 1
 const commandLength = 12
 
+const ip = "192.168.0.26"
+const port = ":7654"
+
 var nodeAddress string
 var miningAddress string
-var KnownNodes = []string{"localhost:3000"}
+
+//var KnownNodes = []string{"localhost:3000"}
+var KnownNodes = []string{ip + port}
 var blocksInTransit = [][]byte{}
 var mempool = make(map[string]block.Transaction)
 
@@ -59,121 +65,62 @@ type versionMsg struct {
 	AddrFrom   string
 }
 
-// convert command consisting of a string to bytes
-func commandToBytes(command string) []byte {
-	var b [commandLength]byte
+// start a node
+func StartServer(nodeID, minerAddress string) {
+	nodeAddress = getIp() + port
+	//nodeAddress = fmt.Sprintf("localhost:%s", nodeID)
 
-	for i, c := range command {
-		b[i] = byte(c)
-	}
-
-	return b[:]
-}
-
-// convert command consisting of bytes to a string
-func bytesToCommand(bytes []byte) string {
-	var str []byte
-
-	for _, b := range bytes {
-		if b != 0x0 {
-			str = append(str, b)
-		}
-	}
-
-	return fmt.Sprintf("%s", str)
-}
-
-// extract request from a command
-func extractCommand(request []byte) []byte {
-
-	return request[:commandLength]
-}
-
-// request to get blocks on the node(KnownNodes)
-func requestBlocks() {
-	for _, node := range KnownNodes {
-		sendGetBlocks(node)
-	}
-}
-
-func sendAddr(address string) {
-	nodes := addrMsg{KnownNodes}
-	nodes.AddrList = append(nodes.AddrList, nodeAddress)
-	payload := gobEncode(nodes)
-	request := append(commandToBytes("addr"), payload...)
-
-	sendData(address, request)
-}
-
-func sendBlock(addr string, b *block.Block) {
-	data := blockMsg{nodeAddress, b.Serialize()}
-	payload := gobEncode(data)
-	request := append(commandToBytes("block"), payload...)
-
-	sendData(addr, request)
-}
-
-func sendData(addr string, data []byte) {
-	conn, err := net.Dial(protocol, addr)
-	if err != nil {
-		fmt.Printf("%s is not available\n", addr)
-		var updatedNodes []string
-
-		for _, node := range KnownNodes {
-			if node != addr {
-				updatedNodes = append(updatedNodes, node)
-			}
-		}
-
-		KnownNodes = updatedNodes
-
-		return
-	}
-	defer conn.Close()
-
-	_, err = io.Copy(conn, bytes.NewReader(data))
+	miningAddress = minerAddress
+	ln, err := net.Listen(protocol, nodeAddress)
+	//ln, err := net.Listen(protocol, port)
 	if err != nil {
 		log.Panic(err)
 	}
+	defer ln.Close()
+
+	bc := block.NewBlockchain(nodeID)
+
+	if nodeAddress != KnownNodes[0] {
+		sendVersion(KnownNodes[0], bc)
+	}
+
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			log.Panic(err)
+		}
+		go handleConnection(conn, bc)
+	}
 }
 
-func sendInv(address, kind string, items [][]byte) {
-	inventory := invMsg{nodeAddress, kind, items}
-	payload := gobEncode(inventory)
-	request := append(commandToBytes("inv"), payload...)
+func handleConnection(conn net.Conn, bc *block.Blockchain) {
+	request, err := ioutil.ReadAll(conn)
+	if err != nil {
+		log.Panic(err)
+	}
+	command := bytesToCommand(request[:commandLength])
+	fmt.Printf("Received %s command\n", command)
 
-	sendData(address, request)
-}
+	switch command {
+	case "addr":
+		handleAddr(request)
+	case "block":
+		handleBlock(request, bc)
+	case "inv":
+		handleInv(request, bc)
+	case "getblocks":
+		handleGetBlocks(request, bc)
+	case "getdata":
+		handleGetData(request, bc)
+	case "tx":
+		handleTx(request, bc)
+	case "version":
+		handleVersion(request, bc)
+	default:
+		fmt.Println("Unknown command!")
+	}
 
-func sendGetBlocks(address string) {
-	payload := gobEncode(getBlocksMsg{nodeAddress})
-	request := append(commandToBytes("getblocks"), payload...)
-
-	sendData(address, request)
-}
-
-func sendGetData(address, kind string, id []byte) {
-	payload := gobEncode(getDataMsg{nodeAddress, kind, id})
-	request := append(commandToBytes("getdata"), payload...)
-
-	sendData(address, request)
-}
-
-func SendTx(addr string, tnx *block.Transaction) {
-	data := txMsg{nodeAddress, tnx.Serialize()}
-	payload := gobEncode(data)
-	request := append(commandToBytes("tx"), payload...)
-
-	sendData(addr, request)
-}
-
-func sendVersion(addr string, bc *block.Blockchain) {
-	bestHeight := bc.GetBestHeight()
-	payload := gobEncode(versionMsg{nodeVersion, bestHeight, nodeAddress})
-
-	request := append(commandToBytes("version"), payload...)
-
-	sendData(addr, request)
+	conn.Close()
 }
 
 func handleAddr(request []byte) {
@@ -394,59 +341,84 @@ func handleVersion(request []byte, bc *block.Blockchain) {
 	}
 }
 
-func handleConnection(conn net.Conn, bc *block.Blockchain) {
-	request, err := ioutil.ReadAll(conn)
-	if err != nil {
-		log.Panic(err)
-	}
-	command := bytesToCommand(request[:commandLength])
-	fmt.Printf("Received %s command\n", command)
+func sendAddr(address string) {
+	nodes := addrMsg{KnownNodes}
+	nodes.AddrList = append(nodes.AddrList, nodeAddress)
+	payload := gobEncode(nodes)
+	request := append(commandToBytes("addr"), payload...)
 
-	switch command {
-	case "addr":
-		handleAddr(request)
-	case "block":
-		handleBlock(request, bc)
-	case "inv":
-		handleInv(request, bc)
-	case "getblocks":
-		handleGetBlocks(request, bc)
-	case "getdata":
-		handleGetData(request, bc)
-	case "tx":
-		handleTx(request, bc)
-	case "version":
-		handleVersion(request, bc)
-	default:
-		fmt.Println("Unknown command!")
-	}
-
-	conn.Close()
+	sendData(address, request)
 }
 
-// start a node
-func StartServer(nodeID, minerAddress string) {
-	nodeAddress = fmt.Sprintf("localhost:%s", nodeID)
-	miningAddress = minerAddress
-	ln, err := net.Listen(protocol, nodeAddress)
+func sendBlock(addr string, b *block.Block) {
+	data := blockMsg{nodeAddress, b.Serialize()}
+	payload := gobEncode(data)
+	request := append(commandToBytes("block"), payload...)
+
+	sendData(addr, request)
+}
+
+func sendData(addr string, data []byte) {
+	conn, err := net.Dial(protocol, addr)
+	if err != nil {
+		fmt.Printf("%s is not available\n", addr)
+		var updatedNodes []string
+
+		for _, node := range KnownNodes {
+			if node != addr {
+				updatedNodes = append(updatedNodes, node)
+			}
+		}
+
+		KnownNodes = updatedNodes
+
+		return
+	}
+	defer conn.Close()
+
+	_, err = io.Copy(conn, bytes.NewReader(data))
 	if err != nil {
 		log.Panic(err)
 	}
-	defer ln.Close()
+}
 
-	bc := block.NewBlockchain(nodeID)
+func sendInv(address, kind string, items [][]byte) {
+	inventory := invMsg{nodeAddress, kind, items}
+	payload := gobEncode(inventory)
+	request := append(commandToBytes("inv"), payload...)
 
-	if nodeAddress != KnownNodes[0] {
-		sendVersion(KnownNodes[0], bc)
-	}
+	sendData(address, request)
+}
 
-	for {
-		conn, err := ln.Accept()
-		if err != nil {
-			log.Panic(err)
-		}
-		go handleConnection(conn, bc)
-	}
+func sendGetBlocks(address string) {
+	payload := gobEncode(getBlocksMsg{nodeAddress})
+	request := append(commandToBytes("getblocks"), payload...)
+
+	sendData(address, request)
+}
+
+func sendGetData(address, kind string, id []byte) {
+	payload := gobEncode(getDataMsg{nodeAddress, kind, id})
+	request := append(commandToBytes("getdata"), payload...)
+
+	sendData(address, request)
+}
+
+func SendTx(addr string, tnx *block.Transaction) {
+	data := txMsg{nodeAddress, tnx.Serialize()}
+	payload := gobEncode(data)
+	request := append(commandToBytes("tx"), payload...)
+
+	sendData(addr, request)
+}
+
+func sendVersion(addr string, bc *block.Blockchain) {
+	bestHeight := bc.GetBestHeight()
+	payload := gobEncode(versionMsg{nodeVersion, bestHeight, nodeAddress})
+
+	request := append(commandToBytes("version"), payload...)
+
+	sendData(addr, request)
 }
 
 func gobEncode(data interface{}) []byte {
@@ -470,4 +442,64 @@ func nodeIsKnown(addr string) bool {
 	}
 
 	return false
+}
+
+// convert command consisting of a string to bytes
+func commandToBytes(command string) []byte {
+	var b [commandLength]byte
+
+	for i, c := range command {
+		b[i] = byte(c)
+	}
+
+	return b[:]
+}
+
+// convert command consisting of bytes to a string
+func bytesToCommand(bytes []byte) string {
+	var str []byte
+
+	for _, b := range bytes {
+		if b != 0x0 {
+			str = append(str, b)
+		}
+	}
+
+	return fmt.Sprintf("%s", str)
+}
+
+// extract request from a command
+func extractCommand(request []byte) []byte {
+
+	return request[:commandLength]
+}
+
+// request to get blocks on the node(KnownNodes)
+func requestBlocks() {
+	for _, node := range KnownNodes {
+		sendGetBlocks(node)
+	}
+}
+
+// get IP address on this PC
+func getIp() string {
+	var ip string
+
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		os.Stderr.WriteString("Oops: " + err.Error() + "\n")
+		os.Exit(1)
+	}
+	for _, a := range addrs {
+		// escape loopback;
+		if ipnet, ok := a.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+			if ipnet.IP.To4() != nil {
+				// fmt.Println(ipnet.IP.String())
+				ip = ipnet.IP.String()
+				break
+			}
+		}
+	}
+
+	return ip
 }

@@ -1,3 +1,4 @@
+// ufw allow 7654/tcp
 package main
 
 import (
