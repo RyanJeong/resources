@@ -3,4 +3,4 @@
 * Teaching App Inventor to elementary school students
 
 ## [Deep Learning](https://samstory.coolschool.co.kr/zone/story/kyutto/streams/76813)
-* Teaching Depp Learning basic to high school students
+* Teaching Deep learning basic to high school students
