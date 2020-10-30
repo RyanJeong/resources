@@ -4,3 +4,8 @@
 
 ## [Deep Learning](https://samstory.coolschool.co.kr/zone/story/kyutto/streams/76813)
 * Teaching deep learning basic to high school students
+* References
+  * [Machine Learning Crash Course with with TensorFlow APIs](https://developers.google.com/machine-learning/crash-course)
+  * [Experiments with Google](https://experiments.withgoogle.com/)
+    * [Quick, Draw!](https://quickdraw.withgoogle.com/?locale=en_US)
+  
