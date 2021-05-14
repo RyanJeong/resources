@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://shaeod.tistory.com/527 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/lightbox.min.css"><link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/font.css"><link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/content.css"><!--[if lt IE 9]><script src="https://t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script><![endif]--><!--[if gte IE 9]>
+<!--><script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/analytics.js.다운로드"></script><script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/osd.js.다운로드"></script><script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/ca-pub-3775584495101735.js.다운로드"></script><script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/jquery-3.2.1.min.js.다운로드"></script><!--<![endif]-->
+<script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/lightbox-plus-jquery.min.js.다운로드"></script>
+<script>
+lightbox.options.fadeDuration = 200;
+lightbox.options.resizeDuration = 200;
+lightbox.options.wrapAround = false;
+lightbox.options.albumLabel = "%1 / %2";
+</script>
+<script>var tjQuery = jQuery.noConflict(true);</script><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="icon" href="https://tistory4.daumcdn.net/tistory/575196/favicon.ico"><link rel="apple-touch-icon" href="https://i1.daumcdn.net/thumb/C180x180/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24044943576616971A">
+<link rel="apple-touch-icon" sizes="76x76" href="https://i1.daumcdn.net/thumb/C76x76/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24044943576616971A">
+<link rel="apple-touch-icon" sizes="120x120" href="https://i1.daumcdn.net/thumb/C120x120/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24044943576616971A">
+<link rel="apple-touch-icon" sizes="152x152" href="https://i1.daumcdn.net/thumb/C152x152/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24044943576616971A"><meta name="description" content="※ 요약 윈도우 + Visual Studio 환경에서 curl 라이브러리를 빌드하여 설치 및 이용하는 방법이다. curl이란 무엇인지, curl의 탄생 및 발전이 궁금하다면 이 링크에 가보기 바란다. ※ 공식 사이트 http://www...">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="https://shaeod.tistory.com/527"><meta property="og:type" content="article"><meta property="og:url" content="https://shaeod.tistory.com/527"><meta property="og:site_name" content="오뇽"><meta property="og:title" content="[curl] 윈도우 환경에서 라이브러리 빌드 및 설치"><meta name="by" content="오뇽"><meta property="og:description" content="※ 요약 윈도우 + Visual Studio 환경에서 curl 라이브러리를 빌드하여 설치 및 이용하는 방법이다. curl이란 무엇인지, curl의 탄생 및 발전이 궁금하다면 이 링크에 가보기 바란다. ※ 공식 사이트 http://www..."><meta property="og:image" content="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2255E542569180282B"><meta property="article:section" content="IT 인터넷">
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="[curl] 윈도우 환경에서 라이브러리 빌드 및 설치"><meta name="twitter:description" content="※ 요약 윈도우 + Visual Studio 환경에서 curl 라이브러리를 빌드하여 설치 및 이용하는 방법이다. curl이란 무엇인지, curl의 탄생 및 발전이 궁금하다면 이 링크에 가보기 바란다. ※ 공식 사이트 http://www..."><meta property="twitter:image" content="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2255E542569180282B">
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="https://shaeod.tistory.com/527"><meta name="plink" content="https://shaeod.tistory.com/527"><meta name="title" content="[curl] 윈도우 환경에서 라이브러리 빌드 및 설치"><meta name="article:media_name" content="오뇽"><meta property="article:mobile_url" content="https://shaeod.tistory.com/m/527"><meta property="article:pc_url" content="https://shaeod.tistory.com/527"><meta property="article:mobile_view_url" content="https://shaeod.tistory.com/m/527"><meta property="article:pc_view_url" content="https://shaeod.tistory.com/527"><meta property="article:talk_channel_view_url" content="https://shaeod.tistory.com/m/527"><meta property="article:pc_service_home" content="https://www.tistory.com"><meta property="article:mobile_service_home" content="https://www.tistory.com/m"><meta property="article:txid" content="575196_527"><meta property="article:published_time" content="2016-01-10T07:00:01+09:00"><meta property="og:regDate" content="20160110070940"><meta property="article:modified_time" content="2016-01-25T10:40:48+09:00">
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":{"@id":"https:\/\/shaeod.tistory.com\/527"},"url":"https:\/\/shaeod.tistory.com\/527","headline":"[curl] \uc708\ub3c4\uc6b0 \ud658\uacbd\uc5d0\uc11c \ub77c\uc774\ube0c\ub7ec\ub9ac \ube4c\ub4dc \ubc0f \uc124\uce58","description":"\u203b \uc694\uc57d \uc708\ub3c4\uc6b0 + Visual Studio \ud658\uacbd\uc5d0\uc11c curl \ub77c\uc774\ube0c\ub7ec\ub9ac\ub97c \ube4c\ub4dc\ud558\uc5ec \uc124\uce58 \ubc0f \uc774\uc6a9\ud558\ub294 \ubc29\ubc95\uc774\ub2e4. curl\uc774\ub780 \ubb34\uc5c7\uc778\uc9c0, curl\uc758 \ud0c4\uc0dd \ubc0f \ubc1c\uc804\uc774 \uad81\uae08\ud558\ub2e4\uba74 \uc774 \ub9c1\ud06c\uc5d0 \uac00\ubcf4\uae30 \ubc14\ub780\ub2e4. \u203b \uacf5\uc2dd \uc0ac\uc774\ud2b8 http:\/\/www...","author":{"@type":"Person","name":"\uc624\ub1fd"},"image":{"@type":"ImageObject","url":"https:\/\/img1.daumcdn.net\/thumb\/R800x0\/?scode=mtistory&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2255E542569180282B","width":"800px","height":"800px"},"datePublished":"20160110T07:00:01+09:00","dateModified":"20160125T10:40:48+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/tistory_admin\/static\/images\/openGraph\/opengraph.png","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>[curl] 윈도우 환경에서 라이브러리 빌드 및 설치</title>
+<link rel="shortcut icon" href="https://shaeod.tistory.com/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="오뇽" href="https://shaeod.tistory.com/rss">
+<meta name="robots" content="INDEX, FOLLOW">
+<meta name="theme-color" content="#eceff1">
+<link rel="stylesheet" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/tokii-lib.min.css">
+<link rel="stylesheet" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/tokii-tedition.min.css">
+<link rel="stylesheet" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/tokii-entry.min.css">
+<link rel="stylesheet" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/style.css">
+<script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/jquery-3.2.1.min.js(1).다운로드"></script>
+	
+<!--shaeod 구문 강조 시작-->
+	<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/shCore.js.다운로드"></script>
+	<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/shBrushCpp.js.다운로드"></script>
+	
+	<link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/shCoreDefault.css">
+	
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+<!--shaeod 구문 강조 끝-->
+
+<!-- shaeod 페이지 수준 광고 시작 -->
+	<script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(7).txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3775584495101735",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- shaeod 페이지 수준 광고 끝 -->
+
+	<style type="text/css">
+		.ExifInfo {
+			margin:5px 0px 0px 0px;
+			font:8pt tahoma;
+			color:#777777;
+			text-align:center;
+		}
+		.ExifInfo span {
+			display:inline-block !important;
+			white-space:normal !important;
+		}
+		.ExifInfo .exifBar {
+			font:7pt Arial;color:#ccc;margin:0 2px 0 2px;
+		}
+	</style>
+	
+<link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/style(1).css">
+<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/profile.js.다운로드"></script>
+<script type="text/javascript">
+        window.TistoryBlog = {
+            url: "https://shaeod.tistory.com",
+            tistoryUrl: "https://shaeod.tistory.com",
+			manageUrl: 'https://shaeod.tistory.com/manage',
+            token: 'yexM5LUxCwPFq6oMJ8S7GQ%3D%3D'
+        };
+        var servicePath = "";
+        var blogURL = "";
+    </script>
+
+	<script> (function() { window.orgjQuery = window.jQuery; window.jQuery = tjQuery })()</script>
+    <script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/uoclike.min.js.다운로드"></script><link rel="preload" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(8).txt" as="script"><script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(8).txt"></script><link rel="preload" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(9).txt" as="script"><script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(9).txt"></script><link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190515/r20190131/show_ads_impl.js" as="script">
+	<script> (function() { window.jQuery = window.orgjQuery; delete window.orgjQuery })()</script>
+    <script>
+		(function($) {
+			$.fn.extend({
+				size: function () {
+					return this.length
+				}
+			});
+			$.fn.UOCLike.defaults.updateServiceCategory = true;
+					})(tjQuery)
+    </script>
+        <script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/base.js.다운로드"></script>
+        <link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/dialog.css">
+            <link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/font(1).css">
+    <link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/postBtn.css">
+    <link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/menubar.css">
+    <script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/kakao.min.js.다운로드"></script><script type="text/javascript" async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/td.min.js.다운로드"></script><link rel="stylesheet" type="text/css" href="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/uoclike.min-20150408-2.css"></head><iframe id="google_shimpl" style="display: none;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(5).html"></iframe>
+<body id="tt-body-page" class="site-blog sidebar-white">
+<script type="text/javascript">
+	(function() {
+		if (!window.T) {
+			window.T = {}
+		}
+		window.T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/529","NEXT_PAGE":"\/526","BLOG":{"isDormancy":false,"title":"\uc624\ub1fd"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=https%3A%2F%2Fshaeod.tistory.com%2F527","DEFAULT_URL":"https:\/\/shaeod.tistory.com","USER":{"name":null,"homepage":null}};
+		window.appInfo = {"domain":"tistory.com","topUrl":"https:\/\/www.tistory.com","loginUrl":"https:\/\/www.tistory.com\/auth\/login","logoutUrl":"https:\/\/www.tistory.com\/auth\/logout"};
+
+        window.initData = {};
+        
+	})();
+</script>
+
+<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/common.js.다운로드"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+<!-- skip -->
+<a class="skip" href="https://shaeod.tistory.com/527#content">본문 바로가기</a>
+<!-- page -->
+<div id="page" class="site">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <!-- site-header -->
+    <header class="site-header">
+      <!-- site-profile -->
+      <div class="site-profile">
+       <div class="blog-thumbnail">
+          <a class="cover-image" href="https://shaeod.tistory.com/">
+            <figure>
+              <img src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource" alt="프로필 이미지">
+            </figure>
+          </a>
+        </div>
+        <article>
+          <h1 class="site-title">
+            <!-- <a href="/">오뇽</a> -->
+						<a class="logo" href="https://shaeod.tistory.com/">
+   						<figure>
+      					<img class="desktop" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/Logo_D.png" alt="데스크탑 로고">
+      					<img class="mobile" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/Logo_M.png" alt="모바일 로고">
+    					</figure>
+  					</a>
+          </h1>
+          <p>이 블로그는 손가락 다이어트를 위해 운영합니다.
+
+(2년 정도 쉽니다. 2019년에 봐요.)</p>
+        </article>
+      </div>
+      <!-- aside-button -->
+      <button class="aside-button">
+        <svg width="20" height="16" viewBox="0 0 20 16"><path d="M0 .315h20v1.3H0zM0 7.3h20v1.3H0zM0 14.285h20v1.3H0z"></path></svg>
+        <span class="blind">메뉴 열기</span>
+      </button>
+    </header>
+    <!-- //site-header -->
+    <!-- secondary -->
+    <div class="secondary">
+      
+      <!-- 메뉴 모듈 -->
+      <section class="module menubox menu">
+        <h2 class="screen_out">메뉴</h2>
+        <nav>
+          <ul>		<li class="t_menu_home first">
+			<a href="https://shaeod.tistory.com/">홈</a>
+		</li>
+				<li class="t_menu_link_1">
+			<a href="http://oignon.tistory.com/" target="_blank">일상</a>
+		</li>
+				<li class="t_menu_link_2">
+			<a href="http://shaeod.tistory.com/guestbook">방명록</a>
+		</li>
+				<li class="t_menu_link_3 last">
+			<a href="http://shaeod.tistory.com/manage/">관리</a>
+		</li>
+		</ul>
+        </nav>
+      </section>
+      
+      <!-- 방문자 수 모듈 -->
+      <section class="module menubox count">
+        <h2 class="screen_out">방문자 수</h2>
+        <nav>
+          <ul>
+            <li>어제: <em>5,233</em></li>
+            <li>오늘: <em>4,893</em></li>
+            <li>전체: <em>4,407,679</em></li>
+          </ul>
+        </nav>
+      </section>
+      <div class="module module_plugin"><script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(7).txt"></script>
+<!-- 반응형 - 사이드바 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3775584495101735" data-ad-slot="1871542651" data-ad-format="auto" data-adsbygoogle-status="done"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br></div>
+      <!-- 검색 모듈 -->
+      <section class="module search">
+        <h2 class="screen_out">검색</h2>
+        
+        <form class="search-form" action="https://shaeod.tistory.com/527#" method="get" onsubmit="try{window.location.href=&#39;/search/&#39;+looseURIEncode(document.getElementsByName(&#39;search&#39;)[0].value);document.getElementsByName(&#39;search&#39;)[0].value=&#39;&#39;;return false;}catch(e){}">
+          <input type="search" name="search" placeholder="검색..." value="" data-value="">
+        </form>
+        
+      </section>
+      
+      <!-- 카테고리 모듈 -->
+      <section class="module category">
+        <h2 class="screen_out">카테고리</h2>
+        <nav>
+          <ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="https://shaeod.tistory.com/category">
+			전체보기							<span class="c_cnt">(759)</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84">
+						사진													<span class="c_cnt">(108)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%EC%9D%BC%EC%83%81">
+									일상
+																			<span class="c_cnt">(17)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%EC%9E%A5%EC%8B%9D">
+									장식
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%EC%8B%9D%EB%AC%BC">
+									식물
+																			<span class="c_cnt">(15)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%EC%9D%8C%EC%8B%9D">
+									음식
+																			<span class="c_cnt">(39)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%ED%8E%B8%EC%9D%98%EC%A0%90">
+									편의점
+																			<span class="c_cnt">(8)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%82%AC%EC%A7%84/%EB%A6%AC%EB%B7%B0">
+									리뷰
+																			<span class="c_cnt">(24)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8">
+						프로그래밍 관련													<span class="c_cnt">(45)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8/%EA%B4%80%EB%A0%A8%20%EC%86%8C%EC%8B%9D">
+									관련 소식
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8/%EA%B4%80%EB%A0%A8%20%EB%AC%B8%EC%84%9C">
+									관련 문서
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%ED%8C%81">
+									프로그래밍 팁
+																			<span class="c_cnt">(6)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8/%EC%9C%A0%EC%9A%A9%ED%95%9C%20%EC%A0%95%EB%B3%B4">
+									유용한 정보
+																			<span class="c_cnt">(23)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B4%80%EB%A0%A8/%EC%9E%90%EC%9E%91%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">
+									자작 프로그램
+																			<span class="c_cnt">(10)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/Visual%20Studio">
+						Visual Studio													<span class="c_cnt">(39)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Visual%20Studio/Visual%20Studio%20%EC%86%8C%EC%8B%9D">
+									Visual Studio 소식
+																			<span class="c_cnt">(11)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Visual%20Studio/Visual%20Studio%20%EB%94%94%EB%B2%84%EA%B9%85">
+									Visual Studio 디버깅
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Visual%20Studio/Visual%20Studio%20%ED%8C%81">
+									Visual Studio 팁
+																			<span class="c_cnt">(21)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Visual%20Studio/Visual%20Studio%20%EC%97%90%EB%9F%AC">
+									Visual Studio 에러
+																			<span class="c_cnt">(6)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C">
+						예제 모음													<span class="c_cnt">(45)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/C/C%2B%2B">
+									C/C++
+																			<span class="c_cnt">(16)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/STL">
+									STL
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/MFC">
+									MFC
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EA%B8%B0%EC%82%AC-%EC%88%98%EC%97%B4">
+									정보처리기사-수열
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EA%B8%B0%EC%82%AC-%EC%88%98%ED%95%99">
+									정보처리기사-수학
+																			<span class="c_cnt">(9)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EA%B8%B0%EC%82%AC-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0">
+									정보처리기사-자료구조
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EA%B8%B0%EC%82%AC-%EB%B0%B0%EC%97%B4">
+									정보처리기사-배열
+																			<span class="c_cnt">(7)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%98%88%EC%A0%9C%20%EB%AA%A8%EC%9D%8C/%EA%B8%B0%ED%83%80">
+									기타
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95">
+						C/C++ 문법													<span class="c_cnt">(8)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/C%20%EB%AC%B8%EB%B2%95%20%EC%9E%84%EC%8B%9C">
+									C 문법 임시
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/C%2B%2B%20%EB%AC%B8%EB%B2%95%20%EC%9E%84%EC%8B%9C">
+									C++ 문법 임시
+																			<span class="c_cnt">(6)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/pointer">
+									pointer
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/function%20pointer">
+									function pointer
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/reference">
+									reference
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/template">
+									template
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/thread">
+									thread
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/C%2B%2B%20%EB%AC%B8%EB%B2%95/lambda">
+									lambda
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/C">
+						C													<span class="c_cnt">(49)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%EB%AC%B8%EC%9E%90%EC%97%B4%20%ED%95%A8%EC%88%98">
+									문자열 함수
+																			<span class="c_cnt">(18)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%ED%8C%8C%EC%9D%BC%2C%20%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%ED%95%A8%EC%88%98">
+									파일, 디렉토리 함수
+																			<span class="c_cnt">(24)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%EB%82%A0%EC%A7%9C%20%EB%B0%8F%20%EC%8B%9C%EA%B0%84%20%ED%95%A8%EC%88%98">
+									날짜 및 시간 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%EA%B8%B0%ED%83%80%20%ED%95%A8%EC%88%98">
+									기타 함수
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%EC%9C%A0%EC%9A%A9%ED%95%9C%20%EC%A0%95%EB%B3%B4">
+									유용한 정보
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/C/%EA%B8%B0%ED%83%80">
+									기타
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers">
+						STL - Containers													<span class="c_cnt">(13)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/STL%20%EA%B0%9C%EC%9A%94">
+									STL 개요
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/array">
+									array
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/vector">
+									vector
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/deque">
+									deque
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/list">
+									list
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/forward_list">
+									forward_list
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/set">
+									set
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/map">
+									map
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/unordered_set">
+									unordered_set
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/unordered_map">
+									unordered_map
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/stack">
+									stack
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/queue">
+									queue
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Containers/algorithm">
+									algorithm
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities">
+						STL - Utilities													<span class="c_cnt">(2)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/unique_ptr%20%20">
+									unique_ptr
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/shared_ptr">
+									shared_ptr
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/chrono">
+									chrono
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/tuple">
+									tuple
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/regex">
+									regex
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/STL%20-%20Utilities/random">
+									random
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/MFC">
+						MFC													<span class="c_cnt">(24)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EC%BB%A8%ED%8A%B8%EB%A1%A4">
+									컨트롤
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EB%AC%B8%EC%9E%90%EC%97%B4%20%ED%95%A8%EC%88%98">
+									문자열 함수
+																			<span class="c_cnt">(14)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%ED%8C%8C%EC%9D%BC%20%ED%95%A8%EC%88%98">
+									파일 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%ED%95%A8%EC%88%98">
+									디렉토리 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EB%82%A0%EC%A7%9C%20%EB%B0%8F%20%EC%8B%9C%EA%B0%84%20%ED%95%A8%EC%88%98">
+									날짜 및 시간 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EC%9C%A0%EC%9A%A9%ED%95%9C%20%EC%A0%95%EB%B3%B4">
+									유용한 정보
+																			<span class="c_cnt">(6)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/MFC/%EA%B8%B0%ED%83%80">
+									기타
+																			<span class="c_cnt">(3)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">
+						라이브러리													<span class="c_cnt">(15)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/build">
+									build
+																			<span class="c_cnt">(8)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/regex">
+									regex
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/OpenGL">
+									OpenGL
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/Linux">
+						Linux													<span class="c_cnt">(79)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Linux/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%AA%85%EB%A0%B9%EC%96%B4">
+									리눅스 명령어
+																			<span class="c_cnt">(63)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/Linux/%EC%9C%A0%EC%9A%A9%ED%95%9C%20%EC%A0%95%EB%B3%B4">
+									유용한 정보
+																			<span class="c_cnt">(16)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80">
+						엑셀													<span class="c_cnt">(19)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%EC%9C%A0%EC%9A%A9%ED%95%9C%20%EC%A0%95%EB%B3%B4">
+									유용한 정보
+																			<span class="c_cnt">(15)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%ED%8C%90%EB%8B%A8%20%ED%95%A8%EC%88%98">
+									판단 함수
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%ED%8E%B8%EC%A7%91%20%ED%95%A8%EC%88%98">
+									편집 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%EC%A7%91%EA%B3%84%2C%20%ED%86%B5%EA%B3%84%20%ED%95%A8%EC%88%98">
+									집계, 통계 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%EB%82%A0%EC%A7%9C%2C%20%EC%8B%9C%EA%B0%84%20%ED%95%A8%EC%88%98">
+									날짜, 시간 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%EC%B0%B8%EC%A1%B0%20%ED%95%A8%EC%88%98">
+									참조 함수
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EC%97%91%EC%85%80/%EC%97%90%EB%9F%AC%20%ED%95%B4%EA%B2%B0">
+									에러 해결
+																			<span class="c_cnt">(3)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/DB%20%EB%B0%8F%20SQL">
+						DB 및 SQL													<span class="c_cnt">(6)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/DB%20%EB%B0%8F%20SQL/SELECT%EB%AC%B8">
+									SELECT문
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/DB%20%EB%B0%8F%20SQL/WHERE%20%EC%A0%88">
+									WHERE 절
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4">
+						테크,팁,정보													<span class="c_cnt">(265)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EC%9C%88%EB%8F%84%EC%9A%B0">
+									윈도우
+																			<span class="c_cnt">(57)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EB%A7%A5OS">
+									맥OS
+																			<span class="c_cnt">(29)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/iOS">
+									iOS
+																			<span class="c_cnt">(53)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">
+									프로그램
+																			<span class="c_cnt">(19)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0">
+									유틸리티
+																			<span class="c_cnt">(48)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC">
+									네트워크
+																			<span class="c_cnt">(18)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EB%82%98%EC%8A%A4">
+									나스
+																			<span class="c_cnt">(7)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/vpn">
+									vpn
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EC%83%9D%ED%99%9C%ED%8C%81">
+									생활팁
+																			<span class="c_cnt">(18)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%ED%85%8C%ED%81%AC%2C%ED%8C%81%2C%EC%A0%95%EB%B3%B4/%EA%B8%B0%ED%83%80">
+									기타
+																			<span class="c_cnt">(14)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://shaeod.tistory.com/category/%EB%B8%94%EB%A1%9C%EA%B7%B8">
+						블로그													<span class="c_cnt">(42)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EC%9A%B4%EC%98%81">
+									블로그 운영
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%ED%8C%81">
+									블로그 팁
+																			<span class="c_cnt">(27)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://shaeod.tistory.com/category/%EB%B8%94%EB%A1%9C%EA%B7%B8/%EC%95%A0%EB%93%9C%EC%84%BC%EC%8A%A4">
+									애드센스
+																			<span class="c_cnt">(10)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+        </nav>
+      </section>
+      
+    </div>
+    <!-- //secondary -->
+  </aside>
+  <!-- //sidebar -->
+  <!-- content -->
+  <main id="content" class="content">
+    
+    <!-- entry -->
+    <div class="entry row">
+      
+      
+      
+      
+      
+      
+      
+      
+      <!-- entry-article.article -->
+      <article class="entry-article article">
+        <!-- header -->
+        <header>
+          <!-- title -->
+          <h2 class="title">
+            <a href="https://shaeod.tistory.com/527">[curl] 윈도우 환경에서 라이브러리 빌드 및 설치</a>
+          </h2>
+          <!-- detail -->
+          <div class="details">
+            <span class="primary category"><a href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/build">라이브러리/build</a></span><span class="date">2016.01.10 07:00</span>
+          </div>
+        </header>
+        <!-- //header -->
+        <!-- article -->
+        <div class="article">
+          <div class="tt_article_useless_p_margin"><div class="tt_adsense_top" style="margin-bottom:30px"><script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(7).txt"></script>
+<!-- 반응형 - 본문 상단 -->
+<ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-3775584495101735" data-ad-slot="8057677057" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:926px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:926px;background-color:transparent;"><iframe width="926" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:926px;height:90px;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(6).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:619px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F2255E542569180282BB427" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/2255E542569180282B" style="max-width:100%;height:auto" width="619" height="339" filename="00.PNG" filemime="image/jpeg"></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none">&nbsp;</p>
+<div>
+<div>
+<div class="txc-textbox" style="BORDER-TOP: rgb(203,203,203) 1px; BORDER-RIGHT: rgb(203,203,203) 1px; BORDER-BOTTOM: rgb(203,203,203) 1px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(203,203,203) 1px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(168,215,224)">
+<div><span style="FONT-SIZE: 12pt"><b>※ 요약</b></span><br></div>
+<div>윈도우 + Visual Studio 환경에서 curl 라이브러리를 빌드하여 설치 및 이용하는 방법이다. 
+<p>curl이란 무엇인지, curl의 탄생 및 발전이 궁금하다면 <strong></strong><a class="tx-link" href="http://jokergt.tistory.com/83" target="_blank"><strong>이 링크</strong></a>에 가보기 바란다.<br></p></div></div>
+<div><br></div>
+<div class="txc-textbox" style="BORDER-TOP: rgb(203,203,203) 1px; BORDER-RIGHT: rgb(203,203,203) 1px; BORDER-BOTTOM: rgb(203,203,203) 1px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(203,203,203) 1px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(252,180,197)">
+<div><span style="FONT-SIZE: 12pt"><b>※ 공식 사이트</b></span></div>
+<div><a href="http://www.curl.haxx.se/"></a><a class="tx-link" href="http://www.curl.haxx.se/" target="_blank">http://www.curl.haxx.se/</a><br></div></div>
+<div>
+<div><br></div>
+<div class="txc-textbox" style="BORDER-TOP: rgb(203,203,203) 1px; BORDER-RIGHT: rgb(203,203,203) 1px; BORDER-BOTTOM: rgb(203,203,203) 1px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(203,203,203) 1px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,220,128)">
+<div><b><span style="FONT-SIZE: 12pt">※&nbsp;curl 라이브러리 빌드 방법</span></b></div>
+<div>먼저 공식 사이트에서 소스를 다운받는다. 
+<p>필자는 curl-7.46.0.zip을 다운 받았다.&nbsp;</p></div>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F2635E53E5691821224D896" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/2635E53E5691821224" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/2635E53E5691821224?original&#39;)" width="730" height="398" filename="01.PNG" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>압축을 풀고 "curl-7.46.0\projects\Windows" 경로로 이동하면 아래와 같이 Visual Studio 버전 별로 폴더가 있는데, 원하는 버전으로 이동하면 된다. 필자는 Visual Studio 2013 버전(12.0) 으로 빌드할 것이다.</p>
+<p>참고로 각 폴더별 버전은 아래와 같다.</p>
+<p>VC10은 Visual Studio2010</p>
+<p>VC11은 Visual Studio2012</p>
+<p>VC12은 Visual Studio2013</p>
+<p>VC14은 Visual Studio2015</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F26577A3E56918214208B8D" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/26577A3E5691821420" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/26577A3E5691821420?original&#39;)" width="730" height="513" filename="02.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>VC12 폴더 하위에 있는 curl-all.sln파일을 오픈한다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile22.uf.tistory.com%2Fimage%2F2576EB3E569182152AEDB6" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/2576EB3E569182152A" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/2576EB3E569182152A?original&#39;)" width="730" height="513" filename="03.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>오픈하면 2개의 프로젝트가 존재한다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F23553D3E569182172BE3F0" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/23553D3E569182172B" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/23553D3E569182172B?original&#39;)" width="730" height="570" filename="04.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>필자는 정적(Static)으로 빌드할 것이다. 필요하면 당연히 DLL로 해도 된다.&nbsp;</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile28.uf.tistory.com%2Fimage%2F231AC4355691A13209E212" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/231AC4355691A13209" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/231AC4355691A13209?original&#39;)" width="730" height="570" filename="05.png" filemime="image/jpeg"></span></p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none">&nbsp;</p>
+<p>빌드를 하면 아래와 같이 성공이다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F217B85385691A14215D8CD" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/217B85385691A14215" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/217B85385691A14215?original&#39;)" width="730" height="570" filename="06.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>"curl-7.46.0\build\Win32\VC12"로 이동하면 Debug와 Release폴더가 있고, 이동하면 libcurl.lib 파일이 존재한다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile8.uf.tistory.com%2Fimage%2F266E4B405691821C1E75B4" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/266E4B405691821C1E" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/266E4B405691821C1E?original&#39;)" width="730" height="513" filename="07.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib"로 이동하여 컴파일된 libcurl.lib, libcurld.lib&nbsp;파일을 복사한다.</p>
+<p>꼭 libcurl.lib, libcurld.lib 2개 다 복사할 필요는 없다. 필요에 맞게 libcurl.lib만 복사해도 된다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F2541DD405691821E1F373D" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/2541DD405691821E1F" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/2541DD405691821E1F?original&#39;)" width="730" height="513" filename="08.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>이번엔 헤더파일들을 복사할 차례다.</p>
+<p>"curl-7.46.0\include"에 있는 curl 폴더를 "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include" 하위에 복사해준다. 그럼 curl 사용을 위한 환경 준비는 완료다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F22437640569182201F7D9F" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/22437640569182201F" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/22437640569182201F?original&#39;)" width="730" height="523" filename="09.PNG" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p>
+<p>잘 설치되었는지 확인하기 위해 curl <strong></strong><a class="tx-link" href="http://curl.haxx.se/libcurl/c/simple.html" target="_blank"><strong>공식 사이트에 있는 예제</strong></a>를 컴파일 해봤고, 오류 없이 잘 컴파일 되었다.</p>
+<p>참고로 필자는 라이브러리를 정적으로 빌드해서 소스코드에 몇몇가지를 추가했고, 그에 대해 주석을 간단히 남겼다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F213E05395691A1500F842D" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/213E05395691A1500F" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/213E05395691A1500F?original&#39;)" width="730" height="842" filename="10.png" filemime="image/jpeg"></span></p>
+<p>&nbsp;</p></div>
+<p>&nbsp;</p>
+<div>
+<div>
+<div>
+<div>
+<div class="txc-textbox" style="BORDER-TOP: rgb(203,203,203) 1px; BORDER-RIGHT: rgb(203,203,203) 1px; BORDER-BOTTOM: rgb(203,203,203) 1px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(203,203,203) 1px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(178,204,255)">
+<p><span style="FONT-SIZE: 12pt"><b>※ curl 사용</b></span></p>
+<p>빌드시 생성된 curl.exe를 "C:\Windows\System32"에 복사시키면 아래와 같이 윈도우 콘솔에서도 사용이 가능하다.</p>
+<p>64비트 콘솔에서 필요하다면 "C:\Windows\SysWOW64"에 복사하면 된다.</p>
+<p style="FLOAT: none; TEXT-ALIGN: center; CLEAR: none"><span class="imageblock" style="display:inline-block;width:730px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&amp;fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2132854C56A57CBA161A86" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/2132854C56A57CBA16" style="cursor: pointer;max-width:100%;height:auto" onclick="open_img(&#39;https://t1.daumcdn.net/cfile/tistory/2132854C56A57CBA16?original&#39;)" width="730" height="448" filename="11.png" filemime="image/jpeg"></span></p>
+<p><br></p></div></div></div></div></div></div></div></div><div class="tt_adsense_bottom" style="margin-top:30px"><script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(7).txt"></script>
+<ins class="adsbygoogle" style="display: block; height: 454px;" data-ad-format="autorelaxed" data-ad-client="ca-pub-3775584495101735" data-ad-slot="7712451911" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:454px;margin:0;padding:0;position:relative;visibility:visible;width:909px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:454px;margin:0;padding:0;position:relative;visibility:visible;width:909px;background-color:transparent;"><iframe width="909" height="454" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:909px;height:454px;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(7).html"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="container_postbtn #post_button_group"><div class="postbtn_like"><div class="wrap_btn"><button type="button" class="btn_post like_btn uoc-icon" data-uoc-svc="tistory" data-uoc-uid="575196_527" data-uoc-sc="401" data-uoc-pcurl="https://shaeod.tistory.com/527" data-uoc-fetchurl="http://api.kakao.tistory.com/like/fetch?uid=575196_527">
+                                                <div class="uoc-icon">
+                                                    <span class="ico_postbtn ico_like">좋아요</span>
+                                                    <span class="txt_like uoc-text screen_out">공감</span>
+                                                    <span class="txt_like uoc-count">10</span>
+                                                </div>
+                                              </button></div><div class="wrap_btn wrap_btn_share"><button type="button" class="btn_post sns_btn btn_share" data-thumbnail-url="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2255E542569180282B" data-title="[curl] 윈도우 환경에서 라이브러리 빌드 및 설치" data-description="※ 요약 윈도우 + Visual Studio 환경에서 curl 라이브러리를 빌드하여 설치 및 이용하는 방법이다. curl이란 무엇인지, curl의 탄생 및 발전이 궁금하다면 이 링크에 가보기 바란다. ※ 공식 사이트 http://www..." data-profile-image="https://t1.daumcdn.net/cfile/tistory/24044943576616971A" data-profile-name="오뇽" data-pc-url="https://shaeod.tistory.com/527" data-blog-title="오뇽">
+                                            <span class="ico_postbtn ico_share">공유하기</span>
+                                          </button></div><div class="wrap_btn wrap_btn_etc" data-entry-id="527" data-entry-visibility="public"><button type="button" class="btn_post btn_etc2"><span class="ico_postbtn ico_etc">글 요소</span></button></div></div><button type="button" class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="575196" data-url="https://shaeod.tistory.com/527" data-device="web_pc">
+                                            <em class="txt_state">구독하기</em>
+                                            <strong class="txt_tool_id">오뇽</strong>
+                                            <span class="img_common_tistory ico_check_type1"></span>
+                                          </button><div class="postbtn_ccl" data-ccl-type="6"><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ko" target="_blank" class="link_ccl"><span class="bundle_ccl"><span class="ico_postbtn ico_ccl1">저작자표시</span><span class="ico_postbtn ico_ccl2">비영리</span></span></a></div></div>    <!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-nc-fr/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-nc-fr/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+		</License>
+	</rdf:RDF>
+	--></div>
+        </div>
+        <!-- //article -->
+        <!-- footer -->
+        <footer>
+          <!-- author -->
+          <section class="author">
+            <h2 class="screen_out">작성자</h2>
+            <div class="section-content">
+              <div class="author-simple">Posted by 오뇽</div>
+            </div>
+          </section>
+          <!-- //author -->
+          <!-- share -->
+          <section class="share">
+            <h2 class="screen_out">공유하기</h2>
+            <div class="section-content">
+              <div class="share-wrapper">
+                <button class="share-button" data-service="naver"><svg width="36" height="36" viewBox="0 0 36 36"><g><rect fill="#01c63b" width="36" height="36"></rect><polygon fill="#FFFFFF" points="20.383,24.864 15.544,17.756 15.544,24.864 10.5,24.864 10.5,11.132 15.614,11.132 20.455,18.24 20.455,11.132 25.5,11.132 25.5,24.864"></polygon></g></svg></button><button class="share-button" data-service="twitter"><svg width="36" height="36" viewBox="0 0 36 36"><g><rect fill="#55acee" width="36" height="36"></rect><path fill="#fff" d="M27.444,13.597c-0.634,0.238-1.344,0.474-2.056,0.554c0.712-0.474,1.267-1.107,1.581-1.977 c-0.71,0.395-1.423,0.712-2.213,0.87c-0.633-0.711-1.583-1.107-2.53-1.107c-1.978,0-3.479,1.583-3.479,3.481 c0,0.237,0,0.553,0.079,0.791c-2.926-0.158-5.537-1.583-7.197-3.639c-0.316,0.555-0.474,1.108-0.474,1.741 c0,1.186,0.632,2.292,1.581,2.925c-0.553,0-1.107-0.158-1.581-0.474c0,0,0,0,0,0.079c0,1.662,1.186,3.083,2.846,3.399 c-0.316,0.079-0.632,0.159-0.949,0.159c-0.237,0-0.475,0-0.633-0.08c0.475,1.423,1.74,2.373,3.243,2.452 c-1.187,0.948-2.69,1.502-4.349,1.502c-0.317,0-0.554,0-0.871-0.079c1.582,1.029,3.4,1.581,5.378,1.581 c6.484,0,9.961-5.376,9.961-9.961c0-0.158,0-0.316,0-0.475C26.417,14.941,26.97,14.309,27.444,13.597z"></path></g></svg></button><button class="share-button" data-service="facebook"><svg width="36" height="36" viewBox="0 0 36 36"><g><rect fill="#3d5b9b" width="36" height="36"></rect><path fill="#fff" d="M19.393,27.002v-8.211h2.756l0.413-3.201h-3.169v-2.042c0-0.927,0.258-1.558,1.585-1.558h1.696V9.126 C22.379,9.088,21.374,9,20.204,9c-2.443,0-4.116,1.491-4.116,4.23v2.359h-2.761v3.201h2.761v8.211H19.393z"></path></g></svg></button>
+              </div>
+            </div>
+          </section>
+          <!-- //share -->
+        </footer>
+        <!-- //footer -->
+      </article>
+      <!-- //entry-article -->
+      
+      <!-- entry-section.tag -->
+      <section class="entry-section tag">
+        <h2>태그</h2>
+        <div class="section-content">
+          <a href="https://shaeod.tistory.com/tag/C%2B%2B" rel="tag">C++</a>,
+<a href="https://shaeod.tistory.com/tag/cURL" rel="tag">cURL</a>,
+<a href="https://shaeod.tistory.com/tag/Visual%20Studio" rel="tag">Visual Studio</a>
+        </div>
+      </section>
+      <!-- //entry-section.tag -->
+      
+      
+      <!-- entry-section.related-article -->
+      <section class="entry-section related-article">
+        <h2>관련 글</h2>
+        <div class="section-content">
+          <div class="related-items">
+          
+          <article class="related-item thumb_type">
+            <a href="https://shaeod.tistory.com/900?category=543988">
+              <div class="related-thumbnail">
+                <div class="cover-image">
+                  <figure><div class="image" style="background-image: url(//i1.daumcdn.net/thumb/R600x0/?fname=https://t1.daumcdn.net/cfile/tistory/2214984C588553C802)"></div></figure>
+                </div>
+              </div>
+              <div class="details">
+                <header>
+                  <h3>[라이브러리] 파이썬 pip로 BeautifulSoup 설치하기</h3>
+                </header>
+                <footer>
+                  <span class="date">2017.01.09</span>
+                </footer>
+              </div>
+            </a>
+          </article>
+          
+          <article class="related-item thumb_type">
+            <a href="https://shaeod.tistory.com/536?category=543988">
+              <div class="related-thumbnail">
+                <div class="cover-image">
+                  <figure><div class="image" style="background-image: url(//i1.daumcdn.net/thumb/R600x0/?fname=https://t1.daumcdn.net/cfile/tistory/2278D638569B62E613)"></div></figure>
+                </div>
+              </div>
+              <div class="details">
+                <header>
+                  <h3>[OpenSSL] 윈도우 환경에 라이브러리 설치</h3>
+                </header>
+                <footer>
+                  <span class="date">2016.01.18</span>
+                </footer>
+              </div>
+            </a>
+          </article>
+          
+          <article class="related-item thumb_type">
+            <a href="https://shaeod.tistory.com/535?category=543988">
+              <div class="related-thumbnail">
+                <div class="cover-image">
+                  <figure><div class="image" style="background-image: url(//i1.daumcdn.net/thumb/R600x0/?fname=https://t1.daumcdn.net/cfile/tistory/235CC737569A4BB527)"></div></figure>
+                </div>
+              </div>
+              <div class="details">
+                <header>
+                  <h3>[MariaDB] ODBC 설치 및 연결 문자열</h3>
+                </header>
+                <footer>
+                  <span class="date">2016.01.17</span>
+                </footer>
+              </div>
+            </a>
+          </article>
+          
+          <article class="related-item thumb_type">
+            <a href="https://shaeod.tistory.com/396?category=543988">
+              <div class="related-thumbnail">
+                <div class="cover-image">
+                  <figure><div class="image" style="background-image: url(//i1.daumcdn.net/thumb/R600x0/?fname=https://t1.daumcdn.net/cfile/tistory/2709513453A3D61A32)"></div></figure>
+                </div>
+              </div>
+              <div class="details">
+                <header>
+                  <h3>[boost] 부스트 라이브러리 빌드 (설치)</h3>
+                </header>
+                <footer>
+                  <span class="date">2014.06.20</span>
+                </footer>
+              </div>
+            </a>
+          </article>
+          
+          </div>
+        </div>
+        <div class="related-more">
+          <a href="https://shaeod.tistory.com/category/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/build">관련 글 더보기</a>
+        </div>
+      </section>
+      <!-- //entry-section.related -->
+      
+      <!-- entry-section.comment -->
+      <section class="entry-section comment">
+        <h2 class="screen_out">댓글 영역</h2>
+        <div class="activity">
+          <a class="comment-toggle" href="https://shaeod.tistory.com/527#" onclick="toggleLayerForEntry(&#39;527&#39;, &#39;comment&#39;); return false">댓글 <em><span id="commentCount527_0">4</span></em>개</a>
+        </div>
+        <div class="section-content">
+        <div id="entry527Comment" style="display:block">
+          
+          <!-- comment-list -->
+          <div class="comment-list">
+            <ul>
+              
+              <li id="comment10209504" class="comment-item">
+                <article class="comment rp_general">
+                  <!-- author-thumbnail -->
+                  <div class="author-thumbnail">
+                    <div class="cover-image">
+                      <figure>
+                        <img src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(1)" srcset="//i1.daumcdn.net/thumb/C50x50/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_00.png 1x, //i1.daumcdn.net/thumb/C100x100/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_00.png 2x, //i1.daumcdn.net/thumb/C150x150/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_00.png 3x, //i1.daumcdn.net/thumb/C200x200/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_00.png 4x" alt="프로필 사진">
+                      </figure>
+                    </div>
+                  </div>
+                  <!-- comment-body -->
+                  <div class="comment-body">
+                    <header>
+                      <div class="author elip">질문이요</div>
+                      <div class="details"><span class="date">2017.04.15 01:30</span></div>
+                    </header>
+                    <p>C:\Program Files (x86)\Microsoft Visual Studio\Shared\14.0\VC 빌드후에 여기에있는 lib이랑 include에 잘 복사해서 넣었는데 curl/curl.h라는 헤더파일을 못찾는다고 오류를 내뱉네요... 무슨일일까요</p>
+                    <footer class="control">
+                      <a href="https://shaeod.tistory.com/527#" onclick="deleteComment(10209504);return false">수정</a><a href="https://shaeod.tistory.com/527#" onclick="commentComment(10209504); return false">답글</a>
+                    </footer>
+                  </div>
+                </article>
+                
+              </li>
+              
+              <li id="comment10963966" class="comment-item">
+                <article class="comment rp_general">
+                  <!-- author-thumbnail -->
+                  <div class="author-thumbnail">
+                    <div class="cover-image">
+                      <figure>
+                        <img src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(2)" srcset="//i1.daumcdn.net/thumb/C50x50/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 1x, //i1.daumcdn.net/thumb/C100x100/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 2x, //i1.daumcdn.net/thumb/C150x150/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 3x, //i1.daumcdn.net/thumb/C200x200/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 4x" alt="프로필 사진">
+                      </figure>
+                    </div>
+                  </div>
+                  <!-- comment-body -->
+                  <div class="comment-body">
+                    <header>
+                      <div class="author elip">감사합니다</div>
+                      <div class="details"><span class="date">2017.12.27 16:31</span></div>
+                    </header>
+                    <p>많은 참고가 되었습니다. 정말 감사합니다.</p>
+                    <footer class="control">
+                      <a href="https://shaeod.tistory.com/527#" onclick="deleteComment(10963966);return false">수정</a><a href="https://shaeod.tistory.com/527#" onclick="commentComment(10963966); return false">답글</a>
+                    </footer>
+                  </div>
+                </article>
+                
+              </li>
+              
+              <li id="comment11295787" class="comment-item">
+                <article class="comment rp_general">
+                  <!-- author-thumbnail -->
+                  <div class="author-thumbnail">
+                    <div class="cover-image">
+                      <figure>
+                        <img src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(3)" srcset="//i1.daumcdn.net/thumb/C50x50/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_02.png 1x, //i1.daumcdn.net/thumb/C100x100/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_02.png 2x, //i1.daumcdn.net/thumb/C150x150/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_02.png 3x, //i1.daumcdn.net/thumb/C200x200/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_02.png 4x" alt="프로필 사진">
+                      </figure>
+                    </div>
+                  </div>
+                  <!-- comment-body -->
+                  <div class="comment-body">
+                    <header>
+                      <div class="author elip">CURL_STATICLIB를 추가해줘도..</div>
+                      <div class="details"><span class="date">2018.11.01 16:47</span></div>
+                    </header>
+                    <p>외부 라이브러리를 추가하고 사용하는데 많은 공부가 되었습니다. 감사합니다.<br>
+<br>
+그런데 아직 여전히 curl 을 사용하지 못하고 있는데요<br>
+전처리기 정의쪽에 CURL_STATICLIB를 추가해줘도<br>
+_curl_easy_strerror 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다<br>
+위와 같은 링킹 에러가 또 납니다...<br>
+<br>
+C/C++ &gt; 일반 &gt; 추가 포함 디렉터리에 다운로드받은 curl include 폴더를 추가해줬고.<br>
+링커 &gt; 일반 &gt; 추가 라이브러리 디렉터리에 curl 빌드한 뒤 나온 libcurl.lib가 있는 경로를 추가해줬고,<br>
+링커 &gt; 입력 &gt; 추가 종속성에 libcurl.lib도 추가해줬고요...<br>
+<br>
+여러 블로그들을 돌아다니면서 봤던것들을 모두 한거 같은데 여전히 링킹에러가 발생합니다.<br>
+2017 환경에서 그러나 싶어서 2015로 해도 똑같더군요.</p>
+                    <footer class="control">
+                      <a href="https://shaeod.tistory.com/527#" onclick="deleteComment(11295787);return false">수정</a><a href="https://shaeod.tistory.com/527#" onclick="commentComment(11295787); return false">답글</a>
+                    </footer>
+                  </div>
+                </article>
+                
+              </li>
+              
+              <li id="comment11295843" class="comment-item">
+                <article class="comment rp_general">
+                  <!-- author-thumbnail -->
+                  <div class="author-thumbnail">
+                    <div class="cover-image">
+                      <figure>
+                        <img src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(2)" srcset="//i1.daumcdn.net/thumb/C50x50/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 1x, //i1.daumcdn.net/thumb/C100x100/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 2x, //i1.daumcdn.net/thumb/C150x150/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 3x, //i1.daumcdn.net/thumb/C200x200/?fname=https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_05.png 4x" alt="프로필 사진">
+                      </figure>
+                    </div>
+                  </div>
+                  <!-- comment-body -->
+                  <div class="comment-body">
+                    <header>
+                      <div class="author elip">됐습니다!</div>
+                      <div class="details"><span class="date">2018.11.01 17:02</span></div>
+                    </header>
+                    <p>혹시 같은 고생을 하시는분들이 있을까봐 글 남깁니다.<br>
+본문에는 없지만 스샷에 찍힌 화면에서<br>
+<br>
+#pragma comment (lib, "wldap32.lib")<br>
+#pragma comment (lib, "ws2_32.lib")<br>
+<br>
+요 두줄을 봐서 혹시나 해서 넣어봤는데요 빌드가 되네요!</p>
+                    <footer class="control">
+                      <a href="https://shaeod.tistory.com/527#" onclick="deleteComment(11295843);return false">수정</a><a href="https://shaeod.tistory.com/527#" onclick="commentComment(11295843); return false">답글</a>
+                    </footer>
+                  </div>
+                </article>
+                
+              </li>
+              
+            </ul>
+          </div>
+          <!-- //comment-list -->
+          
+          <form method="post" action="https://shaeod.tistory.com/comment/add/527" onsubmit="return false" style="margin: 0">
+          <div class="comment-write">
+            <!-- input-form -->
+            <div class="input-form">
+              
+              
+              <!-- guest-form -->
+              <div class="guest-form">
+                <!-- name -->
+                <div class="inputbox name">
+                  <input type="text" name="name" placeholder="이름" value="">
+                </div>
+                <!-- password -->
+                <div class="inputbox password">
+                  <input type="password" name="password" maxlength="12" placeholder="비밀번호">
+                </div>
+                <!-- homepage -->
+                <div class="inputbox homepage">
+                  <input type="url" name="homepage" placeholder="홈페이지">
+                </div>
+              </div>
+              <!-- //guest-form -->
+              
+              <!-- secret -->
+              <div class="secret">
+                <input id="comment-secret" type="checkbox" name="secret">
+                <label for="comment-secret">비밀글</label>
+              </div>
+              
+              <!-- textbox-form -->
+              <div class="textbox-form">
+                <!-- textarea -->
+                <div class="textbox">
+                  <textarea name="comment" placeholder="댓글을 입력해주세요."></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- //input-form -->
+            <!-- button-form -->
+            <div class="button-form">
+              <button class="button" onclick="addComment(this, 527); return false;">등록</button>
+            </div>
+            <!-- //button-form -->
+          </div> 
+          </form>
+        </div><script type="text/javascript">loadedComments[527]=true;findFragmentAndHighlight(527)</script>
+        </div>
+      </section>
+      <!-- //entry-section.comment -->
+      
+      
+    </div>
+    <!-- //entry -->
+    
+    <!-- navigation -->  
+    <section class="navigation">
+      <h2 class="screen_out">네비게이션</h2>
+      <div class="navigation-wrapper">
+        <a href="https://shaeod.tistory.com/529" class="nav-end prev ">
+          <svg width="10" height="18" viewBox="0 0 10 18"><path d="M9 18l1-1-8-8 8-8-1-1-9 9"></path></svg>
+        </a>
+        <div class="nav-page">
+          
+          <a href="https://shaeod.tistory.com/969" class="nav-item"><span>1</span></a>
+          
+          <a class="nav-item"><span>···</span></a>
+          
+          <a href="https://shaeod.tistory.com/532" class="nav-item"><span>419</span></a>
+          
+          <a href="https://shaeod.tistory.com/531" class="nav-item"><span>420</span></a>
+          
+          <a href="https://shaeod.tistory.com/530" class="nav-item"><span>421</span></a>
+          
+          <a href="https://shaeod.tistory.com/529" class="nav-item"><span>422</span></a>
+          
+          <a class="nav-item"><span class="selected">423</span></a>
+          
+          <a href="https://shaeod.tistory.com/526" class="nav-item"><span>424</span></a>
+          
+          <a href="https://shaeod.tistory.com/525" class="nav-item"><span>425</span></a>
+          
+          <a href="https://shaeod.tistory.com/524" class="nav-item"><span>426</span></a>
+          
+          <a href="https://shaeod.tistory.com/523" class="nav-item"><span>427</span></a>
+          
+          <a class="nav-item"><span>···</span></a>
+          
+          <a href="https://shaeod.tistory.com/139" class="nav-item"><span>759</span></a>
+          
+        </div>
+        <a href="https://shaeod.tistory.com/526" class="nav-end next ">
+          <svg width="10" height="18" viewBox="0 0 10 18"><path d="M1 0L0 1l8 8-8 8 1 1 9-9"></path></svg>
+        </a>
+      </div>
+    </section>
+    <!-- //navigation -->
+    
+    <!-- footer -->
+		<!--shaeod 구글 광고 글목록 하 시작-->
+				<br>
+				<script async="" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/f(7).txt"></script>
+				<!-- 반응형 - 글목록 하 -->
+				<ins class="adsbygoogle" style="display: block; height: 87px; width: 941px;" data-ad-client="ca-pub-3775584495101735" data-ad-slot="9394809454" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display: inline-table; border: none; height: 87px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 941px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: none; height: 87px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 941px; background-color: transparent; overflow: hidden;"><iframe width="941" height="87" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px; border: 0px; width: 941px; height: 87px;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(8).html"></iframe></ins></ins></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+		<!--shaeod 구글 광고 글목록 하 끝-->
+    <footer class="footer">
+      <address>design by <a href="https://www.tokiidesu.com/" target="_blank">tokiidesu</a> / <a href="https://shaeod.tistory.com/">©오뇽</a></address>
+    </footer>
+    <!-- //footer -->
+  </main>
+</div>
+
+<!-- script -->
+<script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/tokii-script.min.js.다운로드" async=""></script>
+<script src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/tokii-share.min.js.다운로드" async=""></script>
+<!-- //script -->
+<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/wcslog.js.다운로드"></script>
+<script type="text/javascript">
+	if(!wcs_add) var wcs_add = {};
+	wcs_add["wa"] = encodeURI("eafe4b1b492668");
+	wcs_do();
+</script><script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-16775636-1', 'auto');
+	ga('send', 'pageview');
+</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : [];
+_tiq.push(['__setConfig', {enableScroll:true, enableClick:true, enableButton:true}]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+_tiq.push(['__setParam', 'param_ex', JSON.stringify({"userId":"489159","blogId":"575196","entryId":"527"})]);
+_tiq.push(['__trackPageview']);
+_tiq.push(['__content', 't_content', {
+'c_id':'575196_527', 
+'c_title':'[curl] 윈도우 환경에서 라이브러리 빌드 및 설치', 
+'type':'article', 
+'author':'', 
+'author_id':'489159', 
+'cp':'오뇽', 
+'cp_id':'575196', 
+'regdata':'2016-01-10 07:00:01', 
+'plink':'https://shaeod.tistory.com/527', 
+'media':'pcweb', 
+}]);
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var removeEvent = function(evt, fn) { window.removeEventListener ? window.removeEventListener(evt, fn, false) : window.detachEvent('on' + evt, fn);};
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua);
+var contentExStat = function() {
+		_tiq.push(['__content', 't_content_ex', {
+			'data_type':'usage'
+, 'meta': {
+'c_id':'575196_527', 
+'c_title':'[curl] 윈도우 환경에서 라이브러리 빌드 및 설치', 
+'type':'article', 
+'author':'', 
+'author_id':'489159', 
+'cp':'오뇽', 
+'cp_id':'575196', 
+'regdata':'2016-01-10 07:00:01', 
+'plink':'https://shaeod.tistory.com/527', 
+'media':'pcweb', 
+}
+}]);
+		removeEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+};
+addEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: 'tistory'});</script>
+<script type="text/javascript" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/roosevelt_dk_bt.js.다운로드" async=""></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script><iframe style="position:absolute;width:1px;height:1px;left:-100px;top:-100px" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/api.html" id="editEntry"></iframe><div class="layer_tooltip">
+                <div class="inner_layer_tooltip">
+                    <p class="desc_g"></p>
+                </div>
+            </div><div id="tistoryEtcLayer" class="layer_post" style="display: none;"></div><div id="tistorySnsLayer" class="layer_post" style="display: none;"><div class="bundle_post"><a href="https://shaeod.tistory.com/527#none" class="btn_mark" data-service="facebook"><span class="ico_sns ico_fb"></span>페이스북으로 공유</a><a href="https://shaeod.tistory.com/527#none" class="btn_mark" data-service="kakaotalk"><span class="ico_sns ico_kt"></span>카카오톡으로 공유</a><a href="https://shaeod.tistory.com/527#none" class="btn_mark" data-service="kakaostory"><span class="ico_sns ico_ks"></span>카카오스토리로 공유</a><a href="https://shaeod.tistory.com/527#none" class="btn_mark" data-service="twitter"><span class="ico_sns ico_tw"></span>트위터로 공유</a><a href="https://shaeod.tistory.com/527#none" class="btn_mark" data-service="url"><span class="ico_sns ico_url"></span>URL 복사</a><span class="ico_postbtn ico_arrbt"></span></div></div>
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(9).html"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_2686306167541" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/saved_resource(10).html"></iframe><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="https://shaeod.tistory.com/527"></a><a class="lb-next" href="https://shaeod.tistory.com/527"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body><iframe id="google_esf" name="google_esf" src="./[curl] 윈도우 환경에서 라이브러리 빌드 및 설치_files/zrt_lookup.html" data-ad-client="ca-pub-3775584495101735" style="display: none;"></iframe></html>

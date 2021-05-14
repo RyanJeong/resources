@@ -1,0 +1,154 @@
+-- Merging decision tree log ---
+manifest
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:1:1-74:12
+	package
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:2:5-46
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:1:11-69
+	android:versionCode
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+supports-screens
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:4:5-8:37
+	android:largeScreens
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:7:9-36
+	android:smallScreens
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:5:9-36
+	android:normalScreens
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:6:9-37
+	android:resizeable
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:4:23-48
+	android:anyDensity
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:8:9-34
+application
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:10:5-59:19
+MERGED from [com.android.support:appcompat-v7:22.2.1] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.tsengvn:Typekit:1.0.0] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.tsengvn\Typekit\1.0.0\AndroidManifest.xml:11:5-14:19
+	android:label
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:14:9-41
+	android:supportsRtl
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:15:9-35
+	android:allowBackup
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:16:9-59
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:11:9-35
+activity#com.example.user.doorlockclient.MainActivity
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:17:9-26:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:19:13-50
+	android:label
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:20:13-45
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:18:13-72
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:24:27-74
+activity#com.example.user.doorlockclient.AgreementPattern
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:27:9-30:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:28:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:29:13-45
+activity#com.example.user.doorlockclient.CheckConnection
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:31:9-34:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:32:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:33:13-44
+activity#com.example.user.doorlockclient.InsertPassword
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:35:9-38:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:36:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:37:13-43
+activity#com.example.user.doorlockclient.InsertPattern
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:39:9-42:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:40:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:41:13-42
+activity#com.example.user.doorlockclient.ResetPassword
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:43:9-46:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:44:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:45:13-42
+activity#com.example.user.doorlockclient.ResetPattern
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:47:9-50:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:48:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:49:13-41
+activity#com.example.user.doorlockclient.ShowLog
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:51:9-54:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:52:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:53:13-36
+activity#com.example.user.doorlockclient.WaitPerson
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:55:9-58:20
+	android:screenOrientation
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:56:13-50
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:57:13-39
+uses-permission#android.permission.INTERNET
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:60:5-67
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:60:22-64
+uses-permission#android.permission.CAMERA
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:61:5-64
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:61:22-62
+uses-feature#android.hardware.camera
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:62:5-84
+	android:required
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:62:58-82
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:62:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:63:5-94
+	android:required
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:63:68-92
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:63:19-67
+uses-feature#android.hardware.camera.front
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:64:5-90
+	android:required
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:64:64-88
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:64:19-63
+uses-feature#android.hardware.camera.front.autofocus
+ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:65:5-66:35
+	android:required
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:66:9-33
+	android:name
+		ADDED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml:65:19-73
+uses-sdk
+INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:22.2.1] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.tsengvn:Typekit:1.0.0] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\com.tsengvn\Typekit\1.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [doorlockClient:openCVLibrary300:unspecified] H:\Android\doorlockClient\app\build\intermediates\exploded-aar\doorlockClient\openCVLibrary300\unspecified\AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\doorlockClient\app\src\main\AndroidManifest.xml

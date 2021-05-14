@@ -1,0 +1,242 @@
+/*
+ * copyright (c) 2015-2018 tokiidesu
+ * design by tokiidesu
+ *
+ * version: release 2018.r01 20181015
+ * release date: October 2017
+ */
+
+/* --------------------------------------------------------------------------
+스타일
+*/
+/*shaeod 하위 카테고리 간격 조정 시작*/
+.sidebar .module.category .sub_category_list {
+  padding-left: 7px;
+}
+/*shaeod 하위 카테고리 간격 조정 끝*/
+
+/* 사이드바 > 블로그 제목 크기 */
+/* 변경하시려면 주석을 해제해주세요
+.sidebar .site-profile > article > .site-title {
+  font-size: 26px;
+}
+*/
+
+/* 본문 > 제목 크기 */
+/* 변경하시려면 주석을 해제해주세요 */
+.entry-article header > .title {
+  font-size: 30px;
+}
+
+
+/* 본문 > 글씨 색, 글씨 크기 */
+/* 변경하시려면 주석을 해제해주세요
+body {
+  color: #333;
+  font-size: 16px;
+}
+*/
+
+/* 모바일 */
+@media (max-width: 960px) {
+  /* 사이드바 > 블로그 제목 크기 */
+  /* 변경하시려면 주석을 해제해주세요
+  .sidebar .site-profile > article > .site-title {
+    font-size: 20px;
+  }
+  */
+  
+  /* 본문 > 제목 크기 */
+  /* 변경하시려면 주석을 해제해주세요
+  .entry-article header > .title {
+    font-size: 24px;
+  }
+  */  
+  
+  /* 본문 > 글씨 크기 */
+  /* 변경하시려면 주석을 해제해주세요
+  body {
+    font-size: 17px;
+  }
+  */
+}
+
+/* --------------------------------------------------------------------------
+색 변경
+*/
+
+/* 사이드바, 모바일 상단메뉴 > 배경색 */
+/* [1] 변경하시려면 주석을 해제해주세요
+body:before {
+  background-color: #f7f5f2 !important;
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    background-color: #f7f5f2 !important;
+  }
+}
+*/
+
+/* 대표색 */
+/* [2] 변경하시려면 주석을 해제해주세요 */
+.button {
+  background-color: #D63D3D !important;
+}
+
+.comment-item > .comment .comment-body > header .details > span.date a,
+.comment-item > .comment .comment-body > footer a,
+.search-header > h2 > em,
+.entry-article.tag .taglist li > a.cloud1,
+.entry-article.tag .taglist li > a.cloud2,
+.entry-article > header .details > span.primary,
+.entry-article > header .details > span.primary a,
+.entry-article .article a,
+.entry-section.tag > .section-content a,
+.entry-section.related-article .related-more,
+.entry-section.related-article .related-more a,
+.entry-section.comment .comment-toggle em,
+.entry-article > header .details > span a:hover,
+.entry-article .moreless_fold,
+.entry-article .moreless_top,
+.entry-article .moreless_bottom,
+.tt_more_preview_comments_wrap .tt_more_preview_comments_text,
+.comment-item > .comment .comment-body > header .author a:hover,
+.site .taglist li a.cloud3:hover,
+.site .taglist li a.cloud4:hover,
+.site .taglist li a.cloud5:hover,
+.entry-article > header > h2 a:hover,
+.entry-article > header > .details > span a:hover,
+.related-items > .related-item a:hover .details > header h3,
+.entry-section.comment .activity a:hover,
+.navigation .nav-item:hover span:not(.selected),
+.footer-nav a:hover,
+.footer address a:hover {
+  color: #D63D3D !important;
+}
+
+.navigation .nav-end:not(.no-more-prev):not(.no-more-next):hover > svg {
+  fill: #D63D3D !important;
+}
+
+@media (min-width: 641px) {
+  .navigation .nav-item span.selected {
+    color: #D63D3D !important;
+  }
+}
+
+.entry > .article-item .details > footer > span.primary a,
+.entry > .article-item .details > header > h3 a:hover,
+.entry > .article-item .details > .summary:hover,
+.entry > .article-item .details > .summary:hover p,
+.entry > .article-item .details > footer > span a:hover {
+  color: #D63D3D !important;
+}
+
+/* 사이드바 > 배경색이 밝은 경우 */
+/* [3-1] 검은색 글씨가 잘 보일 경우 이 주석을 해제해주세요. */
+.sidebar input[type="text"],
+.sidebar input[type="email"],
+.sidebar input[type="url"],
+.sidebar input[type="password"],
+.sidebar input[type="search"],
+.sidebar .taglist li a.cloud1,
+.sidebar .taglist li a.cloud2,
+.sidebar .module.recent-comment li,
+.sidebar .module > a,
+.sidebar .module li > em,
+.sidebar .module.listbox a,
+.sidebar .module.category .link_sub_item,
+.sidebar .site-profile > article > .site-title a:hover,
+.sidebar .taglist li a.cloud1:hover,
+.sidebar .taglist li a.cloud2:hover,
+.sidebar .taglist li a.cloud3:hover,
+.sidebar .taglist li a.cloud4:hover,
+.sidebar .taglist li a.cloud5:hover,
+.sidebar .module.menubox a:hover,
+.sidebar .module.listbox a:hover,
+.sidebar .module.category .link_tit:hover,
+.sidebar .module.category .link_item:hover,
+.sidebar .module.category .link_sub_item:hover {
+  color: #D63D3D !important;
+}
+
+/* 사이드바 > 배경색이 어두운 경우 */
+/* [3-2] 하얀색 글씨가 잘 보일 경우 이 주석을 해제해주세요.
+body.sidebar-dark .sidebar input[type="text"],
+body.sidebar-dark .sidebar input[type="email"],
+body.sidebar-dark .sidebar input[type="url"],
+body.sidebar-dark .sidebar input[type="password"],
+body.sidebar-dark .sidebar input[type="search"],
+body.sidebar-dark .sidebar .module {
+  border-color: #78b92c !important;
+}
+
+body.sidebar-dark .sidebar input:-ms-input-placeholder {
+  color: #78b92c !important; }
+body.sidebar-dark .sidebar input::-webkit-input-placeholder {
+  color: #78b92c !important; }
+body.sidebar-dark .sidebar input:-moz-placeholder {
+  color: #78b92c !important; }
+body.sidebar-dark .sidebar input::-moz-placeholder {
+  color: #78b92c !important; }
+
+body.sidebar-dark .sidebar input[type="text"],
+body.sidebar-dark .sidebar input[type="email"],
+body.sidebar-dark .sidebar input[type="url"],
+body.sidebar-dark .sidebar input[type="password"],
+body.sidebar-dark .sidebar input[type="search"],
+body.sidebar-dark .sidebar .taglist li a.cloud1,
+body.sidebar-dark .sidebar .taglist li a.cloud2,
+body.sidebar-dark .sidebar .site-profile > article > .site-title a,
+body.sidebar-dark .sidebar .module.recent-comment li,
+body.sidebar-dark .sidebar .module > h2,
+body.sidebar-dark .sidebar .module > a,
+body.sidebar-dark .sidebar .module li,
+body.sidebar-dark .sidebar .module.menubox a,
+body.sidebar-dark .sidebar .module.listbox a > em,
+body.sidebar-dark .sidebar .module.category .link_tit,
+body.sidebar-dark .sidebar .module.category .link_item ,
+body.sidebar-dark .sidebar .site-profile > article > .site-title a:hover,
+body.sidebar-dark .sidebar .taglist li a.cloud1:hover,
+body.sidebar-dark .sidebar .taglist li a.cloud2:hover,
+body.sidebar-dark .sidebar .taglist li a.cloud3:hover,
+body.sidebar-dark .sidebar .taglist li a.cloud4:hover,
+body.sidebar-dark .sidebar .taglist li a.cloud5:hover,
+body.sidebar-dark .sidebar .module.menubox a:hover,
+body.sidebar-dark .sidebar .module.listbox a:hover,
+body.sidebar-dark .sidebar .module.category .link_tit:hover,
+body.sidebar-dark .sidebar .module.category .link_item:hover,
+body.sidebar-dark .sidebar .module.category .link_sub_item:hover {
+  color: #78b92c !important;
+}
+
+body.sidebar-dark .sidebar .site-header .aside-button > svg {
+  fill: #78b92c !important;
+}
+*/
+
+/* --------------------------------------------------------------------------
+티에디션
+*/
+
+/* 티에디션 > 제목색 변경 */
+#tt-body-index #ttCanvas .tt-item > header > h2,
+body#tt-body-index.dark-theme #ttCanvas .tt-item > header > h2 {
+  color: #D63D3D !important;
+}
+
+/* 티에디션 > 색 변경 */
+#tt-body-index #ttCanvas .tt-item > *:not(.index) a,
+body#tt-body-index.dark-theme #ttCanvas .tt-item > *:not(.index) a {
+  color: #D63D3D !important;
+}
+
+.index > .article-item .details > footer > span.primary,
+.index > .article-item .details > footer > span.primary a,
+.index > .article-item .details > header > h3 a:hover,
+.index > .article-item .details > .summary:hover,
+.index > .article-item .details > .summary:hover p,
+.index > .article-item .details > footer > span a:hover {
+  color: #D63D3D !important;
+}

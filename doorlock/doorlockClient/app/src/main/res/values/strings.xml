@@ -1,0 +1,263 @@
+<resources>
+    <string name="app_name">
+        DoorlockClient
+    </string>
+    <string name="title">
+        눈동자 패턴인식 도어락
+    </string>
+    <string name="version">
+        Version 0.8
+    </string>
+    <string name="title_bar">
+        눈동자 패턴인식 도어락 ver.0.8
+    </string>
+    <string name="insert_password">
+        비밀번호를 입력하세요.
+    </string>
+    <string name="password_error">
+        비밀번호가 일치하지 않습니다.
+    </string>
+    <string name="door_closed">
+        문이 닫혔습니다.
+    </string>
+    <string name="detect_person">
+        사물이 감지되었습니다.
+    </string>
+    <string name="insert_pattern">
+        패턴을 입력하세요.
+    </string>
+    <string name="door_opened">
+        문이 열렸습니다.
+    </string>
+    <string name="insert_new_password">
+        새 비밀번호를 입력하세요.
+    </string>
+    <string name="reinsert_new_password">
+        새 비밀번호를 다시 입력하세요.
+    </string>
+    <string name="reset_password">
+        비밀번호 변경이 완료되었습니다.
+    </string>
+    <string name="reset_pattern">
+        패턴 변경이 완료되었습니다.
+    </string>
+    <string name="insert_new_pattern">
+        새 패턴을 입력하세요.
+    </string>
+    <string name="show_log">
+        출입 기록을 확인합니다.
+    </string>
+    <string name="img_error">
+        이미지를 불러올 수 없습니다.
+    </string>
+    <string name="check_WiFi">
+        WiFi가 켜져 있는지 확인하세요.
+    </string>
+    <string name="connecting">
+        서버에 접속중입니다.
+    </string>
+    <string name="server_closed">
+        서버에 접속할 수 없습니다.
+    </string>
+    <string name="do_connect">
+        다시 연결하기
+    </string>
+    <string name="digit_0">
+        0
+    </string>
+    <string name="digit_1">
+        1
+    </string>
+    <string name="digit_2">
+        2
+    </string>
+    <string name="digit_3">
+        3
+    </string>
+    <string name="digit_4">
+        4
+    </string>
+    <string name="digit_5">
+        5
+    </string>
+    <string name="digit_6">
+        6
+    </string>
+    <string name="digit_7">
+        7
+    </string>
+    <string name="digit_8">
+        8
+    </string>
+    <string name="digit_9">
+        9
+    </string>
+    <string name="password01">
+        password01
+    </string>
+    <string name="password02">
+        password02
+    </string>
+    <string name="password03">
+        password03
+    </string>
+    <string name="password04">
+        password04
+    </string>
+    <string name="pattern01">
+        pattern01
+    </string>
+    <string name="pattern02">
+        pattern02
+    </string>
+    <string name="pattern03">
+        pattern03
+    </string>
+    <string name="pattern04">
+        pattern04
+    </string>
+    <string name="value">
+        ●
+    </string>
+    <string name="client">
+        [CLIENT]&#160;
+    </string>
+    <string name="server">
+        [SERVER]&#160;
+    </string>
+    <string name="IOException">
+        [IOException]&#160;
+    </string>
+    <string name="ultrasonicSensor">
+        [Ultrasonic Sensor]&#160;
+    </string>
+    <string name="cameraSensor">
+        [Camera Sensor]&#160;
+    </string>
+    <string name="unidentified">
+        [Unidentified]&#160;
+    </string>
+    <string name="socket">
+        socket(), Create socket.
+    </string>
+    <string name="connect">
+        connect(), Attempts to connect as a client to a listening server.
+    </string>
+    <string name="reConnect">
+        connect(), Attempts to re-connect as a client to a listening server.
+    </string>
+    <string name="connectSuccess">
+        connect(), success.
+    </string>
+    <string name="connectError">
+        connect(), error(Error while preparing to send message).
+    </string>
+    <string name="write">
+        write(), Send data.
+    </string>
+    <string name="writeSuccess">
+        write(), success.
+    </string>
+    <string name="writeError">
+        write(), error(an error occurred).
+    </string>
+    <string name="read">
+        read(), Receive data.
+    </string>
+    <string name="readSuccess">
+        read(), success.
+    </string>
+    <string name="readError">
+        read(), error(an error occurred).
+    </string>
+    <string name="readEOF">
+        read(), error(EOF, End of File).
+    </string>
+    <string name="close">
+        close(), Close socket.
+    </string>
+    <string name="closeError">
+        close(), error(an error occurred).
+    </string>
+    <string name="sensingStart">
+        Sensing start.
+    </string>
+    <string name="doorIsOpened">
+        The door is opened.
+    </string>
+    <string name="doorIsClosed">
+        The door is closed.
+    </string>
+    <string name="socketError">
+        socket(), error(an error occurred).
+    </string>
+    <string name="getSingletonError">
+        Get Singleton error.
+    </string>
+    <string name="setBuffer">
+        Set bufferReader.
+    </string>
+    <string name="setBufferError">
+        Set bufferReader error.
+    </string>
+    <string name="initSocketListenerError">
+        Init SocketListener error.
+    </string>
+    <string name="setSocketManager">
+        Set SocketManager.
+    </string>
+    <string name="setSocketManagerError">
+        Set SocketManager error.
+    </string>
+    <string name="serverIsClosed">
+        Server is closed.
+    </string>
+    <string name="lock">
+        Lock
+    </string>
+    <string name="unlock">
+        Unlock
+    </string>
+    <string name="ready">
+        Ready
+    </string>
+    <string name="key01">
+        Key01
+    </string>
+    <string name="key02">
+        Key02
+    </string>
+    <string name="key03">
+        Key03
+    </string>
+    <string name="key04">
+        Key04
+    </string>
+    <string name="call">
+        Call
+    </string>
+    <string name="doorlock">
+        doorlock
+    </string>
+    <string name="bracket_open">
+        [
+    </string>
+    <string name="bracket_close">
+        ]
+    </string>
+    <string name="line_separator">
+        line.separator
+    </string>
+    <string name="sharedPreferences">
+        sharedPreferences
+    </string>
+    <string name="writeToServer">
+        Write to server :&#160;
+    </string>
+    <string name="wifiOn">
+        WiFi: On.
+    </string>
+    <string name="wifiOff">
+        WiFi: Off.
+    </string>
+</resources>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/root"
+    tools:context=".WaitPerson"
+    tools:ignore="missingPrefix" >
+
+    <LinearLayout
+        style="@style/title_bar"
+        android:layout_weight="1">
+
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="1"/>
+        <ImageView
+            style="@style/title_bar_icon"
+            android:id="@+id/title_bar_icon"/>
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="1"/>
+        <TextView
+            style="@style/title_bar_title"
+            android:id="@+id/title_bar"
+            app:font="custom1"/>
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="16"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_layout_vertical"
+        android:layout_weight="8">
+
+        <LinearLayout
+            style="@style/linear_layout_vertical"
+            android:layout_weight="2">
+
+            <LinearLayout
+                style="@style/linear_layout_vertical"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    style="@style/linear_layout_horizontal"
+                    android:layout_weight="1">
+
+                    <View
+                        style="@style/view_horizontal"
+                        android:layout_weight="4"/>
+                    <ImageView
+                        style="@style/image"
+                        android:src="@drawable/closed_door"
+                        android:layout_weight="1"/>
+                    <View
+                        style="@style/view_horizontal"
+                        android:layout_weight="4"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/linear_layout_horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/text"
+                        android:id="@+id/reason"
+                        android:text="@string/door_closed"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_layout_vertical"
+                android:layout_weight="1">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linear_layout_horizontal"
+            android:layout_weight="1">
+
+            <View
+                style="@style/view_horizontal"
+                android:layout_weight="1"/>
+            <TextView
+                style="@style/log"
+                android:id="@+id/processing"
+                android:layout_weight="4">
+
+            </TextView>
+
+            <View
+                style="@style/view_horizontal"
+                android:layout_weight="1"/>
+
+            <TextView
+                style="@style/log"
+                android:id="@+id/sensing"
+                android:layout_weight="4">
+
+            </TextView>
+
+            <View
+                style="@style/view_horizontal"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_layout_horizontal"
+        android:layout_weight="1">
+
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="1"/>
+        <ImageView
+            style="@style/logo_01"
+            android:id="@+id/logo_01"
+            android:layout_weight="12"/>
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="32"/>
+        <ImageView
+            style="@style/logo_02"
+            android:id="@+id/logo_02"
+            android:layout_weight="6"/>
+        <View
+            style="@style/view_horizontal"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+</LinearLayout>

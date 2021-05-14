@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from doc.superbtc.org/en/alerts.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:33 GMT -->
+<head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta property="og:image" content="../../bitcoin.org/img/icons/opengraph.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Network status and alerts - Bitcoin</title>
+
+<link rel="stylesheet" href="../css/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/main.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css"><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="/css/ie8.css"><![endif]-->
+
+
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+<link rel="shortcut icon" href="../favicon.png">
+<link rel="apple-touch-icon-precomposed" href="../img/icons/logo_ios.png"/>
+<script>
+    window.cookieconsent_options = {
+        theme: 'light-floating'
+    }
+</script>
+<script type="text/javascript" src="../js/cookieconsent/cookieconsent.js"></script>
+<script>
+if( navigator.doNotTrack != "yes" && navigator.doNotTrack != "1" && window.doNotTrack != "1" && navigator.msDoNotTrack != "1" ){
+	var script = document.createElement('script');
+	script.src = '../js/analytics.js'
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+</script>
+
+</head>
+
+<body>
+
+
+
+<div id="detectmobile" class="detectmobile"></div>
+
+
+
+
+
+
+
+<!--<div class="head"><div>
+  
+<ul class="lang">
+  <li><a>English</a>
+  <ul>
+    <li><ul>
+      
+      
+        
+          <li><a href="/id/">Bahasa Indonesia</a></li>
+        
+        
+          <li><a href="/da/">Dansk</a></li>
+        
+        
+          <li><a href="/de/">Deutsch</a></li>
+        
+        
+          <li><a href="/en/" class="active">English</a></li>
+        
+        
+          <li><a href="/es/">Español</a></li>
+        
+        
+          <li><a href="/fr/">Français</a></li>
+        
+        
+          <li><a href="/it/">Italiano</a></li>
+        
+        
+          <li><a href="/hu/">Magyar</a></li>
+        
+        
+          <li><a href="/nl/">Nederlands</a></li>
+        
+        
+          <li><a href="/pl/">Polski</a></li>
+        
+        
+          <li><a href="/pt_BR/">Português Brasil</a></li>
+        
+        
+          <li><a href="/ro/">Română</a></li>
+        
+        
+          <li><a href="/sl/">Slovenščina</a></li>
+        
+        
+          <li><a href="/sv/">Svenska</a></li>
+        
+        </ul></li><li><ul>
+          <li><a href="/tr/">Türkçe</a></li>
+        
+        
+          <li><a href="/el/">Ελληνικά</a></li>
+        
+        
+          <li><a href="/bg/">български</a></li>
+        
+        
+          <li><a href="/ru/">Русский</a></li>
+        
+        
+          <li><a href="/uk/">Українська</a></li>
+        
+        
+          <li><a href="/ar/">العربية</a></li>
+        
+        
+          <li><a href="/fa/">فارسی</a></li>
+        
+        
+          <li><a href="/hi/">हिन्दी</a></li>
+        
+        
+          <li><a href="/ko/">한국의</a></li>
+        
+        
+          <li><a href="/ja/">日本語</a></li>
+        
+        
+          <li><a href="/zh_CN/">简体中文</a></li>
+        
+        
+          <li><a href="/zh_TW/">繁體中文</a></li>
+        
+      </ul></li>
+    </ul>
+  </li>
+</ul>
+
+  
+
+<a id="menumobile" class="menumobile" onclick="mobileMenuShow(event);" ontouchstart="mobileMenuShow(event);"></a>
+
+  
+
+<a class="logo" href="/en/"><img src="/img/icons/logotop.svg" alt="Bitcoin"></a>
+
+  
+<div id="langselect" class="langselect"><select onchange="window.location=this.value;">
+    
+          <option value="/id/">Bahasa Indonesia</option>
+    
+          <option value="/da/">Dansk</option>
+    
+          <option value="/de/">Deutsch</option>
+    
+          <option value="/en/" selected="selected">English</option>
+    
+          <option value="/es/">Español</option>
+    
+          <option value="/fr/">Français</option>
+    
+          <option value="/it/">Italiano</option>
+    
+          <option value="/hu/">Magyar</option>
+    
+          <option value="/nl/">Nederlands</option>
+    
+          <option value="/pl/">Polski</option>
+    
+          <option value="/pt_BR/">Português Brasil</option>
+    
+          <option value="/ro/">Română</option>
+    
+          <option value="/sl/">Slovenščina</option>
+    
+          <option value="/sv/">Svenska</option>
+    
+          <option value="/tr/">Türkçe</option>
+    
+          <option value="/el/">Ελληνικά</option>
+    
+          <option value="/bg/">български</option>
+    
+          <option value="/ru/">Русский</option>
+    
+          <option value="/uk/">Українська</option>
+    
+          <option value="/ar/">العربية</option>
+    
+          <option value="/fa/">فارسی</option>
+    
+          <option value="/hi/">हिन्दी</option>
+    
+          <option value="/ko/">한국의</option>
+    
+          <option value="/ja/">日本語</option>
+    
+          <option value="/zh_CN/">简体中文</option>
+    
+          <option value="/zh_TW/">繁體中文</option>
+    
+</select></div>
+
+  
+
+<ul id="menusimple" class="menusimple menumain" onclick="mobileMenuHover(event);" ontouchstart="mobileMenuHover(event);">
+  <li><a>Introduction</a>
+    <ul>
+      <li><a href="/en/bitcoin-for-individuals">Individuals</a></li>
+      <li><a href="/en/bitcoin-for-businesses">Businesses</a></li>
+      <li><a href="/en/bitcoin-for-developers">Developers</a></li>
+      <li><a href="/en/getting-started">Getting started</a></li>
+      <li><a href="/en/how-it-works">How it works</a></li>
+      <li><a href="/en/you-need-to-know">You need to know</a></li>
+    </ul>
+  </li>
+  <li><a>Resources</a>
+    <ul>
+      <li><a href="/en/resources">Resources</a>
+      <li><a href="/en/exchanges">Exchanges</a></li>
+      <li><a href="/en/community">Community</a></li>
+      <li><a href="/en/developer-documentation">Documentation</a></li>
+      <li><a href="/en/vocabulary">Vocabulary</a></li>
+      <li><a href="/en/events">Events</a></li>
+      
+        <li><a href="/en/bitcoin-core/">Bitcoin Core</a></li>
+      
+    </ul>
+  </li>
+  <li><a href="/en/innovation">Innovation</a></li>
+  <li><a>Participate</a>
+    <ul>
+      <li><a href="/en/support-bitcoin">Support Bitcoin</a>
+      <li><a href="/en/buy">Buy Bitcoin</a></li>
+      <li><a href="/en/full-node.html">Running a full node</a></li>
+      <li><a href="/en/development">Development</a></li>
+    </ul>
+  </li>
+  <li><a href="/en/faq">FAQ</a></li>
+</ul>
+
+</div></div>
+-->
+
+<div class="body">
+<!--  
+
+<div class="breadcrumbs">
+  
+</div>
+ -->
+  
+
+<div id="content" class="content">
+  
+<link rel="alternate" type="application/rss+xml" href="rss/alerts.rss" title="Bitcoin network status and alerts">
+
+
+<h1>Network status and alerts</h1>
+
+<p class="summary">Stay aware of network alerts by <a type="application/rss+xml" href="rss/alerts.rss">subscribing to the RSS feed <img src="http://doc.superbtc.org/img/icons/icon_rss.svg" alt="rss" class="rssicon"></a></p>
+
+<div>
+  
+  <div class="alertstatusinactive">There is no ongoing event on the Bitcoin network.</div>
+  
+  <ul class="alertsinactive">
+  
+    <li>
+      2017-10-11 - <a href="alert/2017-10-09-segwit2x-safety.html">Beware of Bitcoin's possible incompatibility with some major services</a>
+    </li>
+  
+    <li>
+      2017-07-12 - <a href="alert/2017-07-12-potential-split.html">Potential network disruption</a>
+    </li>
+  
+    <li>
+      2016-11-01 - <a href="alert/2016-11-01-alert-retirement.html">Alert System Retirement</a>
+    </li>
+  
+    <li>
+      2016-08-17 - <a href="alert/2016-08-17-binary-safety.html">0.13.0 Binary Safety Warning</a>
+    </li>
+  
+    <li>
+      2015-10-12 - <a href="alert/2015-10-12-upnp-vulnerability.html">Vulnerability in UPnP library used by Bitcoin Core</a>
+    </li>
+  
+    <li>
+      2015-07-04 - <a href="alert/2015-07-04-spv-mining.html">Some Miners Generating Invalid Blocks</a>
+    </li>
+  
+    <li>
+      2014-04-11 - <a href="alert/2014-04-11-heartbleed.html">OpenSSL Heartbleed vulnerability</a>
+    </li>
+  
+    <li>
+      2014-02-11 - <a href="alert/2014-02-11-malleability.html">Transaction malleability</a>
+    </li>
+  
+    <li>
+      2013-08-11 - <a href="alert/2013-08-11-android.html">Android Security Vulnerability</a>
+    </li>
+  
+    <li>
+      2013-03-15 - <a href="alert/2013-03-15-upgrade-deadline.html">15 May 2013 Upgrade Deadline</a>
+    </li>
+  
+    <li>
+      2013-03-11 - <a href="alert/2013-03-11-chain-fork.html">11/12 March 2013 Chain Fork Information</a>
+    </li>
+  
+    <li>
+      2012-05-14 - <a href="alert/2012-05-14-dos.html">CVE-2012-2459: Critical Vulnerability (denial-of-service)</a>
+    </li>
+  
+    <li>
+      2012-03-16 - <a href="alert/2012-03-16-critical-vulnerability.html">Potentially Critical Security Vulnerability</a>
+    </li>
+  
+    <li>
+      2012-02-18 - <a href="alert/2012-02-18-protocol-change.html">February 20, 2012 Protocol Changes</a>
+    </li>
+  
+  </ul>
+  <p><a href="http://getaddr.bitnodes.io/">Status and distribution of Bitcoin nodes</a></p>
+  <p><a href="http://bitcoinstats.com/network/propagation/">Propagation time on the network</a></p>
+  <p><a href="https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures">Complete CVE list</a></p>
+  <p>Please refer to the <a href="development-2.html">development</a> page if you want to report a vulnerability.</p>
+</div>
+
+</div>
+
+  <div class="footer">
+    
+
+<div>      <p>Bitcoin.org is community supported: <a href="bitcoin:3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa" target="_blank">3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa</a></p>    </div>    <div class="footermenu">      <a href="alerts.html" class="statusmenu">Network Status</a>      <a href="legal.html">Legal</a>      <a href="privacy.html">Privacy Policy</a>      <a href="press.html">Press</a>      <a href="about-us.html">About bitcoin.org</a>      <a href="blog.html">Blog</a>    </div>
+
+    
+
+<div class="footersponsor">
+  <!--<div><span>A community website sponsored by</span> <a href="https://bitcoinfoundation.org/"><img src="/img/brand/bitcoinfoundation.png" alt="Bitcoin Foundation"></a></div>-->
+</div>
+
+    
+
+<div class="footerlicense">© Bitcoin Project 2009-2017 Released under the <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT license</a></div>
+
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  fallbackSVG();
+  addAnchorLinks();
+  trackOutgoingLinks();
+</script>
+
+
+
+
+</body>
+
+
+<!-- Mirrored from doc.superbtc.org/en/alerts.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:36 GMT -->
+</html>

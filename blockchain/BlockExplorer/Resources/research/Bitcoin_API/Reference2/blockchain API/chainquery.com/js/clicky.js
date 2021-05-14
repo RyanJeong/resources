@@ -1,0 +1,1 @@
+try{ clicky.init(100870542); }catch(e){}

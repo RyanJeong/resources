@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PPG</string>
+    <string name="function1">Bluetooth</string>
+    <string name="function2">Control</string>
+    <string name="bluetoothNotAvailable">Bluetooth is not available.</string>
+    <string name="bluetoothNotEnabled">Bluetooth radio is off. Please turn it on to continue.</string>
+    <string name="bluetoothConnected">Connect to server successfully.</string>
+    <string name="bluetoothDisconnected">Disconnected from server.</string>
+    <string name="wait">Please wait...</string>
+    <string name="exit">Press back again to exit.</string>
+
+
+</resources>

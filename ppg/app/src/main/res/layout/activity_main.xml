@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        style="@style/MainBody"
+        android:layout_weight="4">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            style="@style/chartView">
+
+        </SurfaceView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MainBody"
+        android:layout_weight="1">
+
+        <LinearLayout
+            style="@style/StackVertical">
+
+            <TextView
+                android:text="@string/function1"
+                style="@style/RightMenuText">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/btn_connect"
+                style="@style/RightMenuBtn1">
+
+            </ImageView>
+
+            <TextView
+                android:text="@string/function2"
+                style="@style/RightMenuText">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/btn_stream"
+                style="@style/RightMenuBtn1">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/btn_scroll"
+                style="@style/RightMenuBtn1">
+
+            </ImageView>
+
+            <LinearLayout
+                style="@style/RightMenuBtn1">
+
+                <LinearLayout
+                    style="@style/StackHorizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_zoom_in"
+                        style="@style/RightMenuBtn2">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/btn_zoom_out"
+                        style="@style/RightMenuBtn2">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

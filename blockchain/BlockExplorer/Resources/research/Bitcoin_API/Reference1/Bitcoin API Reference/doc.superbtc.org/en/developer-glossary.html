@@ -1,0 +1,2248 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from doc.superbtc.org/en/developer-glossary.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:50 GMT -->
+<head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta property="og:image" content="../../bitcoin.org/img/icons/opengraph.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Developer Glossary - Bitcoin</title>
+
+<link rel="stylesheet" href="../css/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/main.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css"><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="/css/ie8.css"><![endif]-->
+
+
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+<link rel="shortcut icon" href="../favicon.png">
+<link rel="apple-touch-icon-precomposed" href="../img/icons/logo_ios.png"/>
+<script>
+    window.cookieconsent_options = {
+        theme: 'light-floating'
+    }
+</script>
+<script type="text/javascript" src="../js/cookieconsent/cookieconsent.js"></script>
+<script>
+if( navigator.doNotTrack != "yes" && navigator.doNotTrack != "1" && window.doNotTrack != "1" && navigator.msDoNotTrack != "1" ){
+	var script = document.createElement('script');
+	script.src = '../js/analytics.js'
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+</script>
+
+</head>
+
+<body>
+
+
+
+<div id="detectmobile" class="detectmobile"></div>
+
+
+
+
+
+
+
+<!--<div class="head"><div>
+  
+<ul class="lang">
+  <li><a>English</a>
+  <ul>
+    <li><ul>
+      
+      
+        
+          <li><a href="/id/">Bahasa Indonesia</a></li>
+        
+        
+          <li><a href="/da/">Dansk</a></li>
+        
+        
+          <li><a href="/de/">Deutsch</a></li>
+        
+        
+          <li><a href="/en/" class="active">English</a></li>
+        
+        
+          <li><a href="/es/">Español</a></li>
+        
+        
+          <li><a href="/fr/">Français</a></li>
+        
+        
+          <li><a href="/it/">Italiano</a></li>
+        
+        
+          <li><a href="/hu/">Magyar</a></li>
+        
+        
+          <li><a href="/nl/">Nederlands</a></li>
+        
+        
+          <li><a href="/pl/">Polski</a></li>
+        
+        
+          <li><a href="/pt_BR/">Português Brasil</a></li>
+        
+        
+          <li><a href="/ro/">Română</a></li>
+        
+        
+          <li><a href="/sl/">Slovenščina</a></li>
+        
+        
+          <li><a href="/sv/">Svenska</a></li>
+        
+        </ul></li><li><ul>
+          <li><a href="/tr/">Türkçe</a></li>
+        
+        
+          <li><a href="/el/">Ελληνικά</a></li>
+        
+        
+          <li><a href="/bg/">български</a></li>
+        
+        
+          <li><a href="/ru/">Русский</a></li>
+        
+        
+          <li><a href="/uk/">Українська</a></li>
+        
+        
+          <li><a href="/ar/">العربية</a></li>
+        
+        
+          <li><a href="/fa/">فارسی</a></li>
+        
+        
+          <li><a href="/hi/">हिन्दी</a></li>
+        
+        
+          <li><a href="/ko/">한국의</a></li>
+        
+        
+          <li><a href="/ja/">日本語</a></li>
+        
+        
+          <li><a href="/zh_CN/">简体中文</a></li>
+        
+        
+          <li><a href="/zh_TW/">繁體中文</a></li>
+        
+      </ul></li>
+    </ul>
+  </li>
+</ul>
+
+  
+
+<a id="menumobile" class="menumobile" onclick="mobileMenuShow(event);" ontouchstart="mobileMenuShow(event);"></a>
+
+  
+
+<a class="logo" href="/en/"><img src="/img/icons/logotop.svg" alt="Bitcoin"></a>
+
+  
+<div id="langselect" class="langselect"><select onchange="window.location=this.value;">
+    
+          <option value="/id/">Bahasa Indonesia</option>
+    
+          <option value="/da/">Dansk</option>
+    
+          <option value="/de/">Deutsch</option>
+    
+          <option value="/en/" selected="selected">English</option>
+    
+          <option value="/es/">Español</option>
+    
+          <option value="/fr/">Français</option>
+    
+          <option value="/it/">Italiano</option>
+    
+          <option value="/hu/">Magyar</option>
+    
+          <option value="/nl/">Nederlands</option>
+    
+          <option value="/pl/">Polski</option>
+    
+          <option value="/pt_BR/">Português Brasil</option>
+    
+          <option value="/ro/">Română</option>
+    
+          <option value="/sl/">Slovenščina</option>
+    
+          <option value="/sv/">Svenska</option>
+    
+          <option value="/tr/">Türkçe</option>
+    
+          <option value="/el/">Ελληνικά</option>
+    
+          <option value="/bg/">български</option>
+    
+          <option value="/ru/">Русский</option>
+    
+          <option value="/uk/">Українська</option>
+    
+          <option value="/ar/">العربية</option>
+    
+          <option value="/fa/">فارسی</option>
+    
+          <option value="/hi/">हिन्दी</option>
+    
+          <option value="/ko/">한국의</option>
+    
+          <option value="/ja/">日本語</option>
+    
+          <option value="/zh_CN/">简体中文</option>
+    
+          <option value="/zh_TW/">繁體中文</option>
+    
+</select></div>
+
+  
+
+<ul id="menusimple" class="menusimple menumain" onclick="mobileMenuHover(event);" ontouchstart="mobileMenuHover(event);">
+  <li><a>Introduction</a>
+    <ul>
+      <li><a href="/en/bitcoin-for-individuals">Individuals</a></li>
+      <li><a href="/en/bitcoin-for-businesses">Businesses</a></li>
+      <li><a href="/en/bitcoin-for-developers">Developers</a></li>
+      <li><a href="/en/getting-started">Getting started</a></li>
+      <li><a href="/en/how-it-works">How it works</a></li>
+      <li><a href="/en/you-need-to-know">You need to know</a></li>
+    </ul>
+  </li>
+  <li><a>Resources</a>
+    <ul>
+      <li><a href="/en/resources">Resources</a>
+      <li><a href="/en/exchanges">Exchanges</a></li>
+      <li><a href="/en/community">Community</a></li>
+      <li><a href="/en/developer-documentation">Documentation</a></li>
+      <li><a href="/en/vocabulary">Vocabulary</a></li>
+      <li><a href="/en/events">Events</a></li>
+      
+        <li><a href="/en/bitcoin-core/">Bitcoin Core</a></li>
+      
+    </ul>
+  </li>
+  <li><a href="/en/innovation">Innovation</a></li>
+  <li><a>Participate</a>
+    <ul>
+      <li><a href="/en/support-bitcoin">Support Bitcoin</a>
+      <li><a href="/en/buy">Buy Bitcoin</a></li>
+      <li><a href="/en/full-node.html">Running a full node</a></li>
+      <li><a href="/en/development">Development</a></li>
+    </ul>
+  </li>
+  <li><a href="/en/faq">FAQ</a></li>
+</ul>
+
+</div></div>
+-->
+
+<div class="body">
+<!--  
+
+<div class="breadcrumbs">
+  
+    
+      <a href="/en/">Bitcoin</a>
+        
+      &gt;
+    
+  
+    
+      <a href="/en/developer-documentation">Dev Docs</a>
+        
+      &gt;
+    
+  
+    
+      Glossary
+      
+    
+  
+</div>
+ -->
+  
+
+<div id="content" class="content">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+
+
+
+<h1 id="bitcoin-developer-glossary">Bitcoin Developer Glossary</h1>
+
+<p><input id="glossary_term" class="glossary_term" placeholder="Search the glossary, RPCs, and more" /></p>
+
+<div class="notice">
+  <p><span>This is a technical glossary.  Regular users should use the <a href="vocabulary.html">vocabulary
+page</a>.</span></p>
+</div>
+
+<h2 id="numbers">Numbers</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/51-percent-attack.html">51 percent attack</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="a">A</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/address.html">Address</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/cpfp-2.html">Ancestor mining</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/node.html">Archival node</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="b">B</h2>
+<!-- no subhead-links here -->
+
+<p>See also: <a href="https://github.com/bitcoin/bips#readme">Bitcoin Improvement Proposals (BIPs)</a></p>
+
+<ul class="wrapped_list">
+  <li><a href="glossary/multisig.html">Bare multisig</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/base58check.html">Base58check</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-chain.html">Best block chain</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/header-chain.html">Best header chain</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/denominations.html">Bitcoins</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block.html">Block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/genesis-block.html">Block 0</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-chain.html">Block chain</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-header.html">Block header</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-height.html">Block height</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-reward-2.html">Block reward</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/blocks-first-sync-2.html">Blocks-first sync</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/bloom-filter.html">Bloom filter</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="c">C</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/chain-code-2.html">Chain code</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/change-address.html">Change address</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/change-address.html">Change output</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/child-key.html">Child key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/cpfp-2.html">Child pays for parent</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/child-key.html">Child private key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/child-key.html">Child public key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/coinbase.html">Coinbase</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/coinbase-transaction.html">Coinbase transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/compactsize-2.html">CompactSize</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/compressed-public-key-2.html">Compressed public key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/confirmation-score.html">Confirmation score</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/confirmation-score.html">Confirmations</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/confirmation-score.html">Confirmed transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/consensus.html">Consensus</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/consensus-rules.html">Consensus rules</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/cpfp-2.html">CPFP</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="d">D</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/null-data-transaction-2.html">Data carrier transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/op-code.html">Data-pushing opcode</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/denominations.html">Denomination</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/difficulty.html">Difficulty</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/dns-seed.html">DNS seed</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/double-spend-2.html">Double spend</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="e">E</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/escrow-contract.html">Escrow contract</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/extended-key-2.html">Extended key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="f">F</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/fork.html">Fork</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/high-priority-transaction.html">Free transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/node.html">Full node</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="g">G</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/coinbase-transaction.html">Generation transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/genesis-block.html">Genesis block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="h">H</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/hard-fork-2.html">Hard fork</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/hardened-extended-key.html">Hardened extended key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/hd-protocol.html">HD protocol</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/hd-protocol.html">HD wallet</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/hd-wallet-seed-2.html">HD wallet seed</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-header.html">Header</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/header-chain.html">Header chain</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/headers-first-sync-2.html">Headers-first sync</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-height.html">Height</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/high-priority-transaction.html">High-priority transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="i">I</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/initial-block-download-2.html">IBD</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/initial-block-download-2.html">Initial block download</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/input.html">Input</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/internal-byte-order.html">Internal byte order</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/inventory-2.html">Inventory</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="l">L</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/simplified-payment-verification.html">Lightweight client</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/locktime.html">Locktime</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="m">M</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/mainnet.html">Mainnet</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/51-percent-attack.html">Majority attack</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/masf.html">MASF</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/master-chain-code-and-private-key.html">Master chain code</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/master-chain-code-and-private-key.html">Master private key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/block-size-limit.html">Maximum Block Size</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/merkle-block.html">Merkle block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/merkle-root.html">Merkle root</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/merkle-tree.html">Merkle tree</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/message-header.html">Message header</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/mining.html">Miner</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/masf.html">Miner-activated soft fork</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/transaction-fee.html">Miners fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/minimum-relay-fee.html">Minimum relay fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/mining.html">Mining</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/multisig.html">Multisig</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="n">N</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/nbits.html">nBits</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/difficulty.html">Network difficulty</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/start-string.html">Network magic</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/locktime.html">nLockTime</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/node.html">Node</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/op-code.html">Non-data-pushing opcode</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/null-data-transaction-2.html">Null data transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="o">O</h2>
+<!-- no subhead-links here -->
+
+<p>See also: <a href="https://en.bitcoin.it/wiki/Script#Words">Opcodes</a></p>
+
+<ul class="wrapped_list">
+  <li><a href="glossary/null-data-transaction-2.html">OP_RETURN transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/op-code.html">Opcode</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/rbf.html">Opt-in replace by fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/orphan-block.html">Orphan block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/outpoint.html">Outpoint</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/output.html">Output</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="p">P</h2>
+<!-- no subhead-links here -->
+
+<p>See also: <a href="developer-reference.html#data-messages">P2P protocol messages</a></p>
+
+<ul class="wrapped_list">
+  <li><a href="glossary/p2pkh-address.html">P2PKH address</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/p2pkh-address.html">P2PKH output</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/p2sh-address.html">P2SH address</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/p2sh-multisig.html">P2SH multisig</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/p2sh-address.html">P2SH output</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/parent-key.html">Parent key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/parent-key.html">Parent private key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/parent-key.html">Parent public key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/payment-protocol.html">Payment protocol</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/payment-protocol.html">Payment request</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/node.html">Peer</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/proof-of-work.html">POW</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/extended-key-2.html">Private extended key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/private-key.html">Private key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/proof-of-work.html">Proof of work</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/node.html">Pruned node</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/pubkey-script.html">Pubkey script</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/extended-key-2.html">Public extended key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/public-key.html">Public key</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="r">R</h2>
+<!-- no subhead-links here -->
+
+<p>See also: <a href="developer-reference.html#rpc-quick-reference">Bitcoin Core RPCs</a></p>
+
+<ul class="wrapped_list">
+  <li><a href="glossary/serialized-transaction.html">Raw transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/rbf.html">RBF</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/redeem-script.html">Redeem script</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/redeem-script.html">RedeemScript</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/regression-test-mode.html">Regression test mode</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/regression-test-mode.html">Regtest</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/minimum-relay-fee.html">Relay fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/rbf.html">Replace by fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/hd-wallet-seed-2.html">Root seed</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/rpc-byte-order.html">RPC byte order</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="s">S</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/denominations.html">Satoshis</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/pubkey-script.html">ScriptPubKey</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/signature-script.html">ScriptSig</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/sequence-number.html">Sequence number</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/serialized-block.html">Serialized block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/serialized-transaction.html">Serialized transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/signature-hash.html">Sighash</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/sighash-all.html">SIGHASH_ALL</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/sighash-anyonecanpay.html">SIGHASH_ANYONECANPAY</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/sighash-none.html">SIGHASH_NONE</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/sighash-single.html">SIGHASH_SINGLE</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/signature.html">Signature</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/signature-hash.html">Signature hash</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/signature-script.html">Signature script</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/simplified-payment-verification.html">Simplified Payment Verification</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/soft-fork.html">Soft fork</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/simplified-payment-verification.html">SPV</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/stale-block.html">Stale block</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/standard-transaction.html">Standard Transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/start-string.html">Start string</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="t">T</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/nbits.html">Target</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/testnet.html">Testnet</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/simplified-payment-verification.html">Thin client</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/transaction-fee.html">Transaction fee</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/malleability.html">Transaction malleability</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/malleability.html">Transaction mutability</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/txid.html">Txid</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/input.html">TxIn</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/output.html">TxOut</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="u">U</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/uasf.html">UASF</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/confirmation-score.html">Unconfirmed transaction</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/uasf.html">User-activated soft fork</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/unspent-transaction-output.html">UTXO</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  
+   </ul>
+<p><br class="clear" /></p>
+
+<h2 id="w">W</h2>
+<!-- no subhead-links here -->
+
+<ul class="wrapped_list">
+  <li><a href="glossary/wallet.html">Wallet</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/wallet-import-format.html">Wallet Import Format</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/watch-only-address.html">Watch-only address</a></li>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+ 
+  <li><a href="glossary/wallet-import-format.html">WIF</a></li>
+ 
+ 
+
+
+
+</ul>
+<p><br class="clear" /></p>
+
+<div class="notice">
+  <p><span>Can’t find what you’re looking for?  <a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new?title=New%20glossary%20term%20suggestion:">Suggest a
+new term</a> for the glossary!</span></p>
+</div>
+
+
+
+</div>
+
+  <div class="footer">
+    
+
+<div>      <p>Bitcoin.org is community supported: <a href="bitcoin:3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa" target="_blank">3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa</a></p>    </div>    <div class="footermenu">      <a href="alerts.html" class="statusmenu">Network Status</a>      <a href="legal.html">Legal</a>      <a href="privacy.html">Privacy Policy</a>      <a href="press.html">Press</a>      <a href="about-us.html">About bitcoin.org</a>      <a href="blog.html">Blog</a>    </div>
+
+    
+
+<div class="footersponsor">
+  <!--<div><span>A community website sponsored by</span> <a href="https://bitcoinfoundation.org/"><img src="/img/brand/bitcoinfoundation.png" alt="Bitcoin Foundation"></a></div>-->
+</div>
+
+    
+
+<div class="footerlicense">© Bitcoin Project 2009-2017 Released under the <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT license</a></div>
+
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  fallbackSVG();
+  addAnchorLinks();
+  trackOutgoingLinks();
+</script>
+
+
+
+  <script src="../js/jquery/jquery-1.11.2.min.js"></script>
+<script src="../js/jquery/jquery-ui.min.js"></script>
+<script src="../js/devsearch.js"></script>
+
+
+
+</body>
+
+
+<!-- Mirrored from doc.superbtc.org/en/developer-glossary.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:53 GMT -->
+</html>

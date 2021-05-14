@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
+
+<!-- Mirrored from doc.superbtc.org/en/bitcoin-core/contribute/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:50 GMT -->
+<head>
+
+
+<link rel="stylesheet" href="../../../css/jquery-ui.min.css">
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta property="og:image" content="../../../../bitcoin.org/img/icons/opengraph.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Contribute to Bitcoin Core</title>
+
+<link rel="stylesheet" href="../../../css/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../css/main.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css"><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="/css/ie8.css"><![endif]-->
+
+
+<script type="text/javascript" src="../../../js/base.js"></script>
+<script type="text/javascript" src="../../../js/main.js"></script>
+
+<link rel="shortcut icon" href="../../../favicon.png">
+<link rel="apple-touch-icon-precomposed" href="../../../img/icons/logo_ios.png"/>
+<script>
+    window.cookieconsent_options = {
+        theme: 'light-floating'
+    }
+</script>
+<script type="text/javascript" src="../../../js/cookieconsent/cookieconsent.js"></script>
+<script>
+if( navigator.doNotTrack != "yes" && navigator.doNotTrack != "1" && window.doNotTrack != "1" && navigator.msDoNotTrack != "1" ){
+	var script = document.createElement('script');
+	script.src = '../../../js/analytics.js'
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+</script>
+
+
+
+
+
+  <script src="../../../js/jquery/jquery-1.11.2.min.js"></script>
+  <script src="../../../js/jquery/jquery-ui.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+<div id="detectmobile" class="detectmobile"></div>
+
+
+
+
+
+
+
+
+
+
+<div class="head"><div>
+  
+<ul class="lang">
+  <li><a>English</a>
+  <ul>
+    <li><ul>
+      
+      
+        
+          <li><a href="http://doc.superbtc.org/id/">Bahasa Indonesia</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/da/">Dansk</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/de/">Deutsch</a></li>
+        
+        
+          <li><a href="../../index.html" class="active">English</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/es/">Español</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/fr/">Français</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/it/">Italiano</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/hu/">Magyar</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/nl/">Nederlands</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/pl/">Polski</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/pt_BR/">Português Brasil</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/ro/">Română</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/sl/">Slovenščina</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/sv/">Svenska</a></li>
+        
+        </ul></li><li><ul>
+          <li><a href="http://doc.superbtc.org/tr/">Türkçe</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/el/">Ελληνικά</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/bg/">български</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/ru/">Русский</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/uk/">Українська</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/ar/">العربية</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/fa/">فارسی</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/hi/">हिन्दी</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/ko/">한국의</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/ja/">日本語</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/zh_CN/">简体中文</a></li>
+        
+        
+          <li><a href="http://doc.superbtc.org/zh_TW/">繁體中文</a></li>
+        
+      </ul></li>
+    </ul>
+  </li>
+</ul>
+
+  
+
+<a id="menumobile" class="menumobile" onclick="mobileMenuShow(event);" ontouchstart="mobileMenuShow(event);"></a>
+
+  
+    
+
+<a class="logo" href="../index.html"><img src="http://doc.superbtc.org/img/bitcoin-core/bitcoin-core.svg" alt="Bitcoin"></a>
+
+    
+<div id="langselect" class="langselect"><select onchange="window.location=this.value;">
+    
+          <option value="/id/">Bahasa Indonesia</option>
+    
+          <option value="/da/">Dansk</option>
+    
+          <option value="/de/">Deutsch</option>
+    
+          <option value="/en/" selected="selected">English</option>
+    
+          <option value="/es/">Español</option>
+    
+          <option value="/fr/">Français</option>
+    
+          <option value="/it/">Italiano</option>
+    
+          <option value="/hu/">Magyar</option>
+    
+          <option value="/nl/">Nederlands</option>
+    
+          <option value="/pl/">Polski</option>
+    
+          <option value="/pt_BR/">Português Brasil</option>
+    
+          <option value="/ro/">Română</option>
+    
+          <option value="/sl/">Slovenščina</option>
+    
+          <option value="/sv/">Svenska</option>
+    
+          <option value="/tr/">Türkçe</option>
+    
+          <option value="/el/">Ελληνικά</option>
+    
+          <option value="/bg/">български</option>
+    
+          <option value="/ru/">Русский</option>
+    
+          <option value="/uk/">Українська</option>
+    
+          <option value="/ar/">العربية</option>
+    
+          <option value="/fa/">فارسی</option>
+    
+          <option value="/hi/">हिन्दी</option>
+    
+          <option value="/ko/">한국의</option>
+    
+          <option value="/ja/">日本語</option>
+    
+          <option value="/zh_CN/">简体中文</option>
+    
+          <option value="/zh_TW/">繁體中文</option>
+    
+</select></div>
+
+    
+
+<ul id="menusimple" class="menusimple menucore" onclick="mobileMenuHover(event);" ontouchstart="mobileMenuHover(event);">
+  <li><a>Features</a>
+    <ul>
+      <li><a href="../features/index.html">Overview</a></li>
+      <li><a href="../features/validation.html">Validation</a></li>
+      <li><a href="../features/privacy.html">Privacy</a></li>
+      <li><a href="../features/requirements.html">Requirements</a></li>
+      <li><a href="../features/user-interface.html">User Interface</a></li>
+      <li><a href="../features/network-support.html">Network Support</a></li>
+    </ul>
+  </li>
+  <li><a href="../help.html">Get Help</a></li>
+  <li class="active"><a>Contribute</a>
+    <ul>
+      <li><a href="issues.html">Bug reports</a></li>
+      <li><a href="../../development-2.html">Code</a></li>
+      <li><a href="documentation.html">Documentation</a></li>
+      <li><a href="translations.html">Translations</a></li>
+      <li><a href="support.html">Tech Support</a></li>
+    </ul>
+  </li>
+  <li><a href="../../version-history.html">News</a></li>
+  <li><a href="../../download.html">Download</a></li>
+</ul>
+
+  
+</div></div>
+
+<div class="body">
+  
+    
+
+<div class="breadcrumbs">
+  
+    
+      <a href="../../index.html">Bitcoin</a>
+        
+      &gt;
+    
+  
+    
+      <a href="../index.html">Core</a>
+        
+      &gt;
+    
+  
+    
+      Contribute
+      
+    
+  
+</div>
+
+  
+  
+
+<div id="content" class="content">
+<div class="one-column">
+  <h1 id="contributing-to-bitcoin-core">Contributing To Bitcoin Core</h1>
+
+<p>Thank you for considering contributing to Bitcoin Core!  We have
+instructions below to help you get started contributing in several different
+ways.</p>
+
+<p>If want to contribute in another way, please visit the <a href="https://webchat.freenode.net/?channels=bitcoin-dev&amp;uio=d4">#bitcoin-dev</a>
+IRC chatroom and discuss your plan with a developer.</p>
+
+<div class="two-column-list">
+
+  <ul class="fa-ul">
+    <li>
+      <p><span class="fa fa-li fa-bug fa-2x"></span> <strong><a href="issues.html">Bug reports</a></strong><br />Report bugs, including security issues</p>
+    </li>
+    <li>
+      <p><span class="fa fa-li fa-code fa-2x"></span> <strong><a href="../../development-2.html">Code</a></strong><br />Write &amp; review code</p>
+    </li>
+    <li>
+      <p><span class="fa fa-li fa-book fa-2x"></span> <strong><a href="documentation.html">Documentation</a></strong><br />Write documentation for users and developers</p>
+    </li>
+    <li>
+      <p><span class="fa fa-li fa-language fa-2x"></span> <strong><a href="translations.html">Translations</a></strong><br />Translate the user interface</p>
+    </li>
+    <li>
+      <p><span class="fa fa-li fa-question fa-2x"></span> <strong><a href="support.html">Tech support</a></strong><br />Support other users</p>
+    </li>
+  </ul>
+
+</div>
+<p><br class="clear" /><br class="big" /></p>
+
+
+</div>
+</div>
+
+  <div class="footer">
+    
+
+<div>
+  <p>Bitcoin.org is community supported: <a href="bitcoin:3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa" target="_blank">3FkenCiXpSLqD8L79intRNXUgjRoH9sjXa</a></p>
+</div>
+
+<div class="footermenu">
+  <a href="../../alerts-2.html" class="statusmenu">Network Status</a>
+  <a href="../../legal-2.html">Legal</a>
+  
+  <a href="../../privacy-2.html">Privacy Policy</a>
+  
+  <a href="../about-site.html">About</a>
+</div>
+
+    
+
+<div class="footerlicense">© Bitcoin Project 2009-2017 Released under the <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT license</a><br>
+Bitcoin Core pages on Bitcoin.org are <a
+href="../about-site.html">maintained separately</a> from the
+rest of the site.
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+  <script src="../../../js/bitcoin-core.js"></script>
+
+
+
+
+<script type="text/javascript">
+  fallbackSVG();
+  addAnchorLinks();
+  trackOutgoingLinks();
+</script>
+
+
+
+
+</body>
+
+
+<!-- Mirrored from doc.superbtc.org/en/bitcoin-core/contribute/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 09:13:50 GMT -->
+</html>

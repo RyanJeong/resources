@@ -1,0 +1,103 @@
+uint8_t a, b, c, d, e, f, g, h;
+void setup()
+{
+    Serial.begin(9600);
+    a = 00; 
+    b = 01; 
+    c = 02; 
+    d = 03; 
+    e = 04; 
+    f = 05; 
+    g = 06; 
+    h = 07; 
+}
+
+void loop()
+{
+    uint8_t tmp;
+
+    Serial.println(a);
+    Serial.println(b);
+    Serial.println(c);
+    Serial.println(d);
+    Serial.println(e);
+    Serial.println(f);
+    Serial.println(g);
+    Serial.println(h);
+    Serial.println("------------");
+    Serial.print(a & 04);
+    Serial.print(a & 02);
+    Serial.println(a & 01);
+    Serial.print(b & 04);
+    Serial.print(b & 02);
+    Serial.println(b & 01);
+    Serial.print(c & 04);
+    Serial.print(c & 02);
+    Serial.println(c & 01);
+    Serial.print(d & 04);
+    Serial.print(d & 02);
+    Serial.println(d & 01);
+    Serial.print(e & 04);
+    Serial.print(e & 02);
+    Serial.println(e & 01);
+    Serial.print(f & 04);
+    Serial.print(f & 02);
+    Serial.println(f & 01);
+    Serial.print(g & 04);
+    Serial.print(g & 02);
+    Serial.println(g & 01);
+    Serial.print(h & 04);
+    Serial.print(h & 02);
+    Serial.println(h & 01);
+    Serial.println("------------");
+    tmp = a;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = b;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = c;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = d;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = e;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = f;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = g;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+    tmp = h;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.print((tmp & 01)? "T" : "F");
+    tmp >>= 1;
+    Serial.println((tmp & 01)? "T" : "F");
+
+    delay(10000);
+}

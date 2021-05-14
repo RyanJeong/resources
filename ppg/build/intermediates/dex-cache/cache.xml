@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-9f59165e07c8cfd563770eeadf57eb49f3cf6d62.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-49a0ab30d6a4114b0e4db15568104417d58bfd0c.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-53055532b9f02f0fb53e5d6f393e3340c153a014.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-cbe6ddc7213b70f58fab894687b7f6cc9eea7ea6.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-619fa0a92da7eb3706e0dc6d0742314a86299f47.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-5e2aba325a48b3362a6afb7aea983bd24cc8eb31.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-656b02d1bcbc17fc1bad0d6e1959d7bd454c825d.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-5225f7b3ef5ae52d4d17252120749b439231fb78.jar" />
+    </item>
+    <item
+        jar="/Users/jung/Android/PPG/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/classes-6ba2fcd2eaecd1214026338043a21a25aa63eba9.jar" />
+    </item>
+    <item
+        jar="/Users/jung/android-sdks/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/jung/Android/PPG/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.0-619839c4b2633dec459b87f0316c935e447f6950.jar" />
+    </item>
+
+</items>

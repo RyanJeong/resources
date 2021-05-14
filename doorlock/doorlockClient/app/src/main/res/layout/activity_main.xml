@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/root"
+    tools:context=".MainActivity"
+    tools:ignore="missingPrefix" >
+
+    <View
+        style="@style/view_vertical"
+        android:layout_weight="4"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/title"
+        app:font="custom1"
+        android:textSize="160sp"
+        android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/version"
+        app:font="custom1"
+        android:textSize="96sp"
+        android:textColor="@color/black" />
+    <View
+        style="@style/view_vertical"
+        android:layout_weight="4"/>
+    <ImageView
+        android:id="@+id/logo_02"
+        android:layout_width="wrap_content"
+        android:layout_height="0sp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo_02"
+        android:contentDescription="@string/img_error"
+        android:layout_weight="8" />
+    <View
+        style="@style/view_vertical"
+        android:layout_weight="1"/>
+
+</LinearLayout>
