@@ -1,6 +1,6 @@
 ## Bitcoin Ver.0.1.3 Alpha
-![v0.1.3](https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha/blob/master/img/v0.1.3.PNG)
-![about](https://github.com/RyanJeong/Bitcoin-v0.1.3-Alpha/blob/master/img/about.PNG)
+![v0.1.3](https://github.com/RyanJeong/resources/blob/main/bitcoin_v0.1.3/img/v0.1.3.PNG)
+![about](https://github.com/RyanJeong/resources/blob/main/bitcoin_v0.1.3/img/about.PNG)
 ## 설치 방법
 ### 설치 환경
 * Windows 7 Professional K x86 Version 6.1(Build 7601: Service Pack 1)
