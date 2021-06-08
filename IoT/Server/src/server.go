@@ -2,14 +2,14 @@
 package main
  
 import (
-	"database/sql" 
+    "database/sql" 
     "encoding/hex"
     "fmt"
-	"time"
-	_ "github.com/go-sql-driver/mysql"
-	"log"
-	"io"
-	"net"
+    "time"
+    _ "github.com/go-sql-driver/mysql"
+    "log"
+    "io"
+    "net"
     "strings"
 )
 
@@ -88,11 +88,11 @@ func ConnHandler(conn net.Conn) {
 		if n > 0 {
 			data := recvBuf[:n]
 			log.Println("Received")
-            var length = len(data)
-            for i := 0; i < length; i++ {
-                fmt.Print(data[i], " ")
-            }
-            fmt.Println("")
+			var length = len(data)
+			for i := 0; i < length; i++ {
+				fmt.Print(data[i], " ")
+			}
+			fmt.Println("")
 
 			// start  transaction
 			tx, err := db.Begin()
@@ -104,92 +104,92 @@ func ConnHandler(conn net.Conn) {
 			datetime := time.Now()
 			datetime.Format(time.RFC3339)
 
-            switch status(data[7]) {
-            /*  Change a string to prepared statement after all tests done  */
-            case ADD_A_GATEWAY:
-                MAC := strings.ToUpper(hex.EncodeToString(data[1:7]))
-                log.Println("ADD_A_GATEWAY")
-                log.Println(MAC)
-                _, err = tx.Exec("INSERT INTO gateway VALUES (?, ?) ON DUPLICATE KEY UPDATE macAddr=?, state=?", MAC, CONNECTED, MAC, CONNECTED)
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case ADD_A_THING:
-                MAC := strings.ToUpper(hex.EncodeToString(data[1:7]))
-                ID  := strings.ToUpper(hex.EncodeToString(data[8:17]))
-                log.Println("ADD_A_THING")
-                log.Println(MAC)
-                log.Println(ID)
-                _, err = tx.Exec("INSERT INTO thing VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE serialNumber=?, gatewayMacAddr=?, period=?, state=?",
-                                    ID, MAC, PERIOD, CONNECTED, ID, MAC, PERIOD, CONNECTED)
-                /*  for write db requested test time    */
-                tempTime = datetime
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case SEND_A_DATA:
-                ID  := strings.ToUpper(hex.EncodeToString(data[8:17]))
-                VALUE   := int(data[17])
-                log.Println("SEND_A_DATA")
-                log.Println(ID)
-                log.Println(VALUE)
-                _, err = tx.Exec("INSERT INTO data VALUES (?, ?, ?)", datetime, ID, VALUE)
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case TEST_RESULT:
-                log.Println("TEST_RESULT")
-            case HEAT_TEST_RESULT1:
-                log.Println("HEAT_TEST_RESULT1")
-            case HEAT_TEST_RESULT2:
-                log.Println("HEAT_TEST_RESULT2")
-            case REQUESTED_TEST_RESULT:
-                log.Println("REQUESTED_TEST_RESULT")
-            case REQUESTED_HEAT_TEST_RESULT1:
-                log.Println("REQUESTED_HEAT_TEST_RESULT1")
-            case REQUESTED_HEAT_TEST_RESULT2:
-                log.Println("REQUESTED_HEAT_TEST_RESULT2")
-            case INIT_TEST_RESULT:
-                ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
-                VALUE1  := int(data[17])
-                VALUE2  := int(data[18])
-                log.Println("INIT_TEST_RESULT")
-                log.Println(ID)
-                log.Println(VALUE1)
-                log.Println(VALUE2)
-                _, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x00, VALUE1, VALUE2)
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case INIT_HEAT_TEST_RESULT1:
-                ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
-                VALUE1  := int(data[17])
-                VALUE2  := int(data[18])
-                log.Println("INIT_HEAT_TEST_RESULT1")
-                log.Println(ID)
-                log.Println(VALUE1)
-                log.Println(VALUE2)
-                _, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x01, VALUE1, VALUE2)
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case INIT_HEAT_TEST_RESULT2:
-                ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
-                VALUE1  := int(data[17])
-                VALUE2  := int(data[18])
-                log.Println("INIT_HEAT_TEST_RESULT2")
-                log.Println(ID)
-                log.Println(VALUE1)
-                log.Println(VALUE2)
-                _, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x02, VALUE1, VALUE2)
-                if err != nil {
-                    log.Fatal(err)
-                }
-            case ALERT_A_FIRE_DETECTED:
-                log.Println("ALERT_A_FIRE_DETECTED")
-            default:
-                log.Println("OP error")
-            }
+		    switch status(data[7]) {
+		    /*  Change a string to prepared statement after all tests done  */
+		    case ADD_A_GATEWAY:
+				MAC := strings.ToUpper(hex.EncodeToString(data[1:7]))
+				log.Println("ADD_A_GATEWAY")
+				log.Println(MAC)
+				_, err = tx.Exec("INSERT INTO gateway VALUES (?, ?) ON DUPLICATE KEY UPDATE macAddr=?, state=?", MAC, CONNECTED, MAC, CONNECTED)
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case ADD_A_THING:
+				MAC := strings.ToUpper(hex.EncodeToString(data[1:7]))
+				ID  := strings.ToUpper(hex.EncodeToString(data[8:17]))
+				log.Println("ADD_A_THING")
+				log.Println(MAC)
+				log.Println(ID)
+				_, err = tx.Exec("INSERT INTO thing VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE serialNumber=?, gatewayMacAddr=?, period=?, state=?",
+							ID, MAC, PERIOD, CONNECTED, ID, MAC, PERIOD, CONNECTED)
+				/*  for write db requested test time    */
+				tempTime = datetime
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case SEND_A_DATA:
+				ID  := strings.ToUpper(hex.EncodeToString(data[8:17]))
+				VALUE   := int(data[17])
+				log.Println("SEND_A_DATA")
+				log.Println(ID)
+				log.Println(VALUE)
+				_, err = tx.Exec("INSERT INTO data VALUES (?, ?, ?)", datetime, ID, VALUE)
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case TEST_RESULT:
+				log.Println("TEST_RESULT")
+		    case HEAT_TEST_RESULT1:
+				log.Println("HEAT_TEST_RESULT1")
+		    case HEAT_TEST_RESULT2:
+				log.Println("HEAT_TEST_RESULT2")
+		    case REQUESTED_TEST_RESULT:
+				log.Println("REQUESTED_TEST_RESULT")
+		    case REQUESTED_HEAT_TEST_RESULT1:
+				log.Println("REQUESTED_HEAT_TEST_RESULT1")
+		    case REQUESTED_HEAT_TEST_RESULT2:
+				log.Println("REQUESTED_HEAT_TEST_RESULT2")
+		    case INIT_TEST_RESULT:
+				ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
+				VALUE1  := int(data[17])
+				VALUE2  := int(data[18])
+				log.Println("INIT_TEST_RESULT")
+				log.Println(ID)
+				log.Println(VALUE1)
+				log.Println(VALUE2)
+				_, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x00, VALUE1, VALUE2)
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case INIT_HEAT_TEST_RESULT1:
+				ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
+				VALUE1  := int(data[17])
+				VALUE2  := int(data[18])
+				log.Println("INIT_HEAT_TEST_RESULT1")
+				log.Println(ID)
+				log.Println(VALUE1)
+				log.Println(VALUE2)
+				_, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x01, VALUE1, VALUE2)
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case INIT_HEAT_TEST_RESULT2:
+				ID      := strings.ToUpper(hex.EncodeToString(data[8:17]))
+				VALUE1  := int(data[17])
+				VALUE2  := int(data[18])
+				log.Println("INIT_HEAT_TEST_RESULT2")
+				log.Println(ID)
+				log.Println(VALUE1)
+				log.Println(VALUE2)
+				_, err = tx.Exec("INSERT INTO test VALUES (?, ?, ?, ?, ?, ?)", tempTime, ID, datetime, 0x02, VALUE1, VALUE2)
+				if err != nil {
+					log.Fatal(err)
+				}
+		    case ALERT_A_FIRE_DETECTED:
+				log.Println("ALERT_A_FIRE_DETECTED")
+		    default:
+				log.Println("OP error")
+		    }
 
 
 			//	transaction commit
